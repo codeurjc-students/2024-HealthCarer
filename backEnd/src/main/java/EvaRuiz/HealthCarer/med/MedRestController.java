@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -24,11 +25,11 @@ public class MedRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Med> getMed(@PathVariable Long id) {
-        Med med = medService.findById(id);
-        if (med == null) {
-            return ResponseEntity.notFound().build();
+        Optional<Med> med = medService.findById(id);
+        if (med.isPresent()) {
+            return ResponseEntity.ok(med.get());
         } else {
-            return ResponseEntity.ok(med);
+            return ResponseEntity.notFound().build();
         }
     }
 
@@ -42,24 +43,25 @@ public class MedRestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Med> deleteMed(@PathVariable Long id) {
-        Med med = medService.findById(id);
-        if (med == null) {
-            return ResponseEntity.notFound().build();
+        Optional<Med> med = medService.findById(id);
+        if (med.isPresent()) {
+            medService.deleteById(id);
+            return ResponseEntity.ok(med.get());
+
         } else {
-            medService.delete(med);
-            return ResponseEntity.ok(med);
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Med> replaceMed(@PathVariable Long id, @RequestBody Med newMed) {
-        Med med = medService.findById(id);
-        if (med == null) {
-            return ResponseEntity.notFound().build();
-        } else {
+        Optional<Med> med = medService.findById(id);
+        if (med.isPresent()) {
             newMed.setId(id);
             medService.save(newMed);
             return ResponseEntity.ok(newMed);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 
