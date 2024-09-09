@@ -26,11 +26,7 @@ public class MedRestController {
     @GetMapping("/{id}")
     public ResponseEntity<Med> getMed(@PathVariable Long id) {
         Optional<Med> med = medService.findById(id);
-        if (med.isPresent()) {
-            return ResponseEntity.ok(med.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.of(med);
     }
 
     @PostMapping("/")
@@ -44,26 +40,18 @@ public class MedRestController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Med> deleteMed(@PathVariable Long id) {
         Optional<Med> med = medService.findById(id);
-        if (med.isPresent()) {
-            medService.deleteById(id);
-            return ResponseEntity.ok(med.get());
-
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        med.ifPresent(m -> medService.deleteById(id));
+        return ResponseEntity.of(med);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Med> replaceMed(@PathVariable Long id, @RequestBody Med newMed) {
         Optional<Med> med = medService.findById(id);
-        if (med.isPresent()) {
-            newMed.setId(id);
+        return ResponseEntity.of(med.map(m -> {
+            newMed.setId(m.getId());
             medService.save(newMed);
-            return ResponseEntity.ok(newMed);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+            return newMed;
+        }));
     }
-
 
 }
