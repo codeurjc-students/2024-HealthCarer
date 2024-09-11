@@ -33,12 +33,13 @@ public class MedRestController {
     @GetMapping("/{id}")
     public ResponseEntity<Med> getMed(@PathVariable Long id) {
         Optional<Med> med = medService.findById(id);
-        return ResponseEntity.of(med);
+        return med.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/")
     public ResponseEntity<Med> createMed(@RequestBody Med med) {
         medService.save(med);
+
         URI location = fromCurrentRequest().path("/{id}")
                 .buildAndExpand(med.getId()).toUri();
         return ResponseEntity.created(location).body(med);
@@ -66,18 +67,24 @@ public class MedRestController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Med> deleteMed(@PathVariable Long id) {
         Optional<Med> med = medService.findById(id);
-        med.ifPresent(m -> medService.deleteById(id));
-        return ResponseEntity.of(med);
+        if (med.isPresent()) {
+            medService.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Med> replaceMed(@PathVariable Long id, @RequestBody Med newMed) {
         Optional<Med> med = medService.findById(id);
-        return ResponseEntity.of(med.map(m -> {
-            newMed.setId(m.getId());
+        if (med.isPresent()) {
+            newMed.setId(id);
             medService.save(newMed);
-            return newMed;
-        }));
+            return ResponseEntity.ok(newMed);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
