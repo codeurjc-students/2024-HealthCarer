@@ -9,6 +9,9 @@ import lombok.Getter;
 
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.http.impl.client.StandardHttpRequestRetryHandler;
+
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -27,7 +30,12 @@ public class Med {
     private float dose;
 
 
-    protected Med() {}
+    public Med() {}
 
-
+    public Med( String name, float stock, String instructions, float dose) {
+        this.name = name;
+        this.stock = stock;
+        this.instructions = instructions;
+        this.dose = dose;
+    }
 }

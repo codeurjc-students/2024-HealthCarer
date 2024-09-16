@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -25,8 +26,12 @@ public class MedRestController {
 
     private static final String MEDS_FOLDER = "resources/meds";
 
+    public MedRestController(MedService medService) {
+        this.medService = medService;
+    }
+
     @GetMapping("/")
-    public Collection<Med> getMeds() {
+    public List<Med> getMeds() {
         return medService.findAll();
     }
 
