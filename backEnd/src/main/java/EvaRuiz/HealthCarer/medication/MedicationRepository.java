@@ -1,4 +1,4 @@
-package EvaRuiz.HealthCarer.med;
+package EvaRuiz.HealthCarer.medication;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
