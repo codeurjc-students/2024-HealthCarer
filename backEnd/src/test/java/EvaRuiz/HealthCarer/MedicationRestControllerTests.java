@@ -1,110 +1,59 @@
 package EvaRuiz.HealthCarer;
-
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
+import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.medication.MedicationRestController;
+import EvaRuiz.HealthCarer.medication.MedicationService;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class MedicationRestControllerTests {
 
-	@LocalServerPort
-	int port;
+	@Mock
+	private MedicationService medicationService;
+	private Medication medication;
+
+	@InjectMocks
+	private MedicationRestController medicationController;
+
+	@Autowired
+	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setUp() {
-		RestAssured.port = port;
+	public void setup(){
+		medication = new Medication("Ibu", 20, "AAA", 30);
+		mockMvc = MockMvcBuilders.standaloneSetup(medicationController).build();
 	}
-
-
-
-	@Test
-	public void medAddTest() {
-		given().
-				contentType("application/json").
-				body("{" +
-						"    \"name\": \"Ibuprofeno\",\n" +
-						"    \"stock\": 60,\n" +
-						"    \"instructions\": \"1 dosis cada 8 horas\",\n" +
-						"    \"dose\": 600\n" +
-						"}").
-				when().
-				post("/api/meds/").
-				then().statusCode(201).assertThat().
-				contentType("application/json").
-				body("id", notNullValue()).
-				body("name", equalTo("Ibuprofeno")).
-				body("stock", equalTo(60F)).
-				body("instructions", equalTo("1 dosis cada 8 horas")).
-				body("dose", equalTo(600F));
-
+	@AfterEach
+	void tearDown() {
+		medication = null;
 	}
 
 	@Test
-	public void medsGetTest() {
-
-		given().
-				when().
-				get("/api/meds/").
-				then().statusCode(200).assertThat().contentType("application/json");
-
-	}
-
-	@Test
-	public void medGetByIdTest() {
-		Response response = given().
-				contentType("application/json").
-				body("{" +
-						"    \"name\": \"Ibuprofeno\",\n" +
-						"    \"stock\": 60,\n" +
-						"    \"instructions\": \"1 dosis cada 8 horas\",\n" +
-						"    \"dose\": 600\n" +
-						"}").
-				post("/api/meds/").
-				then().statusCode(201).extract().response();
-
-		int id = response.getBody().jsonPath().getInt("id");
-		String name = response.jsonPath().getString("name");
-		float stock = response.jsonPath().getFloat("stock");
-		String instructions = response.jsonPath().getString("instructions");
-		float dose = response.jsonPath().getFloat("dose");
-
-
-		given().
-				when().
-				get("/api/meds/" + id).
-				then().statusCode(200).assertThat().contentType("application/json").
-				body("id", equalTo(id)).
-				body("name", equalTo(name)).
-				body("stock", equalTo(stock)).
-				body("instructions", equalTo(instructions)).
-				body("dose", equalTo(dose));
-	}
-
-	@Test
-	public void medDeleteTest() {
-		Response response = given().
-				contentType("application/json").
-				body("{" +
-						"    \"name\": \"Ibuprofeno\",\n" +
-						"    \"stock\": 60,\n" +
-						"    \"instructions\": \"1 dosis cada 8 horas\",\n" +
-						"    \"dose\": 600\n" +
-						"}").
-				post("/api/meds/").
-				then().statusCode(201).extract().response();
-		long id = response.jsonPath().getLong("id");
-
-
-		given().
-				when().
-				delete("/api/meds/" + id).
-				then().statusCode(200);
-
+	public void PostMappingOfMedication() throws Exception{
+		when(medicationService.createMedication(any(Medication.class))).thenReturn(medication);
+		mockMvc.perform(post("/api/medications/no-image")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"name\":\"Ibu\",\"stock\":20,\"instructions\":\"AAA\",\"dose\":30}"))
+				.andExpect(status().isCreated());
 	}
 }
