@@ -23,8 +23,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -74,7 +73,6 @@ class MedicationRestControllerTests {
 		mockMvc.perform(get("/api/medications/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(ow.writeValueAsString(medicationList)))
-				.andDo(MockMvcResultHandlers.print())
 				.andExpect(status().isOk());
 		verify(medicationService, times(1)).findAll();
 
@@ -86,8 +84,18 @@ class MedicationRestControllerTests {
 		mockMvc.perform(get("/api/medications/1")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(ow.writeValueAsString(medication)))
-				.andDo(MockMvcResultHandlers.print())
 				.andExpect(status().isOk());
 		verify(medicationService, times(1)).getMedication(1L);
 	}
+
+	@Test
+	public void DeleteMappingOfMedication() throws Exception {
+		when(medicationService.getMedication(1L)).thenReturn(medication);
+		mockMvc.perform(delete("/api/medications/1")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(ow.writeValueAsString(medication)))
+				.andExpect(status().isOk());
+		verify(medicationService, times(1)).deleteMedication(medication);
+	}
+
 }
