@@ -1,10 +1,10 @@
 package EvaRuiz.HealthCarer;
 import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.medication.MedicationDTO;
 import EvaRuiz.HealthCarer.medication.MedicationRestController;
 import EvaRuiz.HealthCarer.medication.MedicationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import jdk.jfr.Name;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.io.File;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -92,7 +93,20 @@ class MedicationRestControllerTests {
 		verify(medicationService, times(1)).createMedication(any(Medication.class));
 	}
 
-	//TODO: PostMapping of medication with images
+
+
+	@Test
+	@DisplayName("POST /api/medications/")
+	public void PostMappingOfMedication2() throws Exception{
+		medication.setBoxImage(String.valueOf(new File("backend/files/ibuprofeno.png")));
+		medication.setPillImage(String.valueOf(new File("backend/files/ibuprofeno2.png")));
+		when(medicationService.createMedication(any(MedicationDTO.class))).thenReturn(medication);
+		mockMvc.perform(post("/api/medications/")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(ow.writeValueAsString(medication)))
+				.andExpect(status().isCreated());
+
+	}
 
 
 	@Test

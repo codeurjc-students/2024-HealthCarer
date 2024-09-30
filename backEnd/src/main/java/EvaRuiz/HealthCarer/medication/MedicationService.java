@@ -1,5 +1,6 @@
 package EvaRuiz.HealthCarer.medication;
 
+import EvaRuiz.HealthCarer.images.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.modelmapper.ModelMapper;
@@ -14,7 +15,8 @@ public class MedicationService {
 
     @Autowired
     private MedicationRepository medicationRepository;
-
+    @Autowired
+    private ImageService imageService;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -39,8 +41,14 @@ public class MedicationService {
 
         Medication medication = modelMapper.map(medicationDTO, Medication.class);
 
-        //TODO: check if images are null
-
+        if (medicationDTO.getBoxImage() != null) {
+            String boxImage = imageService.createImage(medicationDTO.getBoxImage());
+            medication.setBoxImage(boxImage);
+        }
+        if (medicationDTO.getPillImage() != null) {
+            String pillImage = imageService.createImage(medicationDTO.getPillImage());
+            medication.setPillImage(pillImage);
+        }
         return medicationRepository.save(medication);
     }
 
