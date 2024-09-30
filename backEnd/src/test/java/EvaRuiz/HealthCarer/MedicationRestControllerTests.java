@@ -4,8 +4,10 @@ import EvaRuiz.HealthCarer.medication.MedicationRestController;
 import EvaRuiz.HealthCarer.medication.MedicationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import jdk.jfr.Name;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,7 +18,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
@@ -58,16 +59,7 @@ class MedicationRestControllerTests {
 	}
 
 	@Test
-	public void PostMappingOfMedication() throws Exception{
-		when(medicationService.createMedication(any(Medication.class))).thenReturn(medication);
-		mockMvc.perform(post("/api/medications/no-image")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(ow.writeValueAsString(medication)))
-				.andExpect(status().isCreated());
-		verify(medicationService, times(1)).createMedication(any(Medication.class));
-	}
-
-	@Test
+	@DisplayName("GET /api/medications/")
 	public void GetMappingOfAllMedications() throws Exception {
 		when(medicationService.findAll()).thenReturn(medicationList);
 		mockMvc.perform(get("/api/medications/")
@@ -79,6 +71,7 @@ class MedicationRestControllerTests {
 	}
 
 	@Test
+	@DisplayName("GET /api/medications/1")
 	public void GetMappingOfOneMedication() throws Exception {
 		when(medicationService.getMedication(1L)).thenReturn(medication);
 		mockMvc.perform(get("/api/medications/1")
@@ -89,6 +82,32 @@ class MedicationRestControllerTests {
 	}
 
 	@Test
+	@DisplayName("POST /api/medications/no-image")
+	public void PostMappingOfMedication() throws Exception{
+		when(medicationService.createMedication(any(Medication.class))).thenReturn(medication);
+		mockMvc.perform(post("/api/medications/no-image")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(ow.writeValueAsString(medication)))
+				.andExpect(status().isCreated());
+		verify(medicationService, times(1)).createMedication(any(Medication.class));
+	}
+
+	//TODO: PostMapping of medication with images
+
+
+	@Test
+	@DisplayName("PUT /api/medications/")
+	public void PutMappingOfMedication() throws Exception {
+		when(medicationService.updateMedication(any(Medication.class))).thenReturn(medication);
+		mockMvc.perform(put("/api/medications/")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(ow.writeValueAsString(medication)))
+				.andExpect(status().isCreated());
+		verify(medicationService, times(1)).updateMedication(any(Medication.class));
+	}
+
+	@Test
+	@DisplayName("DELETE /api/medications/1")
 	public void DeleteMappingOfMedication() throws Exception {
 		when(medicationService.getMedication(1L)).thenReturn(medication);
 		mockMvc.perform(delete("/api/medications/1")
@@ -97,5 +116,7 @@ class MedicationRestControllerTests {
 				.andExpect(status().isOk());
 		verify(medicationService, times(1)).deleteMedication(medication);
 	}
+
+
 
 }
