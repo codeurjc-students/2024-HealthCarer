@@ -31,7 +31,7 @@ public class MedicationRestController {
 
     @PostMapping("/")
     @JsonView(Medication.BasicAtt.class)
-    public ResponseEntity<Medication> createMedication(MedicationDTO medicationDTO) throws Exception {
+    public ResponseEntity<Medication> createMedication(MedicationDTO medicationDTO) {
         Medication newMedication = medicationService.createMedication(medicationDTO);
         return new ResponseEntity<>(newMedication, HttpStatus.CREATED);
     }
@@ -45,7 +45,7 @@ public class MedicationRestController {
 
     @PutMapping("/")
     @JsonView(Medication.BasicAtt.class)
-    public ResponseEntity<Medication> updateMedication(@RequestBody Medication medication) throws Exception {
+    public ResponseEntity<Medication> updateMedication(@RequestBody Medication medication) {
         Medication updatedMedication = medicationService.updateMedication(medication);
         return new ResponseEntity<>(updatedMedication, HttpStatus.CREATED);
 
