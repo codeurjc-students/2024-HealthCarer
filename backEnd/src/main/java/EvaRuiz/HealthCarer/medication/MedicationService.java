@@ -53,26 +53,29 @@ public class MedicationService {
     }
 
     public Medication createMedication(Medication medication) {
+        //TODO check preconditions
         return medicationRepository.save(medication);
     }
 
     public void deleteMedication(Medication medication) {
         medicationRepository.delete(medication);
-        //TODO: delete images
+        if (medication.getBoxImage() != null) {
+            imageService.deleteImage(medication.getBoxImage());
+        }
+        if (medication.getPillImage() != null) {
+            imageService.deleteImage(medication.getPillImage());
+        }
     }
 
     public Medication updateMedication(Medication medication) {
-        Medication oldMedication = checkMedicationExistAndGet(medication.getId());
-
+        Medication existingMedication = checkMedicationExistAndGet(medication.getId());
         //TODO check preconditions
-
-        oldMedication.setName(medication.getName());
-        oldMedication.setBoxImage(medication.getBoxImage());
-        oldMedication.setPillImage(medication.getPillImage());
-        oldMedication.setInstructions(medication.getInstructions());
-        oldMedication.setDose(medication.getDose());
-        oldMedication.setStock(medication.getStock());
-
-        return medicationRepository.save(medication);
+        existingMedication.setName(medication.getName());
+        existingMedication.setBoxImage(medication.getBoxImage());
+        existingMedication.setPillImage(medication.getPillImage());
+        existingMedication.setInstructions(medication.getInstructions());
+        existingMedication.setDose(medication.getDose());
+        existingMedication.setStock(medication.getStock());
+        return medicationRepository.save(existingMedication);
     }
 }

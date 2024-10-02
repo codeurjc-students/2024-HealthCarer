@@ -19,8 +19,8 @@ public class MedicationRestController {
 
     @GetMapping("/")
     @JsonView(MedicationView.class)
-    public List<Medication> getMedications() {
-        return medicationService.findAll();
+    public ResponseEntity<List<Medication>> getMedications() {
+        return new ResponseEntity<>(medicationService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

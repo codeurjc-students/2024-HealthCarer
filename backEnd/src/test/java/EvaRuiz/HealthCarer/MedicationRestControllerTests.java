@@ -105,6 +105,7 @@ class MedicationRestControllerTests {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(ow.writeValueAsString(medication)))
 				.andExpect(status().isCreated());
+		verify(medicationService, times(1)).createMedication(any(MedicationDTO.class));
 
 	}
 
