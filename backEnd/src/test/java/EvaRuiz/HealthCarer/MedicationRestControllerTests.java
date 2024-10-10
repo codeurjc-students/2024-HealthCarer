@@ -131,7 +131,4 @@ class MedicationRestControllerTests {
 				.andExpect(status().isOk());
 		verify(medicationService, times(1)).deleteMedication(medication);
 	}
-
-
-
 }
