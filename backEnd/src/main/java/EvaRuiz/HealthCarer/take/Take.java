@@ -1,5 +1,7 @@
 package EvaRuiz.HealthCarer.take;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,9 @@ public class Take {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(BasicAtt.class)
     private Long id;
+    @JsonView(Take.BasicAtt.class)
     private Calendar timestamp;
 
     public Take() {

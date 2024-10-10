@@ -1,5 +1,7 @@
 package EvaRuiz.HealthCarer.medication;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,15 +10,22 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Medication {
+public class Medication{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(BasicAtt.class)
     private Long id;
+    @JsonView(BasicAtt.class)
     private String name;
+    @JsonView(Medication.BasicAtt.class)
     private String boxImage;
+    @JsonView(Medication.BasicAtt.class)
     private String pillImage;
+    @JsonView(Medication.BasicAtt.class)
     private float stock;
+    @JsonView(Medication.BasicAtt.class)
     private String instructions;
+    @JsonView(Medication.BasicAtt.class)
     private float dose;
 
     @Override
@@ -105,7 +114,10 @@ public class Medication {
         this.stock = stock;
         this.instructions = instructions;
         this.dose = dose;
+        this.boxImage = "";
+        this.pillImage = "";
     }
 
-    public interface BasicAtt {}
+    public interface BasicAtt {
+    }
 }

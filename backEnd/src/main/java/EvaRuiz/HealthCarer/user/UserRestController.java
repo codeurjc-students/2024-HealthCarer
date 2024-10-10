@@ -1,6 +1,5 @@
 package EvaRuiz.HealthCarer.user;
 
-import java.security.Principal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,9 @@ public class UserRestController {
 	
 	@Autowired
 	private UserRepository userRepository;
+
+	public interface UserView extends User.BasicAtt {
+	}
 
 	@GetMapping("/me")
 	public ResponseEntity<User> me(User user) {

@@ -1,22 +1,29 @@
 package EvaRuiz.HealthCarer.plan;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 public class Plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(BasicAtt.class)
     private Long id;
+    @JsonView(BasicAtt.class)
     private String name;
+    @JsonView(Plan.BasicAtt.class)
     private Calendar startDate;
+    @JsonView(Plan.BasicAtt.class)
     private Calendar endDate;
+    @JsonView(Plan.BasicAtt.class)
     private int distance;
+    @JsonView(Plan.BasicAtt.class)
     private Enum<PlanType> state;
 
     public Plan() {

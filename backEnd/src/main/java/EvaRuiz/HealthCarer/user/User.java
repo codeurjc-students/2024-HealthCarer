@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(BasicAtt.class)
     private Long id;
+    @JsonView(BasicAtt.class)
     private String name;
+    @JsonView(User.BasicAtt.class)
     private String email;
     @JsonIgnore
     private String encodedPassword;
@@ -58,4 +62,5 @@ public class User {
     public void setEncodedPassword(String encodedPassword) {
         this.encodedPassword = encodedPassword;
     }
+    public interface BasicAtt {}
 }
