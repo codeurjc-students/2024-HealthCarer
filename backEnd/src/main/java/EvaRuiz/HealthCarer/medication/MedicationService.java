@@ -3,10 +3,10 @@ package EvaRuiz.HealthCarer.medication;
 import EvaRuiz.HealthCarer.images.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +17,15 @@ public class MedicationService {
     private MedicationRepository medicationRepository;
     @Autowired
     private ImageService imageService;
-    @Autowired
-    private ModelMapper modelMapper;
+
+    private Medication checkMedicationExistAndGet(Long id) {
+        Optional<Medication> medication = medicationRepository.findById(id);
+        if (medication.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medication not found");
+        } else {
+            return medication.get();
+        }
+    }
 
     public List<Medication> findAll() {
         return medicationRepository.findAll();
@@ -28,46 +35,22 @@ public class MedicationService {
         return checkMedicationExistAndGet(id);
     }
 
-    private Medication checkMedicationExistAndGet(long id) {
-        Optional<Medication> medication = medicationRepository.findById(id);
-        if (medication.isPresent()) {
-            return medication.get();
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medication not found");
-        }
-    }
-
-    public Medication createMedication(MedicationDTO medicationDTO){
-
-        Medication medication = modelMapper.map(medicationDTO, Medication.class);
-
-        if (medicationDTO.getBoxImage() != null) {
-            String boxImage = imageService.createImage(medicationDTO.getBoxImage());
-            medication.setBoxImage(boxImage);
-        }
-        if (medicationDTO.getPillImage() != null) {
-            String pillImage = imageService.createImage(medicationDTO.getPillImage());
-            medication.setPillImage(pillImage);
-        }
-        return medicationRepository.save(medication);
-    }
-
     public Medication createMedication(Medication medication) {
         //TODO check preconditions
         return medicationRepository.save(medication);
     }
 
     public void deleteMedication(Medication medication) {
-        medicationRepository.delete(medication);
         if (medication.getBoxImage() != null) {
             imageService.deleteImage(medication.getBoxImage());
         }
         if (medication.getPillImage() != null) {
             imageService.deleteImage(medication.getPillImage());
         }
+        medicationRepository.delete(medication);
     }
 
-    public Medication updateMedication(Medication medication) {
+    public Medication replaceMedication(Medication medication) {
         Medication existingMedication = checkMedicationExistAndGet(medication.getId());
         //TODO check preconditions
         existingMedication.setName(medication.getName());

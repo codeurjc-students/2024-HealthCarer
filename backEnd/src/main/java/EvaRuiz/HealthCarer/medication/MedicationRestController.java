@@ -1,11 +1,19 @@
 package EvaRuiz.HealthCarer.medication;
 
+import EvaRuiz.HealthCarer.images.LocalImageService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.net.URI;
+import java.util.Collection;
+
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 
 @RestController
@@ -13,49 +21,72 @@ import java.util.List;
 public class MedicationRestController {
     @Autowired
     private MedicationService medicationService;
+    @Autowired
+    private LocalImageService imageService;
+    @Autowired
+    private MedicationMapper medicationMapper;
+
+    @PostConstruct
+    public void init() {
+        medicationService.createMedication(new Medication("Ibuprpofeno", 20, "Tomar con agua", 1));
+        medicationService.createMedication(new Medication("Paracetamol", 40, "Tomar con zumo", 3));
+    }
 
     public interface MedicationView extends Medication.BasicAtt {
     }
 
     @GetMapping("/")
     @JsonView(MedicationView.class)
-    public List<Medication> getMedications() {
-        return medicationService.findAll();
+    public Collection<MedicationDTO> getMedications() {
+        return medicationMapper.toDTOs(medicationService.findAll());
     }
 
     @GetMapping("/{id}")
     @JsonView(MedicationView.class)
-    public ResponseEntity<Medication> getOneMedication(@PathVariable long id) {
-        return new ResponseEntity<>(medicationService.getMedication(id), HttpStatus.OK);
+    public ResponseEntity<MedicationDTO> getOneMedication(@PathVariable long id) {
+        Medication medication = medicationService.getMedication(id);
+        if (medication != null) {
+            return ResponseEntity.ok(medicationMapper.toDTO(medication));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/")
     @JsonView(Medication.BasicAtt.class)
-    public ResponseEntity<Medication> createMedication(MedicationDTO medicationDTO) {
-        Medication newMedication = medicationService.createMedication(medicationDTO);
-        return new ResponseEntity<>(newMedication, HttpStatus.CREATED);
+    public ResponseEntity<MedicationDTO> createMedication(@RequestBody MedicationDTO medicationDTO) {
+        Medication medication = medicationMapper.toDomain(medicationDTO);
+        medicationService.createMedication(medication);
+        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(medication.getId()).toUri();
+        return ResponseEntity.created(location).body(medicationMapper.toDTO(medication));
     }
 
-    @PostMapping("/no-image")
-    @JsonView(Medication.BasicAtt.class)
-    public ResponseEntity<Medication> createMedicationNoImage(@RequestBody Medication medication) {
-        Medication newMedication = medicationService.createMedication(medication);
-        return new ResponseEntity<>(newMedication, HttpStatus.CREATED);
+    @PostMapping("/{id}/images")
+    public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile boxImage, @RequestParam MultipartFile pillImage) throws IOException {
+        Medication medication = medicationService.getMedication(id);
+        URI location = fromCurrentRequest().build().toUri();
+        medication.setBoxImage(imageService.createImage(boxImage));
+        medication.setPillImage(imageService.createImage(pillImage));
+        medicationService.replaceMedication(medication);
+        return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     @JsonView(Medication.BasicAtt.class)
-    public ResponseEntity<Medication> updateMedication(@RequestBody Medication medication) {
-        Medication updatedMedication = medicationService.updateMedication(medication);
-        return new ResponseEntity<>(updatedMedication, HttpStatus.CREATED);
+    public ResponseEntity<MedicationDTO> replaceMedication(@PathVariable long id, @RequestBody MedicationDTO newMedicationDTO) {
+        Medication medication = medicationService.getMedication(id);
+        Medication newMedication = medicationMapper.toDomain(newMedicationDTO);
+        newMedication.setId(medication.getId());
+        medicationService.replaceMedication(newMedication);
+        return ResponseEntity.ok(medicationMapper.toDTO(newMedication));
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Medication> deleteMedication(@PathVariable long id) {
+    public ResponseEntity<MedicationDTO> deleteMedication(@PathVariable long id) {
         Medication medication = medicationService.getMedication(id);
         medicationService.deleteMedication(medication);
-        return new ResponseEntity<>(medication, HttpStatus.OK);
+        return ResponseEntity.ok(medicationMapper.toDTO(medication));
     }
 
 

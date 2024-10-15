@@ -1,12 +1,14 @@
 package EvaRuiz.HealthCarer.plan;
 
+import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.medication.MedicationRestController;
+import EvaRuiz.HealthCarer.user.User;
+import EvaRuiz.HealthCarer.user.UserRestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Plan {
@@ -17,14 +19,25 @@ public class Plan {
     private Long id;
     @JsonView(BasicAtt.class)
     private String name;
-    @JsonView(Plan.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private Calendar startDate;
-    @JsonView(Plan.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private Calendar endDate;
-    @JsonView(Plan.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private int distance;
-    @JsonView(Plan.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private Enum<PlanType> state;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonView(UserRestController.UserView.class)
+    private User user;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "plan_medication",
+            joinColumns = @JoinColumn(name = "plan_id"),
+            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+    @JsonView(MedicationRestController.MedicationView.class)
+    private List<Medication> medications;
 
     public Plan() {
     }

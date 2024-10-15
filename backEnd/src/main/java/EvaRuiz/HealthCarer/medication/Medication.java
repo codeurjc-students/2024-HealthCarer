@@ -1,45 +1,67 @@
 package EvaRuiz.HealthCarer.medication;
 
+import EvaRuiz.HealthCarer.plan.Plan;
+import EvaRuiz.HealthCarer.plan.PlanRestController;
+import EvaRuiz.HealthCarer.user.User;
+import EvaRuiz.HealthCarer.user.UserRestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 public class Medication{
+
+    public Medication(Long id, String name, String s, String s1, float stock, String instructions, float dose, List<User> users, List<Plan> plans) {
+        this.id = id;
+        this.name = name;
+        this.boxImage = s;
+        this.pillImage = s1;
+        this.stock = stock;
+        this.instructions = instructions;
+        this.dose = dose;
+        this.users = users;
+        this.plans = plans;
+    }
+
+    public Medication() {
+
+    }
+
+    public interface BasicAtt {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(BasicAtt.class)
     private Long id;
     @JsonView(BasicAtt.class)
     private String name;
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private String boxImage;
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private String pillImage;
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private float stock;
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private String instructions;
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(BasicAtt.class)
     private float dose;
 
-    @Override
-    public String toString() {
-        return "Medication{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", boxImage='" + boxImage + '\'' +
-                ", pillImage='" + pillImage + '\'' +
-                ", stock=" + stock +
-                ", instructions='" + instructions + '\'' +
-                ", dose=" + dose +
-                '}';
-    }
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_medication",
+            joinColumns = @JoinColumn(name = "medication_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonView(UserRestController.UserView.class)
+    private List<User> users;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "medication_plan",
+            joinColumns = @JoinColumn(name = "medication_id"),
+            inverseJoinColumns = @JoinColumn(name = "plan_id"))
+    @JsonView(PlanRestController.PlanView.class)
+    private List<Plan> plans;
 
     public Medication(String name, Long id, String boxImage, String pillImage, float stock, String instructions, float dose) {
         this.name = name;
@@ -107,7 +129,21 @@ public class Medication{
         this.dose = dose;
     }
 
-    public Medication() {}
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
+    }
 
     public Medication(String name, float stock, String instructions, float dose) {
         this.name = name;
@@ -116,8 +152,10 @@ public class Medication{
         this.dose = dose;
         this.boxImage = "";
         this.pillImage = "";
+        this.users = null;
+        this.plans = null;
     }
 
-    public interface BasicAtt {
-    }
+
+
 }

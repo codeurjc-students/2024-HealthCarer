@@ -16,7 +16,7 @@ import java.util.UUID;
 @Service("storageService")
 public class LocalImageService implements ImageService {
 
-    @Value("folder:/medications")
+    @Value("folder:/files")
     private String STATIC_FOLDER;
 
     private String staticFolder() {
@@ -32,7 +32,7 @@ public class LocalImageService implements ImageService {
             multiPartFile.transferTo(file);
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't save image locally", ex);
-        } 
+        }
         final String baseUrl =  ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         return baseUrl + "/" + path;
     }
