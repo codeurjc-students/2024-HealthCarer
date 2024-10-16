@@ -1,12 +1,11 @@
 package EvaRuiz.HealthCarer.user;
 
+import EvaRuiz.HealthCarer.medication.Medication;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -21,6 +20,21 @@ public class User {
     private String email;
     @JsonIgnore
     private String encodedPassword;
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_medication",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+    private List<Medication> medications;
+
 
     public User() {
     }

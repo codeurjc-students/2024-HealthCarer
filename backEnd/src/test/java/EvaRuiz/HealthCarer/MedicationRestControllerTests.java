@@ -5,6 +5,7 @@ import EvaRuiz.HealthCarer.medication.Medication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import io.restassured.RestAssured;
+import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.ResponseEntity;
 
 
 import java.io.File;
@@ -53,12 +55,28 @@ public class MedicationRestControllerTests {
 	@DisplayName("GET /api/medications/")
 	public void GetMappingOfAllMedications() throws Exception {
 
+		given()
+				.when()
+				.get("/api/medications/")
+				.then()
+				.statusCode(200);
 	}
 
 	@Test
-	@DisplayName("GET /api/medications/1")
+	@DisplayName("GET /api/medications/{id}")
 	public void GetMappingOfOneMedication() throws Exception {
 
+		given().pathParam("id", 1)
+				.when()
+				.get("/api/medications/{id}")
+				.then()
+				.statusCode(200);
+
+		given().pathParam("id", 5)
+				.when()
+				.get("/api/medications/{id}")
+				.then()
+				.statusCode(404);
 
 	}
 
@@ -93,14 +111,35 @@ public class MedicationRestControllerTests {
 
 
 	@Test
-	@DisplayName("PUT /api/medications/")
+	@DisplayName("PUT /api/medications/{id}")
 	public void PutMappingOfMedication() throws Exception {
 
+		given().pathParam("id", 2)
+				.contentType("application/json")
+				.body(ow.writeValueAsString(medication))
+				.when()
+				.put("/api/medications/{id}")
+				.then()
+				.statusCode(200);
 	}
 
 	@Test
-	@DisplayName("DELETE /api/medications/1")
+	@DisplayName("DELETE /api/medications/{id}")
 	public void DeleteMappingOfMedication() throws Exception {
+
+		given().pathParam("id", 5)
+				.when()
+				.delete("/api/medications/{id}")
+				.then()
+				.statusCode(404);
+		
+		given().pathParam("id", 1)
+				.when()
+				.delete("/api/medications/{id}")
+				.then()
+				.statusCode(200);
+
+
 
 	}
 }

@@ -32,6 +32,23 @@ public class Plan {
     @JoinColumn(name = "user_id")
     @JsonView(UserRestController.UserView.class)
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
+
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "plan_medication",
             joinColumns = @JoinColumn(name = "plan_id"),

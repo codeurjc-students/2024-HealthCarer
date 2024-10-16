@@ -1,6 +1,8 @@
 package EvaRuiz.HealthCarer.medication;
 
 import EvaRuiz.HealthCarer.images.ImageService;
+import EvaRuiz.HealthCarer.plan.Plan;
+import EvaRuiz.HealthCarer.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,20 @@ public class MedicationService {
         if (medication.getPillImage() != null) {
             imageService.deleteImage(medication.getPillImage());
         }
+        List<User> users = medication.getUsers();
+        if (users != null) {
+            for (User user : users) {
+                user.getMedications().remove(medication);
+            }
+        }
+        List<Plan> plans = medication.getPlans();
+        if (plans != null) {
+            for (Plan plan : plans) {
+                plan.getMedications().remove(medication);
+            }
+        }
+        medication.setUsers(null);
+        medication.setPlans(null);
         medicationRepository.delete(medication);
     }
 

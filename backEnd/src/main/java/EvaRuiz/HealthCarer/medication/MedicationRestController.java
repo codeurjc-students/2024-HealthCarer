@@ -77,7 +77,7 @@ public class MedicationRestController {
         Medication medication = medicationService.getMedication(id);
         Medication newMedication = medicationMapper.toDomain(newMedicationDTO);
         newMedication.setId(medication.getId());
-        medicationService.replaceMedication(newMedication);
+        newMedication = medicationService.replaceMedication(newMedication);
         return ResponseEntity.ok(medicationMapper.toDTO(newMedication));
 
     }
