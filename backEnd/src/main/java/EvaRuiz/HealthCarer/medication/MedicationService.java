@@ -1,6 +1,6 @@
 package EvaRuiz.HealthCarer.medication;
 
-import EvaRuiz.HealthCarer.images.ImageService;
+import EvaRuiz.HealthCarer.images.LocalImageService;
 import EvaRuiz.HealthCarer.plan.Plan;
 import EvaRuiz.HealthCarer.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Collection;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ public class MedicationService {
     @Autowired
     private MedicationRepository medicationRepository;
     @Autowired
-    private ImageService imageService;
+    private LocalImageService imageService;
 
     private Medication checkMedicationExistAndGet(Long id) {
         Optional<Medication> medication = medicationRepository.findById(id);
@@ -42,12 +42,12 @@ public class MedicationService {
         return medicationRepository.save(medication);
     }
 
-    public void deleteMedication(Medication medication) {
+    public void deleteMedication(Medication medication) throws IOException {
         if (medication.getBoxImage() != null) {
-            imageService.deleteImage(medication.getBoxImage());
+            imageService.deleteImage(medication.getBoxImage(), medication.getId());
         }
         if (medication.getPillImage() != null) {
-            imageService.deleteImage(medication.getPillImage());
+            imageService.deleteImage(medication.getPillImage(), medication.getId());
         }
         List<User> users = medication.getUsers();
         if (users != null) {

@@ -18,6 +18,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 @RestController
 @RequestMapping("/api/medications")
 public class MedicationRestController {
+    private static final String MEDICATIONS_FOLDER = "medications";
     @Autowired
     private MedicationService medicationService;
     @Autowired
@@ -61,9 +62,10 @@ public class MedicationRestController {
     public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile boxImage, @RequestParam MultipartFile pillImage) throws IOException {
         Medication medication = medicationService.getMedication(id);
         URI location = fromCurrentRequest().build().toUri();
-        medication.setBoxImage(imageService.createImage(boxImage));
-        medication.setPillImage(imageService.createImage(pillImage));
-        medicationService.replaceMedication(medication);
+        medication.setBoxImage(location.toString());
+        medication.setPillImage(location.toString());
+        imageService.saveImage(MEDICATIONS_FOLDER, medication.getId(), boxImage);
+        imageService.saveImage(MEDICATIONS_FOLDER, medication.getId(), pillImage);
         return ResponseEntity.created(location).build();
     }
 
@@ -78,7 +80,7 @@ public class MedicationRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<MedicationDTO> deleteMedication(@PathVariable long id) {
+    public ResponseEntity<MedicationDTO> deleteMedication(@PathVariable long id) throws IOException {
         Medication medication = medicationService.getMedication(id);
         medicationService.deleteMedication(medication);
         return ResponseEntity.ok(medicationMapper.toDTO(medication));
