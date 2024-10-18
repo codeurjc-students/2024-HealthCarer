@@ -5,7 +5,7 @@ import EvaRuiz.HealthCarer.user.User;
 
 import java.util.List;
 
-record MedicationDTO(Long id,
+public record MedicationDTO(Long id,
                      String name,
                      String boxImage,
                      String pillImage,
@@ -14,9 +14,4 @@ record MedicationDTO(Long id,
                      float dose,
                      List<User> users,
                      List<Plan> plans) {
-
-
-
-
-
 }

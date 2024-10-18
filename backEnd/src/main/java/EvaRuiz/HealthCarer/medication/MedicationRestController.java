@@ -1,7 +1,6 @@
 package EvaRuiz.HealthCarer.medication;
 
 import EvaRuiz.HealthCarer.images.LocalImageService;
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class MedicationRestController {
 
     @PostConstruct
     public void init() {
-        medicationService.createMedication(new Medication("Ibuprpofeno", 20, "Tomar con agua", 1));
+        medicationService.createMedication(new Medication("Ibuprofeno", 20, "Tomar con agua", 1));
         medicationService.createMedication(new Medication("Paracetamol", 40, "Tomar con zumo", 3));
     }
 
@@ -36,13 +35,11 @@ public class MedicationRestController {
     }
 
     @GetMapping("/")
-    @JsonView(MedicationView.class)
     public Collection<MedicationDTO> getMedications() {
         return medicationMapper.toDTOs(medicationService.findAll());
     }
 
     @GetMapping("/{id}")
-    @JsonView(MedicationView.class)
     public ResponseEntity<MedicationDTO> getOneMedication(@PathVariable long id) {
         Medication medication = medicationService.getMedication(id);
         if (medication != null) {
@@ -53,7 +50,6 @@ public class MedicationRestController {
     }
 
     @PostMapping("/")
-    @JsonView(Medication.BasicAtt.class)
     public ResponseEntity<MedicationDTO> createMedication(@RequestBody MedicationDTO medicationDTO) {
         Medication medication = medicationMapper.toDomain(medicationDTO);
         medicationService.createMedication(medication);
@@ -72,7 +68,6 @@ public class MedicationRestController {
     }
 
     @PutMapping("/{id}")
-    @JsonView(Medication.BasicAtt.class)
     public ResponseEntity<MedicationDTO> replaceMedication(@PathVariable long id, @RequestBody MedicationDTO newMedicationDTO) {
         Medication medication = medicationService.getMedication(id);
         Medication newMedication = medicationMapper.toDomain(newMedicationDTO);

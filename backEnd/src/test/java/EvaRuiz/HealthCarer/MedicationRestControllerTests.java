@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.ResponseEntity;
+
 
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class MedicationRestControllerTests {
 	public void setup(){
 		RestAssured.port = port;
 		ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		medication = new Medication("Ibuprpofeno", 20, "Tomar con agua", 1);
+		medication = new Medication("Xumadull", 90, "Tomar solo", 3);
 		boxImage = new File("files/Ibuprofeno.jpg");
 		pillImage = new File("files/Ibuprofeno2.jpg");
     }
@@ -59,7 +60,8 @@ public class MedicationRestControllerTests {
 				.when()
 				.get("/api/medications/")
 				.then()
-				.statusCode(200);
+				.statusCode(200)
+				.body("size()", Matchers.equalTo(2));
 	}
 
 	@Test
@@ -70,7 +72,8 @@ public class MedicationRestControllerTests {
 				.when()
 				.get("/api/medications/{id}")
 				.then()
-				.statusCode(200);
+				.statusCode(200)
+				.body("name", Matchers.equalTo("Ibuprofeno"));
 
 		given().pathParam("id", 5)
 				.when()
@@ -89,7 +92,9 @@ public class MedicationRestControllerTests {
 				.when()
 				.post("/api/medications/")
 				.then()
-				.statusCode(201);
+				.statusCode(201)
+				.body("name", Matchers.equalTo("Xumadull"))
+				.body("dose", Matchers.equalTo(3F));
 	}
 
 

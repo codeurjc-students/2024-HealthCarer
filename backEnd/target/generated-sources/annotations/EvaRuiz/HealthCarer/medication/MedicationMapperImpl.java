@@ -3,13 +3,14 @@ package EvaRuiz.HealthCarer.medication;
 import EvaRuiz.HealthCarer.plan.Plan;
 import EvaRuiz.HealthCarer.user.User;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-15T12:27:54+0200",
+    date = "2024-10-18T11:17:05+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 22.0.2 (Oracle Corporation)"
 )
 @Component
@@ -53,7 +54,7 @@ public class MedicationMapperImpl implements MedicationMapper {
     }
 
     @Override
-    public List<MedicationDTO> toDTOs(List<Medication> medications) {
+    public List<MedicationDTO> toDTOs(Collection<Medication> medications) {
         if ( medications == null ) {
             return null;
         }
