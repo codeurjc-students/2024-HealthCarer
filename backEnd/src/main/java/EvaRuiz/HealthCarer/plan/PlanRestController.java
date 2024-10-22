@@ -1,11 +1,20 @@
 package EvaRuiz.HealthCarer.plan;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.medication.MedicationService;
+import EvaRuiz.HealthCarer.user.User;
+import EvaRuiz.HealthCarer.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+import java.net.URI;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
 @RequestMapping("/api/plans")
@@ -13,40 +22,66 @@ public class PlanRestController {
 
     @Autowired
     private PlanService planService;
+    @Autowired
+    private PlanMapper planMapper;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private MedicationService medicationService;
+
+    @PostConstruct
+    public void init() {
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        endDate.add(Calendar.DAY_OF_MONTH, 7);
+        Medication medication = medicationService.getMedication(1L);
+        User user = null;
+        Plan plan = new Plan("Plan 1", startDate, endDate, 1000, user, List.of(medication));
+
+        planService.createPlan(plan);
+    }
 
     public interface PlanView extends Plan.BasicAtt {
     }
 
     @GetMapping("/")
-    @JsonView(PlanView.class)
-    public ResponseEntity<List<Plan>> getPlans() {
-        return ResponseEntity.ok(planService.findAll());
+    public Collection<PlanDTO> getPlans() {
+        return planMapper.toDTOs(planService.findAll());
     }
 
     @GetMapping("/{id}")
-    @JsonView(PlanView.class)
-    public ResponseEntity<Plan> getOnePlan(@PathVariable long id) {
-        return ResponseEntity.ok(planService.getPlan(id));
+    public ResponseEntity<PlanDTO> getOnePlan(@PathVariable long id) {
+
+        Plan plan = planService.getPlan(id);
+        if (plan != null) {
+            return ResponseEntity.ok(planMapper.toDTO(plan));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @PostMapping("/")
-    @JsonView(Plan.BasicAtt.class)
-    public ResponseEntity<Plan> createPlan(@RequestBody Plan plan) {
-        Plan newPlan = planService.createPlan(plan);
-        return ResponseEntity.ok(newPlan);
+    public ResponseEntity<PlanDTO> createPlan(@RequestBody PlanDTO planDTO) {
+        Plan plan = planMapper.toDomain(planDTO);
+        planService.createPlan(plan);
+        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(plan.getId()).toUri();
+        return ResponseEntity.created(location).body(planMapper.toDTO(plan));
     }
 
-    @PutMapping("/")
-    @JsonView(Plan.BasicAtt.class)
-    public ResponseEntity<Plan> updatePlan(@RequestBody Plan plan) {
-        Plan updatedPlan = planService.updatePlan(plan);
-        return ResponseEntity.ok(updatedPlan);
+    @PutMapping("/{id}")
+    public ResponseEntity<PlanDTO> updatePlan(@PathVariable long id, @RequestBody PlanDTO newPlanDTO) {
+        Plan plan = planService.getPlan(id);
+        Plan newPlan = planMapper.toDomain(newPlanDTO);
+        newPlan.setId(plan.getId());
+        newPlan = planService.replacePlan(newPlan);
+        return ResponseEntity.ok(planMapper.toDTO(newPlan));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Plan> deletePlan(@PathVariable long id) {
+    public ResponseEntity<PlanDTO> deletePlan(@PathVariable long id) {
         Plan plan = planService.getPlan(id);
         planService.deletePlan(plan);
-        return ResponseEntity.ok(plan);
+        return ResponseEntity.ok(planMapper.toDTO(plan));
     }
 }

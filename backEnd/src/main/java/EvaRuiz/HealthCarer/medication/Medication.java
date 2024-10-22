@@ -13,24 +13,7 @@ import java.util.List;
 @Entity
 public class Medication{
 
-    public Medication(Long id, String name, String s, String s1, float stock, String instructions, float dose, List<User> users, List<Plan> plans) {
-        this.id = id;
-        this.name = name;
-        this.boxImage = s;
-        this.pillImage = s1;
-        this.stock = stock;
-        this.instructions = instructions;
-        this.dose = dose;
-        this.users = users;
-        this.plans = plans;
-    }
 
-    public Medication() {
-
-    }
-
-    public interface BasicAtt {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -63,15 +46,9 @@ public class Medication{
     @JsonView(PlanRestController.PlanView.class)
     private List<Plan> plans;
 
-    public Medication(String name, Long id, String boxImage, String pillImage, float stock, String instructions, float dose) {
-        this.name = name;
-        this.id = id;
-        this.boxImage = boxImage;
-        this.pillImage = pillImage;
-        this.stock = stock;
-        this.instructions = instructions;
-        this.dose = dose;
-    }
+    public Medication() {}
+
+    public interface BasicAtt { }
 
     public Long getId() {
         return id;
@@ -155,7 +132,5 @@ public class Medication{
         this.users = null;
         this.plans = null;
     }
-
-
 
 }

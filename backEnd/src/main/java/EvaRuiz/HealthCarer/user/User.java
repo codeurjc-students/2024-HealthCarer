@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer.user;
 
 import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.plan.Plan;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -20,6 +21,19 @@ public class User {
     private String email;
     @JsonIgnore
     private String encodedPassword;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_medication",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+    @JsonView(Medication.BasicAtt.class)
+    private List<Medication> medications;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_plan",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "plan_id"))
+    @JsonView(Plan.BasicAtt.class)
+    private List<Plan> plans;
 
     public List<Medication> getMedications() {
         return medications;
@@ -29,12 +43,13 @@ public class User {
         this.medications = medications;
     }
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_medication",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "medication_id"))
-    private List<Medication> medications;
+    public List<Plan> getPlans() {
+        return plans;
+    }
 
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
+    }
 
     public User() {
     }

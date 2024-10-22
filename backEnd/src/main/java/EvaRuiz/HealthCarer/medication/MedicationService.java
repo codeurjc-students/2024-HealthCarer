@@ -61,8 +61,6 @@ public class MedicationService {
                 plan.getMedications().remove(medication);
             }
         }
-        medication.setUsers(null);
-        medication.setPlans(null);
         medicationRepository.delete(medication);
     }
 

@@ -1,6 +1,8 @@
 package EvaRuiz.HealthCarer.plan;
 
 
+import EvaRuiz.HealthCarer.medication.Medication;
+import EvaRuiz.HealthCarer.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,14 +17,6 @@ public class PlanService {
     @Autowired
     private PlanRepository planRepository;
 
-    public List<Plan> findAll() {
-        return planRepository.findAll();
-    }
-
-    public Plan getPlan(Long id) {
-        return checkPlanExistAndGet(id);
-    }
-
     private Plan checkPlanExistAndGet(Long id) {
         Optional<Plan> plan = planRepository.findById(id);
         if (plan.isPresent()) {
@@ -32,16 +26,34 @@ public class PlanService {
         }
     }
 
+    public List<Plan> findAll() {
+        return planRepository.findAll();
+    }
+
+    public Plan getPlan(Long id) {
+        return checkPlanExistAndGet(id);
+    }
+
+
+
     public Plan createPlan(Plan plan) {
         //TODO check preconditions
         return planRepository.save(plan);
     }
 
     public void deletePlan(Plan plan) {
+        if (plan.getUser() != null) {
+            plan.getUser().getPlans().remove(plan);
+        }
+        if (plan.getMedications() != null) {
+            for (Medication medication : plan.getMedications()) {
+                medication.getPlans().remove(plan);
+            }
+        }
         planRepository.delete(plan);
     }
 
-    public Plan updatePlan(Plan plan) {
+    public Plan replacePlan(Plan plan) {
         Plan existingPlan = checkPlanExistAndGet(plan.getId());
         //TODO check preconditions
         existingPlan.setName(plan.getName());

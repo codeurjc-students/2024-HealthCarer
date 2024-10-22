@@ -30,8 +30,24 @@ public class Plan {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonView(UserRestController.UserView.class)
+    @JsonView(User.BasicAtt.class)
     private User user;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "plan_medication",
+            joinColumns = @JoinColumn(name = "plan_id"),
+            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+    @JsonView(Medication.BasicAtt.class)
+    private List<Medication> medications;
+
+    public Plan(String name, Calendar startDate, Calendar endDate, int distance, User user, List<Medication> medications) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.distance = distance;
+        this.user = user;
+        this.medications = medications;
+    }
 
     public User getUser() {
         return user;
@@ -48,13 +64,6 @@ public class Plan {
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
     }
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "plan_medication",
-            joinColumns = @JoinColumn(name = "plan_id"),
-            inverseJoinColumns = @JoinColumn(name = "medication_id"))
-    @JsonView(MedicationRestController.MedicationView.class)
-    private List<Medication> medications;
 
     public Plan() {
     }
