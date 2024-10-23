@@ -5,13 +5,12 @@ import EvaRuiz.HealthCarer.medication.Medication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import io.restassured.RestAssured;
-import io.restassured.response.ValidatableResponse;
+import static io.restassured.RestAssured.given;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
@@ -20,7 +19,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import java.io.File;
 
 
-import static io.restassured.RestAssured.given;
+
 
 
 
@@ -50,6 +49,7 @@ public class MedicationRestControllerTests {
 		medication = null;
 		boxImage = null;
 		pillImage = null;
+		ow = null;
 	}
 
 	@Test
@@ -73,11 +73,11 @@ public class MedicationRestControllerTests {
 				.get("/api/medications/{id}")
 				.then()
 				.statusCode(200)
-				.body("name", Matchers.equalTo("Ibuprofeno"));
+				.body("name", Matchers.equalTo("Plan1"));
 
 		given().pathParam("id", 5)
 				.when()
-				.get("/api/medications/{id}")
+				.get("/api/plans/{id}")
 				.then()
 				.statusCode(404);
 

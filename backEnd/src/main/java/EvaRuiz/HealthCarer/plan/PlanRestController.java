@@ -36,9 +36,9 @@ public class PlanRestController {
         endDate.add(Calendar.DAY_OF_MONTH, 7);
         Medication medication = medicationService.getMedication(1L);
         User user = null;
-        Plan plan = new Plan("Plan 1", startDate, endDate, 1000, user, List.of(medication));
-
+        Plan plan = new Plan("Plan1", startDate, endDate, 1000, user, List.of(medication));
         planService.createPlan(plan);
+
     }
 
     public interface PlanView extends Plan.BasicAtt {
