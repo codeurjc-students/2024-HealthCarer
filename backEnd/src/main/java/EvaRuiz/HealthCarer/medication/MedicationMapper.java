@@ -7,7 +7,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface MedicationMapper{
 
-        MedicationDTO toDTO(Medication medication);
-        List<MedicationDTO> toDTOs(Collection<Medication> medications);
-        Medication toDomain(MedicationDTO medicationDTO);
+    MedicationDTO toDTO(Medication medication);
+
+    Medication toDomain(MedicationDTO medicationDTO);
+
+    List<MedicationDTO> toDTOs(Collection<Medication> medications);
 }

@@ -73,7 +73,7 @@ public class MedicationRestControllerTests {
 				.get("/api/medications/{id}")
 				.then()
 				.statusCode(200)
-				.body("name", Matchers.equalTo("Plan1"));
+				.body("name", Matchers.equalTo("Ibuprofeno"));
 
 		given().pathParam("id", 5)
 				.when()
@@ -110,8 +110,6 @@ public class MedicationRestControllerTests {
 				.post("/api/medications/{id}/images")
 				.then()
 				.statusCode(201);
-		//Falla porque no puede almacenar localmente las imagenes
-
 	}
 
 
@@ -138,13 +136,12 @@ public class MedicationRestControllerTests {
 				.then()
 				.statusCode(404);
 		
-		given().pathParam("id", 1)
+		given().pathParam("id", 2)
 				.when()
 				.delete("/api/medications/{id}")
 				.then()
 				.statusCode(200);
 
-
-
+		//TODO El test falla cuando se intenta borrar un medicamento con imagenes asociadas
 	}
 }

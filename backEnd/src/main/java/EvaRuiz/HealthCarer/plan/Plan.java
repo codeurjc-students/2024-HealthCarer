@@ -2,8 +2,6 @@ package EvaRuiz.HealthCarer.plan;
 
 import EvaRuiz.HealthCarer.medication.Medication;
 import EvaRuiz.HealthCarer.medication.MedicationRestController;
-import EvaRuiz.HealthCarer.user.User;
-import EvaRuiz.HealthCarer.user.UserRestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
@@ -28,35 +26,20 @@ public class Plan {
     @JsonView(BasicAtt.class)
     private Enum<PlanType> state;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonView(User.BasicAtt.class)
-    private User user;
-
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "plan_medication",
             joinColumns = @JoinColumn(name = "plan_id"),
             inverseJoinColumns = @JoinColumn(name = "medication_id"))
-    @JsonView(Medication.BasicAtt.class)
+    @JsonView(MedicationRestController.MedicationView.class)
     private List<Medication> medications;
 
-    public Plan(String name, Calendar startDate, Calendar endDate, int distance, User user, List<Medication> medications) {
+    public Plan(String name, Calendar startDate, Calendar endDate, int distance, List<Medication> medications) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.distance = distance;
-        this.user = user;
         this.medications = medications;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public List<Medication> getMedications() {
         return medications;
     }

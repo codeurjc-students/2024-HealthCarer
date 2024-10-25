@@ -1,8 +1,6 @@
 package EvaRuiz.HealthCarer.plan;
 
 
-import EvaRuiz.HealthCarer.medication.Medication;
-import EvaRuiz.HealthCarer.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -42,13 +40,11 @@ public class PlanService {
     }
 
     public void deletePlan(Plan plan) {
-        if (plan.getUser() != null) {
-            plan.getUser().getPlans().remove(plan);
+        if (plan == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Plan not found");
         }
-        if (plan.getMedications() != null) {
-            for (Medication medication : plan.getMedications()) {
-                medication.getPlans().remove(plan);
-            }
+        if (!plan.getMedications().isEmpty()){
+            plan.setMedications(null);
         }
         planRepository.delete(plan);
     }

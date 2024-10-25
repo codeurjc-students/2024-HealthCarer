@@ -115,7 +115,5 @@ public class PlanRestControllerTests {
                 .then()
                 .statusCode(200);
 
-
-
     }
 }

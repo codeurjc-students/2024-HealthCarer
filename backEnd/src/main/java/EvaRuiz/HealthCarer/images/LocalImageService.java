@@ -48,6 +48,10 @@ public class LocalImageService{
         }
     }
 
+    public long getImageId(String filename) {
+        return Long.parseLong(filename.substring(filename.lastIndexOf("-") + 1, filename.lastIndexOf(".")));
+    }
+
     public void deleteImage(String folderName, long imageId) throws IOException {
 
         Path folder = FILES_FOLDER.resolve(folderName);

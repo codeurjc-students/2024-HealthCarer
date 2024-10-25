@@ -36,6 +36,16 @@ public class TakeService {
     }
 
     public void deleteTake(Take take) {
+        if (take == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Take not found");
+        }
+        if (take.getUser() != null) {
+            take.getUser().getTakes().remove(take);
+            take.setUser(null);
+        }
+        if (take.getMedications() != null) {
+            take.setMedications(null);
+        }
         takeRepository.delete(take);
     }
 

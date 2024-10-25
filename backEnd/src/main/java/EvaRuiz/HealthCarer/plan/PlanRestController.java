@@ -2,8 +2,6 @@ package EvaRuiz.HealthCarer.plan;
 
 import EvaRuiz.HealthCarer.medication.Medication;
 import EvaRuiz.HealthCarer.medication.MedicationService;
-import EvaRuiz.HealthCarer.user.User;
-import EvaRuiz.HealthCarer.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +23,6 @@ public class PlanRestController {
     @Autowired
     private PlanMapper planMapper;
     @Autowired
-    private UserService userService;
-    @Autowired
     private MedicationService medicationService;
 
     @PostConstruct
@@ -35,8 +31,7 @@ public class PlanRestController {
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.DAY_OF_MONTH, 7);
         Medication medication = medicationService.getMedication(1L);
-        User user = null;
-        Plan plan = new Plan("Plan1", startDate, endDate, 1000, user, List.of(medication));
+        Plan plan = new Plan("Plan1", startDate, endDate, 1000, List.of(medication));
         planService.createPlan(plan);
 
     }

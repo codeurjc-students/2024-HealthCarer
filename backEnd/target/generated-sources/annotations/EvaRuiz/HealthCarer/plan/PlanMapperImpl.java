@@ -1,7 +1,6 @@
 package EvaRuiz.HealthCarer.plan;
 
 import EvaRuiz.HealthCarer.medication.Medication;
-import EvaRuiz.HealthCarer.user.User;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-19T10:35:51+0200",
+    date = "2024-10-25T09:32:36+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 22.0.2 (Oracle Corporation)"
 )
 @Component
@@ -48,7 +47,6 @@ public class PlanMapperImpl implements PlanMapper {
         String endDate = null;
         int distance = 0;
         Enum<PlanType> state = null;
-        User user = null;
         List<Medication> medications = null;
 
         if ( plan.getId() != null ) {
@@ -59,13 +57,12 @@ public class PlanMapperImpl implements PlanMapper {
         endDate = xmlGregorianCalendarToString( calendarToXmlGregorianCalendar( plan.getEndDate() ), null );
         distance = plan.getDistance();
         state = plan.getState();
-        user = plan.getUser();
         List<Medication> list = plan.getMedications();
         if ( list != null ) {
             medications = new ArrayList<Medication>( list );
         }
 
-        PlanDTO planDTO = new PlanDTO( id, name, startDate, endDate, distance, state, user, medications );
+        PlanDTO planDTO = new PlanDTO( id, name, startDate, endDate, distance, state, medications );
 
         return planDTO;
     }
@@ -78,7 +75,6 @@ public class PlanMapperImpl implements PlanMapper {
 
         Plan plan = new Plan();
 
-        plan.setUser( planDTO.user() );
         List<Medication> list = planDTO.medications();
         if ( list != null ) {
             plan.setMedications( new ArrayList<Medication>( list ) );

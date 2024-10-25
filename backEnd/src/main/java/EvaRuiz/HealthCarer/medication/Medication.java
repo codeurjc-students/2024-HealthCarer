@@ -1,20 +1,12 @@
 package EvaRuiz.HealthCarer.medication;
 
-import EvaRuiz.HealthCarer.plan.Plan;
-import EvaRuiz.HealthCarer.plan.PlanRestController;
-import EvaRuiz.HealthCarer.user.User;
-import EvaRuiz.HealthCarer.user.UserRestController;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 
 @Entity
 public class Medication{
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(BasicAtt.class)
@@ -31,20 +23,6 @@ public class Medication{
     private String instructions;
     @JsonView(BasicAtt.class)
     private float dose;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_medication",
-            joinColumns = @JoinColumn(name = "medication_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    @JsonView(UserRestController.UserView.class)
-    private List<User> users;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "medication_plan",
-            joinColumns = @JoinColumn(name = "medication_id"),
-            inverseJoinColumns = @JoinColumn(name = "plan_id"))
-    @JsonView(PlanRestController.PlanView.class)
-    private List<Plan> plans;
 
     public Medication() {}
 
@@ -106,22 +84,6 @@ public class Medication{
         this.dose = dose;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public List<Plan> getPlans() {
-        return plans;
-    }
-
-    public void setPlans(List<Plan> plans) {
-        this.plans = plans;
-    }
-
     public Medication(String name, float stock, String instructions, float dose) {
         this.name = name;
         this.stock = stock;
@@ -129,8 +91,5 @@ public class Medication{
         this.dose = dose;
         this.boxImage = "";
         this.pillImage = "";
-        this.users = null;
-        this.plans = null;
     }
-
 }
