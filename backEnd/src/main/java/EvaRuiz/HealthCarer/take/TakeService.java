@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,24 +33,18 @@ public class TakeService {
 
     public Take createTake(Take take) {
         //TODO check preconditions
+        take.setTimestamp(Calendar.getInstance());
         return takeRepository.save(take);
     }
 
     public void deleteTake(Take take) {
-        if (take == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Take not found");
-        }
-        if (take.getUser() != null) {
-            take.getUser().getTakes().remove(take);
-            take.setUser(null);
-        }
-        if (take.getMedications() != null) {
+        if(take.getMedications()!=null){
             take.setMedications(null);
         }
         takeRepository.delete(take);
     }
 
-    public Take updateTake(Take take) {
+    public Take replaceTake(Take take) {
         Take existingTake = checkTakeExistAndGet(take.getId());
         //TODO check preconditions
         existingTake.setTimestamp(take.getTimestamp());

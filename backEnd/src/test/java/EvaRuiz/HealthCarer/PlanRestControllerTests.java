@@ -66,7 +66,7 @@ public class PlanRestControllerTests {
 
         given().pathParam("id", 5)
                 .when()
-                .get("/api/medications/{id}")
+                .get("/api/plans/{id}")
                 .then()
                 .statusCode(404);
 
@@ -88,7 +88,7 @@ public class PlanRestControllerTests {
 
     @Test
     @DisplayName("PUT /api/plans/{id}")
-    public void PutMappingOfMedication() throws Exception {
+    public void PutMappingOfPlan() throws Exception {
 
         given().pathParam("id", 3)
                 .contentType("application/json")

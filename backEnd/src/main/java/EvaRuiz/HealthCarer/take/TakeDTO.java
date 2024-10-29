@@ -1,8 +1,10 @@
 package EvaRuiz.HealthCarer.take;
 
-import EvaRuiz.HealthCarer.user.User;
+import EvaRuiz.HealthCarer.medication.Medication;
+
+import java.util.List;
 
 public record TakeDTO(long id,
                       String timestamp,
-                      User user) {
+                      List<Medication> medications) {
 }
