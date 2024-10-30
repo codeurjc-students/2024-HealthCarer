@@ -46,6 +46,8 @@ public class User {
         this.name = name;
         this.email = email;
         this.encodedPassword = encodedPassword;
+        this.plans = null;
+        this.takes = null;
     }
 
     public Long getId() {
@@ -95,5 +97,6 @@ public class User {
     public void setTakes(List<Take> takes) {
         this.takes = takes;
     }
+
     public interface BasicAtt {}
 }

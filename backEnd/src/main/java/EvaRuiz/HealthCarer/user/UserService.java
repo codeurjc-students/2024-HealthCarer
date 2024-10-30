@@ -22,6 +22,17 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
     }
+    private void checkUser(User user){
+        if (user.getName().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required");
+        }
+        if (user.getEmail().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is required");
+        }
+        if (user.getEncodedPassword().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password is required");
+        }
+    }
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -32,21 +43,29 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        //TODO check preconditions
+        checkUser(user);
         return userRepository.save(user);
     }
 
     public void deleteUser(User user) {
-        userRepository.delete(user);
+        User existingUser = checkUserExistAndGet(user.getId());
+        if (existingUser.getPlans() != null) {
+            existingUser.setPlans(null);
+        }
+        if (existingUser.getTakes() != null) {
+            existingUser.setTakes(null);
+        }
+        userRepository.delete(existingUser);
     }
 
     public User updateUser(User user) {
         User existingUser = checkUserExistAndGet(user.getId());
-        //TODO check preconditions
+        checkUser(user);
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
         existingUser.setEncodedPassword(user.getEncodedPassword());
+        existingUser.setPlans(user.getPlans());
+        existingUser.setTakes(user.getTakes());
         return userRepository.save(existingUser);
     }
-
 }
