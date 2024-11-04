@@ -18,11 +18,17 @@ public class LocalImageService{
 
     private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
+    public long getSize() {
+        return size;
+    }
+
+    private long size = 0;
+
     private Path createFilePath(long imageId, Path folder) {
         return folder.resolve("image-" + imageId + ".jpg");
     }
 
-    public void saveImage(String folderName, long imageId, MultipartFile image) throws IOException {
+    public Path saveImage(String folderName, long imageId, MultipartFile image) throws IOException {
 
         Path folder = FILES_FOLDER.resolve(folderName);
 
@@ -31,6 +37,8 @@ public class LocalImageService{
         Path newFile = createFilePath(imageId, folder);
 
         image.transferTo(newFile);
+        size++;
+        return newFile;
     }
 
     public ResponseEntity<Object> createResponseFromImage(String folderName, long imageId) throws MalformedURLException {
@@ -58,7 +66,8 @@ public class LocalImageService{
 
         Path imageFile = createFilePath(imageId, folder);
 
-        Files.deleteIfExists(imageFile);
+        if(Files.deleteIfExists(imageFile))size--;
+
     }
 
 

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Path;
 import java.util.Collection;
 
 
@@ -61,12 +62,12 @@ public class MedicationRestController {
     @PostMapping("/{id}/images")
     public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile boxImage, @RequestParam MultipartFile pillImage) throws IOException {
         Medication medication = medicationService.getMedication(id);
-        URI location = fromCurrentRequest().build().toUri();
-        medication.setBoxImage(location.toString());
-        medication.setPillImage(location.toString());
-        imageService.saveImage(MEDICATIONS_FOLDER, medication.getId(), boxImage);
-        imageService.saveImage(MEDICATIONS_FOLDER, medication.getId(), pillImage);
-        return ResponseEntity.created(location).build();
+        Path box = imageService.saveImage(MEDICATIONS_FOLDER, imageService.getSize(), boxImage);
+        Path pill = imageService.saveImage(MEDICATIONS_FOLDER, imageService.getSize(), pillImage);
+        medication.setBoxImage(box.toString());
+        medication.setPillImage(pill.toString());
+        medicationService.replaceMedication(medication);
+        return ResponseEntity.ok(medicationMapper.toDTO(medication));
     }
 
     @PutMapping("/{id}")
