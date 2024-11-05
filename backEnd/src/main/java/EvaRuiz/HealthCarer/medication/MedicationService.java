@@ -36,10 +36,25 @@ public class MedicationService {
         return checkMedicationExistAndGet(id);
     }
 
-    public Medication createMedication(Medication medication) {
-        //TODO check preconditions
+    public void createMedication(Medication medication) {
+        checkMedication(medication);
 
-        return medicationRepository.save(medication);
+        medicationRepository.save(medication);
+    }
+
+    private void checkMedication(Medication medication) {
+        if (medication.getName() == null || medication.getName().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medication name is required");
+        }
+        if (medication.getStock() < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medication stock must be positive");
+        }
+        if (medication.getInstructions() == null || medication.getInstructions().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medication instructions are required");
+        }
+        if (medication.getDose() < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medication dose must be positive");
+        }
     }
 
     public void deleteMedication(Medication medication) throws IOException {
@@ -56,7 +71,7 @@ public class MedicationService {
 
     public Medication replaceMedication(Medication medication) {
         Medication existingMedication = checkMedicationExistAndGet(medication.getId());
-        //TODO check preconditions
+        checkMedication(medication);
         existingMedication.setName(medication.getName());
         existingMedication.setBoxImage(medication.getBoxImage());
         existingMedication.setPillImage(medication.getPillImage());

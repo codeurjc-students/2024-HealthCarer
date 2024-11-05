@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
@@ -29,10 +30,8 @@ public class PlanRestController {
     public void init() {
         Calendar startDate = Calendar.getInstance();
         Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.DAY_OF_MONTH, 7);
-        Medication medication = medicationService.getMedication(1L);
-        Plan plan = new Plan("Plan1", startDate, endDate, 1000, List.of(medication));
-        planService.createPlan(plan);
+        endDate.add(Calendar.DAY_OF_MONTH, 10);
+        planService.createPlan(new Plan("Plan 1", startDate, endDate, PlanType.ACTIVE, 10,  new ArrayList<Medication>()));
 
     }
 

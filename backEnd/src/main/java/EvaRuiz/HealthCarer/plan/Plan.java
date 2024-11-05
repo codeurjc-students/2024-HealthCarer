@@ -5,6 +5,7 @@ import EvaRuiz.HealthCarer.medication.MedicationRestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,18 +27,16 @@ public class Plan {
     @JsonView(BasicAtt.class)
     private Enum<PlanType> state;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "plan_medication",
-            joinColumns = @JoinColumn(name = "plan_id"),
-            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JsonView(MedicationRestController.MedicationView.class)
     private List<Medication> medications;
 
-    public Plan(String name, Calendar startDate, Calendar endDate, int distance, List<Medication> medications) {
+    public Plan(String name, Calendar startDate, Calendar endDate, PlanType state, int distance, List<Medication> medications) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.distance = distance;
+        this.state = state;
         this.medications = medications;
     }
     public List<Medication> getMedications() {
@@ -56,6 +55,7 @@ public class Plan {
         this.startDate = startDate;
         this.endDate = endDate;
         this.distance = distance;
+        this.medications = new ArrayList<>();
     }
 
     public Long getId() {
@@ -104,6 +104,10 @@ public class Plan {
 
     public void setState(Enum<PlanType> state) {
         this.state = state;
+    }
+
+    public void addMedication(Medication medication) {
+        medications.add(medication);
     }
 
     public interface BasicAtt {}

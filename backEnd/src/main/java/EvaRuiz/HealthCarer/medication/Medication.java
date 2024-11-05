@@ -1,8 +1,10 @@
 package EvaRuiz.HealthCarer.medication;
 
+import EvaRuiz.HealthCarer.plan.Plan;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.persistence.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -24,7 +26,14 @@ public class Medication{
     @JsonView(BasicAtt.class)
     private float dose;
 
+    @ManyToMany(mappedBy = "medications")
+    private List<Plan> plans;
+
     public Medication() {}
+
+    public void addPlan(Plan plan) {
+        plans.add(plan);
+    }
 
     public interface BasicAtt { }
 
@@ -91,5 +100,6 @@ public class Medication{
         this.dose = dose;
         this.boxImage = "";
         this.pillImage = "";
+        this.plans = new ArrayList<>();
     }
 }

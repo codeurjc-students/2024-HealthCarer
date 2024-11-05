@@ -24,6 +24,27 @@ public class PlanService {
         }
     }
 
+    private void checkPlan(Plan plan) {
+        if (plan.getName() == null || plan.getName().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan name is required");
+        }
+        if (plan.getStartDate() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan start date is required");
+        }
+        if (plan.getEndDate() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan end date is required");
+        }
+        if (plan.getDistance() < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan distance must be positive");
+        }
+        if (plan.getState() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan state is required");
+        }
+        if (plan.getMedications() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plan must have at least one medication");
+        }
+    }
+
     public List<Plan> findAll() {
         return planRepository.findAll();
     }
@@ -32,11 +53,15 @@ public class PlanService {
         return checkPlanExistAndGet(id);
     }
 
+    public void createPlan(Plan plan) {
+        checkPlan(plan);
 
-
-    public Plan createPlan(Plan plan) {
-        //TODO check preconditions
-        return planRepository.save(plan);
+        if(plan.getMedications() != null){
+            plan.getMedications().forEach(medication -> {
+                medication.addPlan(plan);
+            });
+        }
+        planRepository.save(plan);
     }
 
     public void deletePlan(Plan plan) {
@@ -51,12 +76,13 @@ public class PlanService {
 
     public Plan replacePlan(Plan plan) {
         Plan existingPlan = checkPlanExistAndGet(plan.getId());
-        //TODO check preconditions
+        checkPlan(plan);
         existingPlan.setName(plan.getName());
         existingPlan.setStartDate(plan.getStartDate());
         existingPlan.setEndDate(plan.getEndDate());
         existingPlan.setDistance(plan.getDistance());
         existingPlan.setState(plan.getState());
+        existingPlan.setMedications(plan.getMedications());
         return planRepository.save(existingPlan);
     }
 }
