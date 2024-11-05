@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -22,8 +20,6 @@ public class PlanRestController {
     @Autowired
     private PlanService planService;
     @Autowired
-    private PlanMapper planMapper;
-    @Autowired
     private MedicationService medicationService;
 
     @PostConstruct
@@ -31,7 +27,8 @@ public class PlanRestController {
         Calendar startDate = Calendar.getInstance();
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.DAY_OF_MONTH, 10);
-        planService.createPlan(new Plan("Plan 1", startDate, endDate, PlanType.ACTIVE, 10,  new ArrayList<Medication>()));
+        Set<Medication> medications = new HashSet<>(medicationService.findAll());
+        planService.createPlan(new Plan("Plan 1", startDate, endDate, PlanType.ACTIVE, 10, medications));
 
     }
 
@@ -40,6 +37,7 @@ public class PlanRestController {
 
     @GetMapping("/")
     public Collection<PlanDTO> getPlans() {
+
         return planMapper.toDTOs(planService.findAll());
     }
 

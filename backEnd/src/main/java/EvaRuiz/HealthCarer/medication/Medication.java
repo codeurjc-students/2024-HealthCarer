@@ -1,10 +1,12 @@
 package EvaRuiz.HealthCarer.medication;
 
 import EvaRuiz.HealthCarer.plan.Plan;
+import EvaRuiz.HealthCarer.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -20,20 +22,21 @@ public class Medication{
     @JsonView(BasicAtt.class)
     private String pillImage;
     @JsonView(BasicAtt.class)
-    private float stock;
+    private Float stock;
     @JsonView(BasicAtt.class)
     private String instructions;
     @JsonView(BasicAtt.class)
-    private float dose;
+    private Float dose;
 
-    @ManyToMany(mappedBy = "medications")
-    private List<Plan> plans;
+    @ManyToMany
+    @JsonIgnore
+    private Set<Plan> plans = new HashSet<>();
+
+    @ManyToMany
+    private Set<User> users = new HashSet<>();
+
 
     public Medication() {}
-
-    public void addPlan(Plan plan) {
-        plans.add(plan);
-    }
 
     public interface BasicAtt { }
 
@@ -69,14 +72,6 @@ public class Medication{
         this.pillImage = pillImage;
     }
 
-    public float getStock() {
-        return stock;
-    }
-
-    public void setStock(float stock) {
-        this.stock = stock;
-    }
-
     public String getInstructions() {
         return instructions;
     }
@@ -85,21 +80,50 @@ public class Medication{
         this.instructions = instructions;
     }
 
-    public float getDose() {
+    public Set<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(Set<Plan> plans) {
+        this.plans = plans;
+    }
+
+    public Float getStock() {
+        return stock;
+    }
+
+    public void setStock(Float stock) {
+        this.stock = stock;
+    }
+
+    public Float getDose() {
         return dose;
     }
 
-    public void setDose(float dose) {
+    public void setDose(Float dose) {
         this.dose = dose;
     }
 
-    public Medication(String name, float stock, String instructions, float dose) {
-        this.name = name;
-        this.stock = stock;
-        this.instructions = instructions;
-        this.dose = dose;
-        this.boxImage = "";
-        this.pillImage = "";
-        this.plans = new ArrayList<>();
+    public Set<User> getUsers() {
+        return users;
     }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public void addPlan(Plan plan) {
+        Set<Plan> plansCopy = new HashSet<>(plans);
+        plansCopy.add(plan);
+        plan.getMedications().add(this);
+        setPlans(plansCopy);
+    }
+
+    public void removePlan(Plan plan) {
+        Set<Plan> plansCopy = new HashSet<>(plans);
+        plansCopy.remove(plan);
+        plan.getMedications().remove(this);
+        setPlans(plansCopy);
+    }
+
 }

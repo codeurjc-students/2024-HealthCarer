@@ -2,12 +2,12 @@ package EvaRuiz.HealthCarer.plan;
 
 import EvaRuiz.HealthCarer.medication.Medication;
 import EvaRuiz.HealthCarer.medication.MedicationRestController;
+import EvaRuiz.HealthCarer.user.User;
+import EvaRuiz.HealthCarer.user.UserRestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Plan {
@@ -27,25 +27,15 @@ public class Plan {
     @JsonView(BasicAtt.class)
     private Enum<PlanType> state;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany
     @JsonView(MedicationRestController.MedicationView.class)
-    private List<Medication> medications;
+    private Set<Medication> medications = new HashSet<>();
 
-    public Plan(String name, Calendar startDate, Calendar endDate, PlanType state, int distance, List<Medication> medications) {
-        this.name = name;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.distance = distance;
-        this.state = state;
-        this.medications = medications;
-    }
-    public List<Medication> getMedications() {
-        return medications;
-    }
+    @ManyToMany
+    @JsonView(UserRestController.UserView.class)
+    private Set<User> users = new HashSet<>();
 
-    public void setMedications(List<Medication> medications) {
-        this.medications = medications;
-    }
+
 
     public Plan() {
     }
@@ -55,7 +45,6 @@ public class Plan {
         this.startDate = startDate;
         this.endDate = endDate;
         this.distance = distance;
-        this.medications = new ArrayList<>();
     }
 
     public Long getId() {
@@ -106,8 +95,34 @@ public class Plan {
         this.state = state;
     }
 
+    public Set<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(Set<Medication> medications) {
+        this.medications = medications;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public void removeMedication(Medication medication) {
+        Set<Medication> medicationsCopy = new HashSet<>(medications);
+        medicationsCopy.remove(medication);
+        medication.getPlans().remove(this);
+        setMedications(medicationsCopy);
+    }
+
     public void addMedication(Medication medication) {
-        medications.add(medication);
+        Set<Medication> medicationsCopy = new HashSet<>(medications);
+        medicationsCopy.add(medication);
+        medication.getPlans().add(this);
+        setMedications(medicationsCopy);
     }
 
     public interface BasicAtt {}

@@ -24,8 +24,6 @@ public class MedicationRestController {
     private MedicationService medicationService;
     @Autowired
     private LocalImageService imageService;
-    @Autowired
-    private MedicationMapper medicationMapper;
 
     @PostConstruct
     public void init() {

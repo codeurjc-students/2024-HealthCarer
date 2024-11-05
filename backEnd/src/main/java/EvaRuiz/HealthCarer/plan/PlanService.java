@@ -55,12 +55,6 @@ public class PlanService {
 
     public void createPlan(Plan plan) {
         checkPlan(plan);
-
-        if(plan.getMedications() != null){
-            plan.getMedications().forEach(medication -> {
-                medication.addPlan(plan);
-            });
-        }
         planRepository.save(plan);
     }
 

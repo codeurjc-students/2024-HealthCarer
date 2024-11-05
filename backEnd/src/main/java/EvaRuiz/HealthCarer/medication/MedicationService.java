@@ -38,7 +38,6 @@ public class MedicationService {
 
     public void createMedication(Medication medication) {
         checkMedication(medication);
-
         medicationRepository.save(medication);
     }
 

@@ -39,7 +39,11 @@ public class MedicationRestControllerTests {
 	public void setup(){
 		RestAssured.port = port;
 		ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		medication = new Medication("Xumadull", 90, "Tomar solo", 3);
+		medication = new Medication();
+		medication.setName("Xumadull");
+		medication.setDose(3F);
+		medication.setStock(10F);
+		medication.setInstructions("Tomar con agua");
 		boxImage = new File("files/Ibuprofeno.jpg");
 		pillImage = new File("files/Ibuprofeno2.jpg");
     }
