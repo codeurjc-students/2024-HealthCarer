@@ -1,9 +1,11 @@
 package EvaRuiz.HealthCarer;
 
-import org.modelmapper.ModelMapper;
+
+import EvaRuiz.HealthCarer.image.LocalImageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 
 @SpringBootApplication
 public class HealthCarerApplication {
@@ -13,7 +15,9 @@ public class HealthCarerApplication {
 	}
 
 	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
+	LocalImageService localImageService() {
+		return new LocalImageService();
 	}
+
+
 }

@@ -49,12 +49,6 @@ public class UserService {
 
     public void deleteUser(User user) {
         User existingUser = checkUserExistAndGet(user.getId());
-        if (existingUser.getPlans() != null) {
-            existingUser.setPlans(null);
-        }
-        if (existingUser.getTakes() != null) {
-            existingUser.setTakes(null);
-        }
         userRepository.delete(existingUser);
     }
 
@@ -64,8 +58,6 @@ public class UserService {
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
         existingUser.setEncodedPassword(user.getEncodedPassword());
-        existingUser.setPlans(user.getPlans());
-        existingUser.setTakes(user.getTakes());
         return userRepository.save(existingUser);
     }
 }

@@ -1,57 +1,44 @@
 package EvaRuiz.HealthCarer.user;
 
-import EvaRuiz.HealthCarer.medication.Medication;
-import EvaRuiz.HealthCarer.medication.MedicationRestController;
-import EvaRuiz.HealthCarer.plan.Plan;
-import EvaRuiz.HealthCarer.plan.PlanRestController;
-import EvaRuiz.HealthCarer.take.Take;
-import EvaRuiz.HealthCarer.take.TakeRestController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.List;
 
-import java.util.Set;
 
-@Entity
+@Entity(name = "UserTable")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(BasicAtt.class)
     private Long id;
-    @JsonView(BasicAtt.class)
+
     private String name;
-    @JsonView(User.BasicAtt.class)
+
     private String email;
+
     @JsonIgnore
     private String encodedPassword;
 
-    @ManyToMany
-    @JsonView(PlanRestController.PlanView.class)
-    private Set<Plan> plans = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JsonView(TakeRestController.TakeView.class)
-    private Set<Take> takes = new HashSet<>();
-
-    @ManyToMany
-    @JsonView(MedicationRestController.MedicationView.class)
-    private Set<Medication> medications = new HashSet<>();
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 
     public User() {
     }
 
-    public User(Long id, Set<Medication> medications, Set<Take> takes, Set<Plan> plans, String email, String encodedPassword, String name) {
-        this.id = id;
-        this.medications = medications;
-        this.takes = takes;
-        this.plans = plans;
+    public User(String name, String email, String encodedPassword, String... roles) {
+        this.name = name;
         this.email = email;
         this.encodedPassword = encodedPassword;
-        this.name = name;
+        this.roles = List.of(roles);
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -85,45 +72,4 @@ public class User {
     public void setEncodedPassword(String encodedPassword) {
         this.encodedPassword = encodedPassword;
     }
-
-    public Set<Plan> getPlans() {
-        return plans;
-    }
-
-    public void setPlans(Set<Plan> plans) {
-        this.plans = plans;
-    }
-
-    public Set<Take> getTakes() {
-        return takes;
-    }
-
-    public void setTakes(Set<Take> takes) {
-        this.takes = takes;
-    }
-
-    public void addPlan(Plan plan) {
-        this.plans.add(plan);
-    }
-
-    public Set<Medication> getMedications() {
-        return medications;
-    }
-
-    public void setMedications(Set<Medication> medications) {
-        this.medications = medications;
-    }
-
-    public void addTake(Take take) {
-        this.takes.add(take);
-        take.setUser(this);
-    }
-
-    public void removePlan(Plan plan) {
-        Set<Plan> plans = this.getPlans();
-        plans.remove(plan);
-        this.setPlans(plans);
-    }
-
-    public interface BasicAtt {}
 }

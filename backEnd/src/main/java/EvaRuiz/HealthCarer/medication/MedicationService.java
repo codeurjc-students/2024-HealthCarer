@@ -1,6 +1,6 @@
 package EvaRuiz.HealthCarer.medication;
 
-import EvaRuiz.HealthCarer.images.LocalImageService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,32 +16,16 @@ public class MedicationService {
 
     @Autowired
     private MedicationRepository medicationRepository;
-    @Autowired
-    private LocalImageService imageService;
 
-    private Medication checkMedicationExistAndGet(Long id) {
-        Optional<Medication> medication = medicationRepository.findById(id);
-        if (medication.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medication not found");
-        } else {
-            return medication.get();
-        }
+    public MedicationDTO toDTO(Medication medication){
+        return new MedicationDTO(medication.getId(), medication.getName(), medication.getBoxImage(), medication.getStock(), medication.getInstructions(), medication.getDose());
     }
 
-    public List<Medication> findAll() {
-        return medicationRepository.findAll();
+    public Medication toEntity(MedicationDTO dto) {
+        return new Medication(dto.getName(), dto.getBoxImage(), dto.getStock(), dto.getInstructions(), dto.getDose());
     }
 
-    public Medication getMedication(Long id) {
-        return checkMedicationExistAndGet(id);
-    }
-
-    public void createMedication(Medication medication) {
-        checkMedication(medication);
-        medicationRepository.save(medication);
-    }
-
-    private void checkMedication(Medication medication) {
+    public void checkMedication(Medication medication) {
         if (medication.getName() == null || medication.getName().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medication name is required");
         }
@@ -56,27 +40,41 @@ public class MedicationService {
         }
     }
 
+    public void assingMedicationProperties(Medication oldMedication, String name, String boxImage, Float stock, String instructions, Float dose) {
+        oldMedication.setName(name);
+        oldMedication.setBoxImage(boxImage);
+        oldMedication.setStock(stock);
+        oldMedication.setInstructions(instructions);
+        oldMedication.setDose(dose);
+    }
+
+    public List<Medication> findAll() {
+        return medicationRepository.findAll();
+    }
+
+    public Medication getMedication(Long id) {
+
+        Optional<Medication> medication = medicationRepository.findById(id);
+        if (medication.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medication not found");
+        } else {
+            return medication.get();
+        }
+    }
+
+    public Medication createMedication(Medication medication) {
+        return medicationRepository.save(medication);
+    }
+
+
+
     public void deleteMedication(Medication medication) throws IOException {
-        if (!medication.getBoxImage().isEmpty()) {
-            String boxImage = medication.getBoxImage();
-            imageService.deleteImage(boxImage, imageService.getImageId(boxImage));
-        }
-        if (!medication.getPillImage().isEmpty()) {
-            String pillImage = medication.getPillImage();
-            imageService.deleteImage(pillImage, imageService.getImageId(pillImage));
-        }
         medicationRepository.delete(medication);
     }
 
     public Medication replaceMedication(Medication medication) {
-        Medication existingMedication = checkMedicationExistAndGet(medication.getId());
-        checkMedication(medication);
-        existingMedication.setName(medication.getName());
-        existingMedication.setBoxImage(medication.getBoxImage());
-        existingMedication.setPillImage(medication.getPillImage());
-        existingMedication.setInstructions(medication.getInstructions());
-        existingMedication.setDose(medication.getDose());
-        existingMedication.setStock(medication.getStock());
-        return medicationRepository.save(existingMedication);
+        return medicationRepository.save(medication);
     }
+
+
 }
