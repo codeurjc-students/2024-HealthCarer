@@ -18,7 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @Profile({"dev", "test"})
 public class LocalImageService implements ImageService {
 
-    @Value("src/main/resources/static")
+    @Value("${spring.web.resources.static-locations}")
     private String STATIC_FOLDER;
 
     private String staticFolder() {

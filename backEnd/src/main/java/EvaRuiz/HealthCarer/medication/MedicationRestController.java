@@ -78,6 +78,9 @@ public class MedicationRestController {
     @DeleteMapping("/{id}")
     public ResponseEntity<MedicationDTO> deleteMedication(@PathVariable long id) throws IOException {
         Medication medication = medicationService.getMedication(id);
+        if (medication.getBoxImage() != null) {
+            imageService.deleteImage(medication.getBoxImage());
+        }
         medicationService.deleteMedication(medication);
         MedicationDTO medicationDTO = medicationService.toDTO(medication);
         return ResponseEntity.ok(medicationDTO);
