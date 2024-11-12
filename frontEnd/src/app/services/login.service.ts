@@ -62,4 +62,12 @@ export class LoginService {
     currentUser() {
         return this.user;
     }
+
+    register(user: string, email: string, pass: string) {
+        this.http.post(BASE_URL + "/register", { username: user, email: email, password: pass }, { withCredentials: true })
+            .subscribe(
+                (response) => this.reqIsLogged(),
+                (error) => alert("Wrong credentials")
+            );
+    }
 }

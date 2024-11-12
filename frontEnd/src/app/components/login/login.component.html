@@ -1,26 +1,28 @@
-<form *ngIf="!loginService.isLogged()" class="navbar-form navbar-right form-inline" role="search">
 
-	<div class="form-group">
-		<input #user type="text" class="form-control" name="username" placeholder="Username">
-	</div>
 
-	<div class="form-group">
-		<input #pass type="password" class="form-control" name="password" placeholder="Password">
-	</div>
-
-	<button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-default">Sign In</button>
-
-</form>
-
-<div *ngIf="loginService.isLogged()" class="nav navbar-nav navbar-right">
-
-	<ul class="nav navbar-nav">
-		<div class="navbar-nav mr-auto">
-			<a class="navbar-brand" href="/">Current user: {{loginService.currentUser().name}}</a>
-		</div>
-		<li>
-			<button class="btn btn-default navbar-btn" (click)="logOut()" type="button">Log Out</button>
-		</li>
-	</ul>
-
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 350px;">
+        <h3 class="text-center mb-4">Iniciar sesión</h3>
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input #user type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input #pass type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button class="btn btn-primary w-100" type="submit" (click)="logIn($event, user.value, pass.value)">
+                Iniciar Sesión
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <a routerLink="/register">¿No tienes cuenta? Regístrate</a>
+        </div>
+    </div>
 </div>
+
+
+
+
+

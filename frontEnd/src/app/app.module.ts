@@ -9,9 +9,10 @@ import { MedicationListComponent } from './components/medications/medication-lis
 import { MedicationFormComponent } from './components/medications/medication-form.component';
 import { routing } from './app.routing';
 import { LoginComponent } from './components/login/login.component';
+import {RegisterComponent} from "./components/login/register.component";
 
 @NgModule({
-  declarations: [AppComponent, MedicationDetailComponent, MedicationListComponent, MedicationFormComponent, LoginComponent],
+  declarations: [AppComponent, MedicationDetailComponent, MedicationListComponent, MedicationFormComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })
