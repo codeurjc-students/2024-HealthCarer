@@ -3,8 +3,8 @@ package EvaRuiz.HealthCarer.security;
 import java.util.ArrayList;
 import java.util.List;
 
-import EvaRuiz.HealthCarer.user.User;
-import EvaRuiz.HealthCarer.user.UserRepository;
+import EvaRuiz.HealthCarer.model.User;
+import EvaRuiz.HealthCarer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,7 +1,7 @@
 package EvaRuiz.HealthCarer;
 
 
-import EvaRuiz.HealthCarer.image.LocalImageService;
+import EvaRuiz.HealthCarer.service.LocalImageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,10 +14,6 @@ public class HealthCarerApplication {
 		SpringApplication.run(HealthCarerApplication.class, args);
 	}
 
-	@Bean
-	LocalImageService localImageService() {
-		return new LocalImageService();
-	}
 
 
 }

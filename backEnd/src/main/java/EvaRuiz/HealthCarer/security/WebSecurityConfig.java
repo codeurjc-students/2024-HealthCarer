@@ -1,7 +1,6 @@
 package EvaRuiz.HealthCarer.security;
 
-import java.security.SecureRandom;
-
+import EvaRuiz.HealthCarer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,47 +9,43 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	RepositoryUserDetailsService userDetailsService;
-	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(10, new SecureRandom());
-	}
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	
-    	// Public pages
-        http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/loginerror").permitAll();
-        http.authorizeRequests().antMatchers("/logout").permitAll();
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/register", "/login").permitAll() // Allow public access to /login
+                .anyRequest().authenticated()
+                .and()
+                .csrf().disable() // Disable CSRF temporary if necesary
+                .formLogin()
+                .loginPage("/") // Login form page
+                .loginProcessingUrl("/login") // Endpoint where login is processed
+                .defaultSuccessUrl("/index", true) // Redirect to /profile after successfull login
+                .failureUrl("/loginerror") // Redirect to /loginerror if there is an error
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll()  // Allow access to logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))  // Ensure POST request
+                .logoutSuccessUrl("/")  // Redirect to home after successful logout (without `?logout`)
+                .clearAuthentication(true)  // Clear authentication on logout
+                .invalidateHttpSession(true);  // Invalidate the session
+        ;
 
-        // Private pages
-        http.authorizeRequests().antMatchers("/newmedication").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/editmedication/*").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/removemedication/*").hasAnyRole("ADMIN");
+    }
 
-        // Login form
-        http.formLogin().loginPage("/login");
-        http.formLogin().usernameParameter("username");
-        http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/");
-        http.formLogin().failureUrl("/loginerror");
 
-        // Logout
-        http.logout().logoutUrl("/logout");
-        http.logout().logoutSuccessUrl("/");
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
