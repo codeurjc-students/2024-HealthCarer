@@ -39,23 +39,12 @@ public class MedicationRestController {
 
 
     @GetMapping("/")
-    public ResponseEntity<List<MedicationDTO>> getMedications(@RequestParam(required = false) String name) {
-        List<MedicationDTO> medications = new ArrayList<>();
-        User user = null;
-        if(name != null){
-            Optional<User> optUser = userService.findByUserName(name);
-            if(optUser.isPresent()){
-                user = optUser.get();
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        }
+    public ResponseEntity<List<MedicationDTO>> getMedications() {
+        List<MedicationDTO> medicationsDTO = new ArrayList<>();
         for (Medication medication : medicationService.getAllMedications()) {
-            if (medication.getUser().equals(user)) {
-                medications.add(new MedicationDTO(medication));
-            }
+            medicationsDTO.add(new MedicationDTO(medication));
         }
-        return ResponseEntity.ok(medications);
+        return ResponseEntity.ok(medicationsDTO);
     }
 
     @GetMapping("/{id}")
@@ -79,7 +68,6 @@ public class MedicationRestController {
     public ResponseEntity<MedicationDTO> uploadImage(@PathVariable long id, @RequestParam MultipartFile boxImage) throws IOException {
         Medication medication = medicationService.getMedicationById(id);
         imageService.save(boxImage);
-
         medication = medicationService.updateMedication(id, new MedicationDTO(medication));
         return ResponseEntity.ok(new MedicationDTO(medication));
     }
