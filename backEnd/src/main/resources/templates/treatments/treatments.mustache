@@ -1,0 +1,14 @@
+{{>header}}
+
+<h2>Treatments</h2>
+<ul class="items">
+    {{#treatments}}
+        <li><a href="/treatments/{{id}}">{{name}}</a></li>
+    {{/treatments}}
+</ul>
+
+{{#logged}}
+    <button onclick="location.href='/treatments/newtreatment'">New treatment</button>
+{{/logged}}
+
+{{>footer}}

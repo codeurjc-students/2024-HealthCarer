@@ -1,0 +1,23 @@
+{{>header}}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h2 class="mb-4">Medications</h2>
+    </div>
+
+    <ul class="list-group">
+        {{#medications}}
+            <li class="list-group-item">
+                <a href="/medications/{{id}}" class="text-decoration-none text-primary">{{name}}</a>
+            </li>
+        {{/medications}}
+    </ul>
+
+    {{#logged}}
+        <div class="text-center mt-4">
+            <button class="btn btn-success" onclick="location.href='/medications/newmedication'">New Medication</button>
+        </div>
+    {{/logged}}
+</div>
+
+{{>footer}}

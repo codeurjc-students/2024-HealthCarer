@@ -1,0 +1,23 @@
+services:
+  web:
+    image:
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
+    ports:
+      - 8443:8443
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/demoapp?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+    restart: on-failure
+  db:
+    image: mysql:8.0.36
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=eventcrafters
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+

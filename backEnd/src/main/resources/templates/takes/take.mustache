@@ -1,0 +1,19 @@
+{{>header}}
+
+<div>
+
+    <h2>{{take.date}}</h2>
+
+
+    <div>
+        {{#logged}}
+            <button onclick="location.href='/takes/removetake/{{take.id}}'">Remove</button>
+            <button onclick="location.href='/takes/edittake/{{take.id}}'">Edit</button>
+        {{/logged}}
+        <br>
+        <button onclick="location.href='/takes/'">Back to takes</button>
+    </div>
+
+</div>
+
+{{>footer}}

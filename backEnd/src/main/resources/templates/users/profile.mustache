@@ -1,0 +1,27 @@
+{{>header}}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-lg">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h3 class="font-weight-bold">{{user.name}}</h3>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Email:</strong>
+                        <p>{{user.email}}</p>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="/editProfile" class="btn btn-primary mb-2 btn-block">Editar Perfil</a>
+                        <form action="/logout" method="post" class="d-inline-block">
+                            <button type="submit" class="btn btn-danger btn-block">Cerrar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>footer}}

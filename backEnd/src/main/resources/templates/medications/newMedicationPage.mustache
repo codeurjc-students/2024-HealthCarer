@@ -1,0 +1,53 @@
+{{>header}}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3>Crear nueva medicación</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/medications/newmedication" method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input type="number" class="form-control" name="stock" id="stock" placeholder="Stock" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dose">Dosis</label>
+                            <input type="number" class="form-control" name="dose" id="dose" placeholder="Dosis" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="instructions">Instrucciones de uso</label>
+                            <input type="text" class="form-control" name="instructions" id="instructions" placeholder="Instrucciones" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="boxImage">Foto de la caja</label>
+                            <input type="file" class="form-control" required accept="image/*" max-size="10000" name="boxImage" id="boxImage">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary btn-block">Crear</button>
+                    </form>
+
+                    <div class="card mt-3">
+                        <div class="card-body text-center">
+                            <a href="/medications/">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>footer}}

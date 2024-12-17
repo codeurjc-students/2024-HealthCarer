@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Missing register components" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="JUnit5 Test Class" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mandolin03&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/codeurjc-students/2024-HealthCarer.git&quot;,
+    &quot;accountId&quot;: &quot;3bec2248-8797-4b86-aabe-41ef7ad90dc1&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2mWLLlzg6ToR5gWAMZMSUyW3IRa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.MedicationRestAssuredTests.medicationAddTest.executor": "Run",
+    "JUnit.MedicationRestControllerTests.DeleteMappingOfMedication.executor": "Run",
+    "JUnit.MedicationRestControllerTests.DeleteMappingOfMedication2.executor": "Run",
+    "JUnit.MedicationRestControllerTests.GetMappingOfAllMedications.executor": "Run",
+    "JUnit.MedicationRestControllerTests.GetMappingOfOneMedication.executor": "Run",
+    "JUnit.MedicationRestControllerTests.PostMappingOfMedication.executor": "Run",
+    "JUnit.MedicationRestControllerTests.PostMappingOfMedication2.executor": "Run",
+    "JUnit.MedicationRestControllerTests.PostMappingOfMedicationWithRestAssured.executor": "Run",
+    "JUnit.MedicationRestControllerTests.PostMappingOfProduct.executor": "Run",
+    "JUnit.MedicationRestControllerTests.PutMappingOfMedication.executor": "Run",
+    "JUnit.MedicationRestControllerTests.createEventTest.executor": "Run",
+    "JUnit.MedicationRestControllerTests.createMedicationTest.executor": "Run",
+    "JUnit.MedicationRestControllerTests.executor": "Run",
+    "JUnit.PlanRestControllerTests.DeleteMappingOfPlan.executor": "Run",
+    "JUnit.PlanRestControllerTests.GetMappingOfAllPlans.executor": "Run",
+    "JUnit.PlanRestControllerTests.GetMappingOfOneMedication.executor": "Run",
+    "JUnit.PlanRestControllerTests.GetMappingOfOnePlan.executor": "Run",
+    "JUnit.PlanRestControllerTests.PutMappingOfMedication.executor": "Run",
+    "JUnit.PlanRestControllerTests.executor": "Run",
+    "JUnit.PlanRestControllerTests.testDeletePlan.executor": "Run",
+    "JUnit.PlanRestControllerTests.testGetPlanById.executor": "Run",
+    "JUnit.PlanRestControllerTests.testGetPlans.executor": "Run",
+    "JUnit.PlanRestControllerTests.testPostPlan.executor": "Run",
+    "JUnit.TakeRestControllerTests.GetMappingOfAllTakes.executor": "Run",
+    "JUnit.TakeRestControllerTests.PostMappingOfTake.executor": "Run",
+    "JUnit.TakeRestControllerTests.PutMappingOfTake.executor": "Run",
+    "JUnit.TakeRestControllerTests.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.HealthCarerApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alcor/Desktop/2024-HealthCarer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false",
+    "ts.external.directory.path": "C:\\Users\\alcor\\Desktop\\Uni\\TFG\\2024-HealthCarer\\frontEnd\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="EvaRuiz.HealthCarer.medication" />
+      <recent name="EvaRuiz.HealthCarer.plan" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alcor\Desktop\2024-HealthCarer" />
+      <recent name="C:\Users\alcor\Desktop\Uni\TFG\2024-HealthCarer\backEnd" />
+      <recent name="C:\Users\alcor\Desktop\Uni\TFG\2024-HealthCarer" />
+      <recent name="C:\Users\alcor\Desktop\Uni\TFG\2024-HealthCarer\backEnd\src\main\resources" />
+      <recent name="C:\Users\alcor\Desktop\Uni\TFG\2024-HealthCarer\backEnd\src\main\java\EvaRuiz\HealthCarer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alcor\Desktop\2024-HealthCarer\backEnd\HealthCarer" />
+      <recent name="C:\Users\alcor\Desktop\Uni\TFG\2024-HealthCarer\backEnd\files" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="EvaRuiz.HealthCarer.medication" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.HealthCarerApplication">
+    <configuration name="MedicationRestControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
+      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MedicationRestControllerTests.DeleteMappingOfMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
+      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
+      <option name="METHOD_NAME" value="DeleteMappingOfMedication" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MedicationRestControllerTests.PostMappingOfMedication2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
+      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
+      <option name="METHOD_NAME" value="PostMappingOfMedication2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TakeRestControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
+      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.TakeRestControllerTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TakeRestControllerTests.PutMappingOfTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
+      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.TakeRestControllerTests" />
+      <option name="METHOD_NAME" value="PutMappingOfTake" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="2024-HealthCarer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="EvaRuiz.HealthCarer.HealthCarerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="HealthCarer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="EvaRuiz.HealthCarer.HealthCarerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MedicationRestControllerTests" />
+        <item itemvalue="JUnit.MedicationRestControllerTests.DeleteMappingOfMedication" />
+        <item itemvalue="JUnit.MedicationRestControllerTests.PostMappingOfMedication2" />
+        <item itemvalue="JUnit.TakeRestControllerTests" />
+        <item itemvalue="JUnit.TakeRestControllerTests.PutMappingOfTake" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="" />
+      <created>1727187332616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727187332616</updated>
+      <workItem from="1727187335001" duration="8326000" />
+      <workItem from="1727334835214" duration="1372000" />
+      <workItem from="1727420495462" duration="1206000" />
+      <workItem from="1727421863082" duration="1949000" />
+      <workItem from="1727427208049" duration="1033000" />
+      <workItem from="1727428418715" duration="5274000" />
+      <workItem from="1727676790527" duration="1656000" />
+      <workItem from="1727686984255" duration="209000" />
+      <workItem from="1727703034402" duration="2363000" />
+      <workItem from="1727850665158" duration="6408000" />
+      <workItem from="1727946325018" duration="5296000" />
+      <workItem from="1727951682937" duration="517000" />
+      <workItem from="1728311663224" duration="2351000" />
+      <workItem from="1728314050824" duration="2417000" />
+      <workItem from="1728552657785" duration="4244000" />
+      <workItem from="1728564320697" duration="2128000" />
+      <workItem from="1728566487971" duration="2960000" />
+      <workItem from="1728629785276" duration="338000" />
+      <workItem from="1728886492443" duration="10007000" />
+      <workItem from="1728979546664" duration="8642000" />
+      <workItem from="1729063443896" duration="2776000" />
+      <workItem from="1729185273278" duration="1991000" />
+      <workItem from="1729187296335" duration="464000" />
+      <workItem from="1729241278459" duration="5133000" />
+      <workItem from="1729323955476" duration="3224000" />
+      <workItem from="1729580594366" duration="2434000" />
+      <workItem from="1729667529057" duration="1687000" />
+      <workItem from="1729837241044" duration="131000" />
+      <workItem from="1729837490100" duration="3740000" />
+      <workItem from="1729841299492" duration="791000" />
+      <workItem from="1730130315243" duration="2540000" />
+      <workItem from="1730185370915" duration="7912000" />
+      <workItem from="1730277773888" duration="42000" />
+      <workItem from="1730277830786" duration="2134000" />
+      <workItem from="1730715639899" duration="2906000" />
+      <workItem from="1730722049732" duration="6264000" />
+      <workItem from="1730736927119" duration="849000" />
+      <workItem from="1730788787971" duration="1976000" />
+      <workItem from="1730791029644" duration="12057000" />
+      <workItem from="1730882649653" duration="8176000" />
+      <workItem from="1730965994931" duration="10009000" />
+      <workItem from="1730987784232" duration="2344000" />
+      <workItem from="1731053065119" duration="2752000" />
+      <workItem from="1731224826067" duration="5312000" />
+      <workItem from="1731318507376" duration="613000" />
+      <workItem from="1731319156285" duration="2299000" />
+      <workItem from="1731340156911" duration="1722000" />
+      <workItem from="1731395637750" duration="1000" />
+      <workItem from="1731395654807" duration="3279000" />
+      <workItem from="1731653584824" duration="1000" />
+      <workItem from="1731653651206" duration="6212000" />
+      <workItem from="1731664022721" duration="1240000" />
+      <workItem from="1732038190482" duration="418000" />
+      <workItem from="1732087206680" duration="54000" />
+      <workItem from="1732087292668" duration="143000" />
+      <workItem from="1732087483365" duration="138000" />
+      <workItem from="1732087637549" duration="428000" />
+      <workItem from="1734457782292" duration="847000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed dependecies">
+      <option name="closed" value="true" />
+      <created>1727193297989</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727193297989</updated>
+    </task>
+    <task id="LOCAL-00002" summary="PostMappingOfMedication test implemented">
+      <option name="closed" value="true" />
+      <created>1727423647434</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727423647434</updated>
+    </task>
+    <task id="LOCAL-00003" summary="GetMappingOfAllMedications test implemented">
+      <option name="closed" value="true" />
+      <created>1727677116923</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727677116923</updated>
+    </task>
+    <task id="LOCAL-00004" summary="GetMappingOfOneMedication test implemented">
+      <option name="closed" value="true" />
+      <created>1727677345154</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727677345154</updated>
+    </task>
+    <task id="LOCAL-00005" summary="DeleteMappingOfMedication test implemented">
+      <option name="closed" value="true" />
+      <created>1727677727904</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727677727904</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Displayed names to medication tests">
+      <option name="closed" value="true" />
+      <created>1727678438886</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727678438886</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Testing POST medication with images">
+      <option name="closed" value="true" />
+      <created>1727705298595</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727705298595</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created main Plan structure">
+      <option name="closed" value="true" />
+      <created>1727852939836</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727852939836</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Created main Plan Tests">
+      <option name="closed" value="true" />
+      <created>1727863620726</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727863620726</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Created main Take Tests">
+      <option name="closed" value="true" />
+      <created>1727948304074</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727948304074</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Created User clases">
+      <option name="closed" value="true" />
+      <created>1728553886425</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1728553886425</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed JsonViews">
+      <option name="closed" value="true" />
+      <created>1728568463587</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1728568463587</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Retouched Medication classes">
+      <option name="closed" value="true" />
+      <created>1728987823820</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1728987823820</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Completed Medication tests">
+      <option name="closed" value="true" />
+      <created>1729066177708</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729066177708</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed MedicationDTO views and tests">
+      <option name="closed" value="true" />
+      <created>1729244091301</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729244091301</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed ImageService">
+      <option name="closed" value="true" />
+      <created>1729246463603</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729246463603</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Plan services implemented with DTOs">
+      <option name="closed" value="true" />
+      <created>1729582943108</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729582943108</updated>
+    </task>
+    <task id="LOCAL-00018" summary="PlanRestTests implemented with RestAssured">
+      <option name="closed" value="true" />
+      <created>1729669207387</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729669207387</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Changed relationships between entities">
+      <option name="closed" value="true" />
+      <created>1729842007476</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729842007476</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Take implemented with tests">
+      <option name="closed" value="true" />
+      <created>1730186877059</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1730186877059</updated>
+    </task>
+    <task id="LOCAL-00021" summary="User implemented">
+      <option name="closed" value="true" />
+      <created>1730279956451</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1730279956451</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixed LocalImageService">
+      <option name="closed" value="true" />
+      <created>1730737761915</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1730737761915</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixed relationship between plan and Medication">
+      <option name="closed" value="true" />
+      <created>1730791618168</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1730791618168</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changed DTO from records to clases and added all relationships between entitites">
+      <option name="closed" value="true" />
+      <created>1730820409616</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1730820409616</updated>
+    </task>
+    <task id="LOCAL-00025" summary="User and medication entities reimplemented&#10;Take and plan deleted&#10;Authorization implemented">
+      <option name="closed" value="true" />
+      <created>1730979707229</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1730979707229</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Forgotten imageService interface">
+      <option name="closed" value="true" />
+      <created>1730979904051</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1730979904051</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Local image service working">
+      <option name="closed" value="true" />
+      <created>1731053706724</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731053706724</updated>
+    </task>
+    <task id="LOCAL-00028" summary="FrontEnd introduced">
+      <option name="closed" value="true" />
+      <created>1731253129810</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731253129810</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Register and login forms">
+      <option name="closed" value="true" />
+      <created>1731398942264</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1731398942264</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Missing register components">
+      <option name="closed" value="true" />
+      <created>1731653750471</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1731653750471</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Displayed names to medication tests" />
+    <MESSAGE value="Testing POST medication with images" />
+    <MESSAGE value="Created main Plan structure" />
+    <MESSAGE value="Created main Plan Tests" />
+    <MESSAGE value="Created main Take Tests" />
+    <MESSAGE value="Created User clases" />
+    <MESSAGE value="Fixed JsonViews" />
+    <MESSAGE value="Retouched Medication classes" />
+    <MESSAGE value="Completed Medication tests" />
+    <MESSAGE value="Fixed MedicationDTO views and tests" />
+    <MESSAGE value="Fixed ImageService" />
+    <MESSAGE value="Plan services implemented with DTOs" />
+    <MESSAGE value="PlanRestTests implemented with RestAssured" />
+    <MESSAGE value="Changed relationships between entities" />
+    <MESSAGE value="Take implemented with tests" />
+    <MESSAGE value="User implemented" />
+    <MESSAGE value="Fixed LocalImageService" />
+    <MESSAGE value="Fixed relationship between plan and Medication" />
+    <MESSAGE value="Changed DTO from records to clases and added all relationships between entitites" />
+    <MESSAGE value="User and medication entities reimplemented&#10;Take and plan deleted&#10;Authorization implemented" />
+    <MESSAGE value="Forgotten imageService interface" />
+    <MESSAGE value="Local image service working" />
+    <MESSAGE value="FrontEnd introduced" />
+    <MESSAGE value="Register and login forms" />
+    <MESSAGE value="Missing register components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Missing register components" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.BeanCreationException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

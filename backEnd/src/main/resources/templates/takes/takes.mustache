@@ -1,0 +1,14 @@
+{{>header}}
+
+<h2>Takes</h2>
+<ul class="items">
+    {{#treatments}}
+        <li><a href="/treatments/{{id}}">{{date}}</a></li>
+    {{/treatments}}
+</ul>
+
+{{#logged}}
+    <button onclick="location.href='/takes/newtake'">New take</button>
+{{/logged}}
+
+{{>footer}}

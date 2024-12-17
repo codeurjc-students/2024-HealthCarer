@@ -1,0 +1,26 @@
+{{>header}}
+
+<div>
+
+    <h2>{{treatment.name}}</h2>
+    <div>
+        <p>{{treatment.startDate}}</p>
+        <p>{{treatment.endDate}}</p>
+    </div>
+
+    <div>
+        <p>{{treatment.dispensingFrequency}}</p>
+    </div>
+
+    <div>
+        {{#logged}}
+            <button onclick="location.href='/treatments/removetreatment/{{treatment.id}}'">Remove</button>
+            <button onclick="location.href='/treatments/edittreatment/{{treatment.id}}'">Edit</button>
+        {{/logged}}
+        <br>
+        <button onclick="location.href='/treatments/'">Back to treatments</button>
+    </div>
+
+</div>
+
+{{>footer}}
