@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer.service;
 
 import EvaRuiz.HealthCarer.model.Image;
+import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,12 +20,19 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
+    public void saveImage(Medication medication, MultipartFile image) throws IOException {
+        Image boxImage = new Image(medication.getId().toString(), medication.getName(), image.getContentType(), image.getBytes());
+        medication.setImage(boxImage);
+        this.imageRepository.saveAndFlush(boxImage);
+
+    }
+
 
     public Image save(Image image) {
         return imageRepository.save(image);
     }
 
-    public void save(MultipartFile multipartFile) throws IOException {
+    public Image save(MultipartFile multipartFile) throws IOException {
             Image image = Image.builder()
                     .id(UUID.randomUUID().toString())
                     .boxImage(multipartFile.getBytes())
@@ -31,6 +40,7 @@ public class ImageService {
                     .name(multipartFile.getOriginalFilename())
                     .build();
             this.imageRepository.saveAndFlush(image);
+        return image;
     }
 
 

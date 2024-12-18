@@ -1,26 +1,33 @@
 {{>header}}
 
-<div>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white text-center">
+            <h2>{{treatment.name}}</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Fecha de inicio:</strong> {{treatment.startDate}}</li>
+                <li class="list-group-item"><strong>Fecha de finalización:</strong> {{treatment.endDate}}</li>
+                <li class="list-group-item"><strong>Tiempo entre tomas:</strong> {{treatment.dispensingFrequency}}</li>
+            </ul>
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Medicamentos:</strong></li>
+                {{#treatment.medications}}
+                    <li class="list-group-item">{{name}}</li>
+                {{/treatment.medications}}
+            </ul>
 
-    <h2>{{treatment.name}}</h2>
-    <div>
-        <p>{{treatment.startDate}}</p>
-        <p>{{treatment.endDate}}</p>
+        </div>
+        <div class="card-footer text-center">
+            {{#logged}}
+                <button class="btn btn-primary" onclick="location.href='/treatments/removetreatment/{{treatment.id}}'">Remove</button>
+                <button class="btn btn-primary" onclick="location.href='/treatments/edittreatment/{{treatment.id}}'">Edit</button>
+            {{/logged}}
+            <button class="btn btn-primary" onclick="location.href='/treatments/'">Back to treatments</button>
+        </div>
     </div>
-
-    <div>
-        <p>{{treatment.dispensingFrequency}}</p>
-    </div>
-
-    <div>
-        {{#logged}}
-            <button onclick="location.href='/treatments/removetreatment/{{treatment.id}}'">Remove</button>
-            <button onclick="location.href='/treatments/edittreatment/{{treatment.id}}'">Edit</button>
-        {{/logged}}
-        <br>
-        <button onclick="location.href='/treatments/'">Back to treatments</button>
-    </div>
-
 </div>
 
 {{>footer}}

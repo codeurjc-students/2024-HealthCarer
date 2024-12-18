@@ -25,4 +25,6 @@ public class Image {
     @Basic(fetch = FetchType.LAZY)
     private byte[] boxImage;
 
+
+
 }

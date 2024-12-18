@@ -116,6 +116,12 @@ public class MedicationService {
     }
 
     public Medication setImageAndSave(Medication medication, MultipartFile image) {
+        try {
+            Image img = imageService.save(image);
+            medication.setImage(img);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return medicationRepository.save(medication);
     }
 

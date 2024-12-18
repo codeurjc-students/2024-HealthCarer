@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer.WebController;
 
 import EvaRuiz.HealthCarer.DTO.MedicationDTO;
+import EvaRuiz.HealthCarer.model.Image;
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.ImageService;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -65,9 +67,10 @@ public class MedicationWebController {
     }
 
     @PostMapping("/newmedication")
-    public String newMedication(Model model, @RequestParam String name, @RequestParam Float stock, @RequestParam String instructions, @RequestParam Float dose, @RequestParam MultipartFile boxImage) {
+    public String newMedication(Model model, @RequestParam String name, @RequestParam Float stock, @RequestParam String instructions, @RequestParam Float dose, @RequestParam MultipartFile boxImage) throws IOException {
         User user = addUser(model);
         Medication medication = new Medication();
+
         medication.setName(name);
         medication.setStock(stock);
         medication.setInstructions(instructions);
@@ -76,6 +79,7 @@ public class MedicationWebController {
         userService.save(user);
         medication.setUser(user);
         Medication newMedication = medicationService.createMedication(medication);
+        newMedication = medicationService.setImageAndSave(newMedication, boxImage);
         model.addAttribute("medication", newMedication);
         return "/medications/medication";
     }
