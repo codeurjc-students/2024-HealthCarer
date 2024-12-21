@@ -3,7 +3,6 @@ package EvaRuiz.HealthCarer.Restcontroller;
 import EvaRuiz.HealthCarer.DTO.MedicationDTO;
 
 
-import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.ImageService;
 import EvaRuiz.HealthCarer.service.MedicationService;
 import EvaRuiz.HealthCarer.model.Medication;
@@ -16,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.io.IOException;
 
 import java.util.*;
 
@@ -63,22 +60,12 @@ public class MedicationRestController {
     }
 
 
-
-    @PostMapping("/{id}/image")
-    public ResponseEntity<MedicationDTO> uploadImage(@PathVariable long id, @RequestParam MultipartFile boxImage) throws IOException {
-        Medication medication = medicationService.getMedicationById(id);
-        imageService.save(boxImage);
-        medication = medicationService.updateMedication(id, new MedicationDTO(medication));
-        return ResponseEntity.ok(new MedicationDTO(medication));
-    }
-
-
     @PutMapping("/{id}")
     public ResponseEntity<MedicationDTO> replaceMedication(@PathVariable long id, @RequestBody MedicationDTO newMedicationDTO) {
         medicationService.checkMedication(new Medication(newMedicationDTO));
         Medication oldMedication = medicationService.getMedicationById(id);
         medicationService.assingMedicationProperties(oldMedication, newMedicationDTO.name(), newMedicationDTO.stock(), newMedicationDTO.instructions(), newMedicationDTO.dose());
-        Medication newMedication = medicationService.updateMedication(id, new MedicationDTO(oldMedication));
+        Medication newMedication = medicationService.updateMedication(id, oldMedication);
         return ResponseEntity.ok(new MedicationDTO(newMedication));
 
     }
@@ -88,6 +75,31 @@ public class MedicationRestController {
         Medication medication = medicationService.getMedicationById(id);
         medicationService.deleteMedication(id);
         return ResponseEntity.ok(new MedicationDTO(medication));
+    }
+
+    @PostMapping("/{id}/image")
+    public ResponseEntity<Object> addImage(@PathVariable long id, @RequestParam("image") MultipartFile image) {
+        Medication medication = medicationService.getMedicationById(id);
+        if (medication == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        try {
+            medication.setImage(this.imageService.save(image));
+            medicationService.updateMedication(id, medication);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Object> getImage(@PathVariable long id) {
+        Medication aux = this.medicationService.getMedicationById(id);
+        if (aux == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        try {
+            return this.imageService.createResponseFromImage(aux.getImage().getId());
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

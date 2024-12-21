@@ -76,9 +76,10 @@ public class TakeWebController {
         for (Long id : medications) {
             Medication medication = medicationService.getMedicationById(id);
             take.addMedication(medication);
-            medication.addTake(take);
         }
-        takeService.createTake(take);
-        return "redirect:/takes/";
+        take = takeService.createTake(take);
+        model.addAttribute("take", take);
+
+        return "/takes/take";
     }
 }

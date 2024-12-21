@@ -92,13 +92,14 @@ public class MedicationService {
     }
 
 
-    public Medication updateMedication(Long id, MedicationDTO updatedMedication) {
+    public Medication updateMedication(Long id, Medication updatedMedication) {
         Medication existingMedication = checkMedicationExists(id);
-        checkMedication(new Medication(updatedMedication));
-        existingMedication.setName(updatedMedication.name());
-        existingMedication.setStock(updatedMedication.stock());
-        existingMedication.setInstructions(updatedMedication.instructions());
-        existingMedication.setDose(updatedMedication.dose());
+        checkMedication(updatedMedication);
+        existingMedication.setName(updatedMedication.getName());
+        existingMedication.setStock(updatedMedication.getStock());
+        existingMedication.setInstructions(updatedMedication.getInstructions());
+        existingMedication.setDose(updatedMedication.getDose());
+        existingMedication.setImage(updatedMedication.getImage());
         return medicationRepository.save(existingMedication);
     }
 

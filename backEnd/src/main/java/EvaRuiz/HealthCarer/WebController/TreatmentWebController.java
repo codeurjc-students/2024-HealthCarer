@@ -105,6 +105,8 @@ public class TreatmentWebController {
         addUser(model);
         Treatment treatment = treatmentService.getTreatment(id);
         model.addAttribute("treatment", treatment);
+        model.addAttribute("startDate", treatment.getStartDate());
+        model.addAttribute("endDate", treatment.getEndDate());
         return "/treatments/editTreatmentPage";
     }
 

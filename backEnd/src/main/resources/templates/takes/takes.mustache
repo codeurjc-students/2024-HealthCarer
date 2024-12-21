@@ -2,9 +2,14 @@
 
 <h2>Takes</h2>
 <ul class="items">
-    {{#treatments}}
+    {{#takes}}
         <li><a href="/treatments/{{id}}">{{date}}</a></li>
-    {{/treatments}}
+        <li>{{#medications}}
+            <ul>
+                <li>{{name}}</li>
+            </ul>
+        {{/medications}}</li>
+    {{/takes}}
 </ul>
 
 {{#logged}}

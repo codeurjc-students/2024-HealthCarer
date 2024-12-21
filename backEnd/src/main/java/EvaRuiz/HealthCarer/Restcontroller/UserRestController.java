@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer.Restcontroller;
 
 import EvaRuiz.HealthCarer.DTO.UserDTO;
+import EvaRuiz.HealthCarer.DTO.UserPassDTO;
 import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,21 +43,21 @@ public class UserRestController {
 
 	// Registrar un nuevo usuario
 	@PostMapping("/register")
-	public ResponseEntity<UserDTO> register(@RequestBody User user) {
+	public ResponseEntity<UserDTO> register(@RequestBody UserPassDTO user) {
 		// Validar que la contraseña no sea nula o vacía
-		if (user.getEncodedPassword() == null || user.getEncodedPassword().isEmpty()) {
+		if (user.password() == null || user.password().isEmpty()) {
 			return ResponseEntity.badRequest().body(null);  // Error si la contraseña está vacía
 		}
-
 		// Codificar la contraseña
-		String encodedPassword = passwordEncoder.encode(user.getEncodedPassword());
-		user.setEncodedPassword(encodedPassword);
+		String encodedPassword = passwordEncoder.encode(user.password());
+		User newUser = new User(user.name(), user.email(), encodedPassword, "USER");
 
 		// Guardar el usuario
-		userService.save(user);
+		userService.save(newUser);
 
 		// Crear el objeto de respuesta
-		UserDTO response = new UserDTO(user);
+
+		UserDTO response = new UserDTO(newUser);
 
 		// Retornar el usuario registrado con éxito
 		return ResponseEntity.status(200).body(response);
@@ -65,16 +66,17 @@ public class UserRestController {
 	// Autenticar a un usuario (simulación del login en una API REST)
 
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody User user) {
+	public ResponseEntity<String> login(@RequestBody UserPassDTO user) {
 		// Procesar el usuario recibido
-		String username = user.getName();
-		String password = user.getEncodedPassword();
+		String username = user.name();
+		String password = user.password();
 
 		// Lógica de validación
-		if (username.equals("user") && password.equals("pass")) {
-			return ResponseEntity.ok("Inicio de sesión exitoso.");
-		} else {
+		Optional<User> userFound = userService.findByUserName(username);
+		if (userFound.isEmpty() || !passwordEncoder.matches(password, userFound.get().getEncodedPassword())) {
 			return ResponseEntity.status(401).body("Credenciales incorrectas.");
+		} else {
+			return ResponseEntity.ok("Login exitoso.");
 		}
 	}
 

@@ -174,7 +174,7 @@ public class UserWebController {
     }
 
     @PostMapping("/updateProfile")
-    public String updateProfile(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+    public String updateProfile(@RequestParam("username") String name, @RequestParam String email, @RequestParam String password) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         Optional<User> userOptional = userService.findByUserName(currentUsername);
@@ -183,7 +183,7 @@ public class UserWebController {
             User user = userOptional.get();
             user.setName(name);
             user.setEmail(email);
-            user.setName(passwordEncoder.encode(password)); // Codifica la nueva contraseña
+            user.setEncodedPassword(passwordEncoder.encode(password)); // Codifica la nueva contraseña
             userService.save(user); // Guarda los cambios en el perfil
             return "redirect:/profile"; // Redirigir al perfil después de actualizar
         }

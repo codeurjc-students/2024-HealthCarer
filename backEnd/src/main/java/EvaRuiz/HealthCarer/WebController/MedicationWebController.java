@@ -95,6 +95,8 @@ public class MedicationWebController {
         return "/medications/editMedicationPage";
     }
 
+
+
     @PostMapping("/editmedication/{id}")
     public String editMedication(Model model, @PathVariable Long id, @RequestParam String name, @RequestParam Float stock, @RequestParam String instructions, @RequestParam Float dose) {
         User user = addUser(model);
@@ -106,7 +108,8 @@ public class MedicationWebController {
         medication.setStock(stock);
         medication.setInstructions(instructions);
         medication.setDose(dose);
-        medicationService.createMedication(medication);
+        medication.setImage(medication.getImage());
+        medicationService.updateMedication(id, medication);
         model.addAttribute("medication", medication);
         return "/medications/medication";
     }

@@ -8,12 +8,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    {{#medication.boxImage}}
-                        <img src="/medications/{{medication.id}}/image" alt="{{medication.name}}" class="img-fluid rounded">
-                    {{/medication.boxImage}}
-                    {{^medication.boxImage}}
+                    {{#medication.image}}
+                        <img src="/api/medications/{{medication.id}}/image" alt="{{medication.name}}" class="img-fluid rounded">
+                    {{/medication.image}}
+                    {{^medication.image}}
                         <img src="/images/no_image.png" alt="No image available" class="img-fluid rounded">
-                    {{/medication.boxImage}}
+                    {{/medication.image}}
                 </div>
                 <div class="col-md-8">
                     <ul class="list-group">

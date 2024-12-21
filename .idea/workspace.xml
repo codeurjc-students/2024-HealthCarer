@@ -4,7 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Missing register components" />
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Missing register components">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/MedicationRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/MedicationRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/error.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/error.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/take.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/take.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/takes.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/takes.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/loginerror.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/loginerror.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/keystore.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/static/static/css/error.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/static/static/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/static/static/css/prueba.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/static/static/img/prueba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/static/static/js/prueba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/book.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/bookCreated.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/bookEdited.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/books.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/editBookPage.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/error.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/footer.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/header.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/index.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/login.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/loginerror.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/newBookPage.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/regerror.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/registerform.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/target/classes/templates/removedbook.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="">
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Image.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,15 +63,20 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Record" />
         <option value="Interface" />
         <option value="Class" />
         <option value="HTML File" />
         <option value="TypeScript File" />
+        <option value="Record" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -43,6 +96,25 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java">
+      <ranges>
+        <range start1="78" end1="79" start2="78" end2="78" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="80" end1="82" start2="79" end2="83" changelist="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Image.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="4" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="6" end1="7" start2="6" end2="7" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="12" end1="14" start2="12" end2="12" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="23" end1="24" start2="21" end2="22" changelist="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" />
+        <range start1="27" end1="27" start2="25" end2="42" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="28" end1="28" start2="43" end2="46" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+        <range start1="29" end1="29" start2="47" end2="66" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -97,11 +169,12 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.HealthCarerApplication (1).executor": "Run",
     "Spring Boot.HealthCarerApplication.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "features",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/alcor/Desktop/2024-HealthCarer",
     "node.js.detected.package.eslint": "true",
@@ -113,7 +186,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "CodeWithMe",
     "show.migrate.to.gradle.popup": "false",
     "ts.external.directory.path": "C:\\Users\\alcor\\Desktop\\Uni\\TFG\\2024-HealthCarer\\frontEnd\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -142,89 +215,17 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.HealthCarerApplication">
-    <configuration name="MedicationRestControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
-      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MedicationRestControllerTests.DeleteMappingOfMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
-      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
-      <option name="METHOD_NAME" value="DeleteMappingOfMedication" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MedicationRestControllerTests.PostMappingOfMedication2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
-      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.MedicationRestControllerTests" />
-      <option name="METHOD_NAME" value="PostMappingOfMedication2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TakeRestControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
-      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.TakeRestControllerTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TakeRestControllerTests.PutMappingOfTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="EvaRuiz.HealthCarer" />
-      <option name="MAIN_CLASS_NAME" value="EvaRuiz.HealthCarer.TakeRestControllerTests" />
-      <option name="METHOD_NAME" value="PutMappingOfTake" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="2024-HealthCarer" />
+      <module name="HealthCarer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="EvaRuiz.HealthCarer.HealthCarerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -239,11 +240,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MedicationRestControllerTests" />
-        <item itemvalue="JUnit.MedicationRestControllerTests.DeleteMappingOfMedication" />
-        <item itemvalue="JUnit.MedicationRestControllerTests.PostMappingOfMedication2" />
-        <item itemvalue="JUnit.TakeRestControllerTests" />
-        <item itemvalue="JUnit.TakeRestControllerTests.PutMappingOfTake" />
+        <item itemvalue="Spring Boot.HealthCarerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -321,6 +318,10 @@
       <workItem from="1732087483365" duration="138000" />
       <workItem from="1732087637549" duration="428000" />
       <workItem from="1734457782292" duration="847000" />
+      <workItem from="1734458882800" duration="1645000" />
+      <workItem from="1734505143201" duration="5625000" />
+      <workItem from="1734519652166" duration="2503000" />
+      <workItem from="1734765077998" duration="8713000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -610,11 +611,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
+        <breakpoint type="java-exception">
           <properties class="org.springframework.beans.factory.BeanCreationException" package="org.springframework.beans.factory" />
           <option name="timeStamp" value="1" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

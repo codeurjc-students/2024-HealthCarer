@@ -3,8 +3,11 @@
 <div>
 
     <h2>{{take.date}}</h2>
-
-
+    <ul class="items">
+        {{#take.medications}}
+            <li>{{name}}</li>
+        {{/take.medications}}
+    </ul>
     <div>
         {{#logged}}
             <button onclick="location.href='/takes/removetake/{{take.id}}'">Remove</button>

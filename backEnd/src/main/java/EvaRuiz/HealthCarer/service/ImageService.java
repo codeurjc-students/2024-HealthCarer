@@ -20,16 +20,12 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
-    public void saveImage(Medication medication, MultipartFile image) throws IOException {
-        Image boxImage = new Image(medication.getId().toString(), medication.getName(), image.getContentType(), image.getBytes());
-        medication.setImage(boxImage);
+    public void saveImage(String id, MultipartFile image) throws IOException {
+        Image boxImage = imageRepository.findById(id).orElseThrow(() -> new RuntimeException("Image not found"));
+        boxImage.setBoxImage(image.getBytes());
+        boxImage.setContentType(image.getContentType());
+        boxImage.setName(image.getOriginalFilename());
         this.imageRepository.saveAndFlush(boxImage);
-
-    }
-
-
-    public Image save(Image image) {
-        return imageRepository.save(image);
     }
 
     public Image save(MultipartFile multipartFile) throws IOException {
@@ -43,10 +39,9 @@ public class ImageService {
         return image;
     }
 
-
-    public ResponseEntity<Object> createResponseFromImage(Image image) {
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, image.getContentType()).body(image.getBoxImage());
+    public ResponseEntity<Object> createResponseFromImage(String id) {
+        Optional<Image> image = imageRepository.findById(id);
+        return image.<ResponseEntity<Object>>map(value -> ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, value.getContentType()).body(value.getBoxImage())).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 
 }
