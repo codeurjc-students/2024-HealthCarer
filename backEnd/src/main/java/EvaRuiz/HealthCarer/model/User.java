@@ -117,60 +117,7 @@ public class User {
         this.roles = roles;
     }
 
-    public void addTreatment(Treatment treatment) {
-        if (treatments == null) {
-            treatments = new ArrayList<>();
-        }
-        if (!treatments.contains(treatment)) {
-            treatments.add(treatment);
-            treatment.setUser(this);
-        }
-    }
-
-    public void removeTreatment(Treatment treatment) {
-        if (treatments != null && treatments.contains(treatment)) {
-            treatments.remove(treatment);
-            if (treatment.getUser().equals(this)) {
-                treatment.setUser(null);
-            }
-        }
-    }
-
-    public void addMedication(Medication medication) {
-        if (medications == null) {
-            medications = new ArrayList<>();
-        }
-        if (!medications.contains(medication)) {
-            medications.add(medication);
-            medication.setUser(this);
-        }
-    }
-
-    public void removeMedication(Medication medication) {
-        if (medications != null && medications.contains(medication)) {
-            medications.remove(medication);
-            if (medication.getUser().equals(this)) {
-                medication.setUser(null);
-            }
-        }
-    }
-
-    public void addTake(Take take) {
-        if (takes == null) {
-            takes = new ArrayList<>();
-        }
-        if (!takes.contains(take)) {
-            takes.add(take);
-            take.setUser(this);
-        }
-    }
-
-    public void removeTake(Take take) {
-        if (takes != null && takes.contains(take)) {
-            takes.remove(take);
-            if (take.getUser().equals(this)) {
-                take.setUser(null);
-            }
-        }
+    public void addRole(String role) {
+        this.roles.add(role);
     }
 }

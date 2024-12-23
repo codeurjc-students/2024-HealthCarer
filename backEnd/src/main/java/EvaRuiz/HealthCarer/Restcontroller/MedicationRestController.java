@@ -3,6 +3,8 @@ package EvaRuiz.HealthCarer.Restcontroller;
 import EvaRuiz.HealthCarer.DTO.MedicationDTO;
 
 
+import EvaRuiz.HealthCarer.model.LoggedUser;
+import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.ImageService;
 import EvaRuiz.HealthCarer.service.MedicationService;
 import EvaRuiz.HealthCarer.model.Medication;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,9 +31,7 @@ public class MedicationRestController {
     @Autowired
     private MedicationService medicationService;
     @Autowired
-    private TreatmentService treatmentService;
-    @Autowired
-    private UserService userService;
+    private LoggedUser loggedUser;
     @Autowired
     private ImageService imageService;
 
@@ -39,7 +41,9 @@ public class MedicationRestController {
     public ResponseEntity<List<MedicationDTO>> getMedications() {
         List<MedicationDTO> medicationsDTO = new ArrayList<>();
         for (Medication medication : medicationService.getAllMedications()) {
-            medicationsDTO.add(new MedicationDTO(medication));
+            if (medication.getUser().equals(loggedUser.getLoggedUser())) {
+                medicationsDTO.add(new MedicationDTO(medication));
+            }
         }
         return ResponseEntity.ok(medicationsDTO);
     }

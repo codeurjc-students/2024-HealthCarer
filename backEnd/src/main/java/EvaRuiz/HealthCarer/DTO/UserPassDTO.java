@@ -18,6 +18,6 @@ public record UserPassDTO(Long id,
 
     @Override
     public int compareTo(UserPassDTO o) {
-        return this.email.compareTo(o.email);
+        return this.name.compareTo(o.name);
     }
 }

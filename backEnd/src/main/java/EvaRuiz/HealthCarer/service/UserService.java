@@ -7,6 +7,7 @@ import EvaRuiz.HealthCarer.repository.TreatmentRepository;
 import EvaRuiz.HealthCarer.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -25,6 +26,8 @@ public class UserService {
     private final TreatmentRepository treatmentRepository;
 
     private final TakeRepository takeRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     private User checkUserExistAndGet(Long id) {
         Optional<User> user = userRepository.findById(id);
@@ -56,7 +59,13 @@ public class UserService {
 
     public User createUser(User user) {
         checkUser(user);
-        return userRepository.save(user);
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User already exists");
+        } else{
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            return userRepository.save(user);
+        }
+
     }
 
     public void deleteUser(User user) {
@@ -72,7 +81,7 @@ public class UserService {
         checkUser(user);
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
-        existingUser.setEncodedPassword(user.getEncodedPassword());
+        existingUser.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
         userRepository.save(existingUser);
     }
 
@@ -81,20 +90,20 @@ public class UserService {
     }
 
     public User save(User user) {
-        checkUser(user); // Valida que el usuario tenga los campos requeridos
-        return userRepository.save(user); // Si es nuevo o existe, lo guarda/actualiza
+        checkUser(user);
+        return userRepository.save(user);
     }
 
     public void deleteUserById(Long id) {
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
-            userRepository.deleteById(id); // Elimina el usuario de la base de datos por su ID
+            userRepository.deleteById(id); //
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
     }
 
     public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);  // Busca un usuario por su email
+        return userRepository.findByEmail(email);
     }
 }
