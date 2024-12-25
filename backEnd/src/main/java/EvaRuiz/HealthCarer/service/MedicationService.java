@@ -2,12 +2,10 @@ package EvaRuiz.HealthCarer.service;
 
 
 
-import EvaRuiz.HealthCarer.DTO.MedicationDTO;
 import EvaRuiz.HealthCarer.model.*;
 import EvaRuiz.HealthCarer.repository.MedicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +24,6 @@ import java.util.stream.Collectors;
 public class MedicationService {
 
     private final MedicationRepository medicationRepository;
-
-    private final TreatmentService treatmentService;
 
     private final UserService userService;
     private final ImageService imageService;

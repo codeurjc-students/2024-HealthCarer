@@ -27,16 +27,16 @@ public class RestSecurityConfig {
         http.securityMatcher("/api/**")
                 .authorizeHttpRequests(auth -> auth
                         // URLs that need authentication to access to it
-                        .requestMatchers(HttpMethod.POST, "/api/medications/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.PUT, "/api/medications/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/medications/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/treatments/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.PUT, "/api/treatments/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/treatments/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/takes/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.PUT, "/api/takes/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/takes/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/medications/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/medications/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/medications/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/treatments/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/treatments/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/treatments/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/takes/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/takes/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/takes/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/users/**").authenticated()
 
                         // Other URLs can be accessed without authentication
                         .anyRequest().permitAll())

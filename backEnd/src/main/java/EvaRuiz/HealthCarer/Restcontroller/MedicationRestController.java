@@ -39,6 +39,7 @@ public class MedicationRestController {
 
     @GetMapping("/")
     public ResponseEntity<List<MedicationDTO>> getMedications() {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<MedicationDTO> medicationsDTO = new ArrayList<>();
         for (Medication medication : medicationService.getAllMedications()) {
             if (medication.getUser().equals(loggedUser.getLoggedUser())) {

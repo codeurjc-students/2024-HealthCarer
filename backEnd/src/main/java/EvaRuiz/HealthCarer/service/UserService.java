@@ -53,10 +53,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(Long id) {
-        return checkUserExistAndGet(id);
-    }
-
     public User createUser(User user) {
         checkUser(user);
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
@@ -76,13 +72,13 @@ public class UserService {
         userRepository.delete(existingUser);
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         User existingUser = checkUserExistAndGet(user.getId());
         checkUser(user);
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
         existingUser.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
-        userRepository.save(existingUser);
+        return userRepository.save(existingUser);
     }
 
     public Optional<User> findByUserName(String username) {
@@ -106,4 +102,7 @@ public class UserService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+
+
 }

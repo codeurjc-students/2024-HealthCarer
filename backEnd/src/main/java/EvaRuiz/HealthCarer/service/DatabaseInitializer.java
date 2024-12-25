@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
 
+import java.util.List;
+
 
 @Service
 public class DatabaseInitializer {
@@ -53,6 +55,12 @@ public class DatabaseInitializer {
 		takeRepository.deleteAll();
 
 
+		// Sample users
+		User user1 = new User("user", "user1@example.com", passwordEncoder.encode("pass"), "USER");
+
+		User user2 = new User("admin", "admin@example.com", passwordEncoder.encode("adminpass"), "USER", "ADMIN");
+
+
 		// Sample medications
 		Medication medication1 = new Medication();
 		medication1.setName("Paracetamol");
@@ -68,10 +76,6 @@ public class DatabaseInitializer {
 		medication2.setInstructions("Tomar con comida");
 
 
-		// Sample users
-		User user1 = new User("user", "user1@example.com", passwordEncoder.encode("pass"), "USER");
-
-		User user2 = new User("admin", "admin@example.com", passwordEncoder.encode("adminpass"), "USER", "ADMIN");
 
 
 		//Sample treatments
@@ -86,8 +90,10 @@ public class DatabaseInitializer {
 		Take take1 = new Take();
 		take1.setDate(java.sql.Date.valueOf("2021-01-01"));
 
+
 		// Relaciones
 		medication1.setUser(user2);
+		medication2.setUser(user1);
 
 
 
