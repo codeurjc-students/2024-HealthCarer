@@ -31,8 +31,6 @@ public class TakeWebController {
     private UserService userService;
     @Autowired
     private MedicationService medicationService;
-    @Autowired
-    private MedicationRepository medicationRepository;
 
     private User addUser(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -75,11 +73,36 @@ public class TakeWebController {
         take.setUser(user);
         for (Long id : medications) {
             Medication medication = medicationService.getMedicationById(id);
-            take.addMedication(medication);
+            take.getMedications().add(medication);
         }
         take = takeService.createTake(take);
         model.addAttribute("take", take);
+        return "/takes/take";
+    }
 
+    @GetMapping("/edittake/{id}")
+    public String editTake(Model model, @PathVariable Long id) {
+        User user = addUser(model);
+        Take take = takeService.getTake(id);
+        List<Medication> medicationsList = user.getMedications();
+        medicationsList.removeAll(take.getMedications());
+        model.addAttribute("medications", medicationsList);
+        model.addAttribute("take", take);
+        return "/takes/editTakePage";
+    }
+
+    @PostMapping("/edittake/{id}")
+    public String editTake(Model model, @PathVariable Long id, @RequestParam String date ,@RequestParam("medications") List<Long> medications) {
+        User user = addUser(model);
+        Take take = takeService.getTake(id);
+        take.setDate(java.sql.Date.valueOf(date));
+        take.getMedications().clear();
+        for (Long idMed : medications) {
+            Medication medication = medicationService.getMedicationById(idMed);
+            take.getMedications().add(medication);
+        }
+        take = takeService.updateTake(id, new TakeDTO(take));
+        model.addAttribute("take", take);
         return "/takes/take";
     }
 }

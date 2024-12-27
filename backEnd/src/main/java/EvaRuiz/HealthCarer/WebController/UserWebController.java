@@ -24,44 +24,44 @@ public class UserWebController {
     private UserService userService;
 
     @Autowired
-    private PasswordEncoder passwordEncoder; // Inyecta el PasswordEncoder
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String login () {
-        return "/users/login"; // La vista del formulario de login
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return "/users/login";
+        } else {
+            return "redirect:/index";
+        }
     }
 
     @RequestMapping("/loginerror")
     public String loginError() {
-        return "/users/loginerror"; // Vista de error de login
+        return "/users/loginerror";
     }
 
 
     @PostMapping("/login")
     public String loginUser(@RequestParam String username, @RequestParam String password, Model model, RedirectAttributes redirectAttributes) {
-        // Verificar si el usuario existe en la base de datos
+
         User user = userService.findByUserName(username).orElse(null);
 
-        // Verificar si el usuario existe y si la contraseña es correcta
         if (user != null && passwordEncoder.matches(password, user.getEncodedPassword())) {
-            // Crear un objeto de autenticación
+
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     username,
-                    password // O roles del usuario si tienes configurado roles
+                    password
             );
 
-            // Establecer la autenticación en el contexto de seguridad
+
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            // Set "logged" attribute to true in flash attributes so it carries over after redirect
             redirectAttributes.addFlashAttribute("logged", true);
-            redirectAttributes.addFlashAttribute("userName", username);  // Optionally add the username
-
-            // Redirigir al perfil del usuario después de iniciar sesión correctamente
-            return "redirect:/profile"; // Redirect to the user's profile page
+            redirectAttributes.addFlashAttribute("userName", username);
+            model.addAttribute("user", user);
+            return "redirect:/profile";
         } else {
-            // Si las credenciales son incorrectas, mostrar un mensaje de error
-            return "redirect:/loginerror"; // Redirigir al formulario de login
+            return "redirect:/loginerror";
         }
     }
 

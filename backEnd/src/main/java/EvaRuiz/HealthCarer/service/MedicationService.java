@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 public class MedicationService {
 
     private final MedicationRepository medicationRepository;
-
-    private final UserService userService;
     private final ImageService imageService;
 
 
@@ -53,24 +51,8 @@ public class MedicationService {
         }
     }
 
-    public void assingMedicationProperties(Medication oldMedication, String name, Float stock, String instructions, Float dose) {
-        oldMedication.setName(name);
-        oldMedication.setStock(stock);
-        oldMedication.setInstructions(instructions);
-        oldMedication.setDose(dose);
-    }
-
     public List<Medication> getAllMedications() {
         return medicationRepository.findAll().stream().sorted(Comparator.comparing(Medication::getStock)).collect(Collectors.toList());
-    }
-
-    public List<Medication> getMedicationsByUser(String name) {
-        Optional<User> user = userService.findByUserName(name);
-        if (user.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        } else {
-            return user.get().getMedications().stream().sorted(Comparator.comparing(Medication::getStock)).collect(Collectors.toList());
-        }
     }
 
     public Medication createMedication(Medication medication) {

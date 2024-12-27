@@ -15,8 +15,8 @@ services:
     image: mysql:8.0.36
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=eventcrafters
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=healthcarer
     volumes:
       - ./mysql:/var/lib/mysql
 

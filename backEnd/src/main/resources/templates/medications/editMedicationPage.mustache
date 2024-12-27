@@ -8,7 +8,7 @@
                     <h3>Editar medicación</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/medications/editmedication/{{medication.id}}" method="POST">
+                    <form action="/medications/editmedication/{{medication.id}}" enctype="multipart/form-data" method="POST">
 
                         <div class="form-group">
                             <label for="name">Nombre</label>
@@ -31,8 +31,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="boxImage">Foto de la caja</label>
-                            <input type="image" class="form-control" name="boxImage" id="boxImage">
+                            <label for="boxImage">Foto de la caja</label><br>
+                            <input type="file" alt="Foto de la caja" name="boxImage" id="boxImage">
                         </div>
 
 
@@ -41,7 +41,7 @@
 
                     <div class="card mt-3">
                         <div class="card-body text-center">
-                            <a href="/medications/">Volver</a>
+                            <a href="/medications/{{medication.id}}">Volver</a>
                         </div>
                     </div>
                 </div>

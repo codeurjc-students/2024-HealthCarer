@@ -4,17 +4,13 @@ import EvaRuiz.HealthCarer.DTO.MedicationDTO;
 
 
 import EvaRuiz.HealthCarer.model.LoggedUser;
-import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.ImageService;
 import EvaRuiz.HealthCarer.service.MedicationService;
 import EvaRuiz.HealthCarer.model.Medication;
-import EvaRuiz.HealthCarer.service.TreatmentService;
-import EvaRuiz.HealthCarer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,20 +42,27 @@ public class MedicationRestController {
                 medicationsDTO.add(new MedicationDTO(medication));
             }
         }
-        return ResponseEntity.ok(medicationsDTO);
+        return new ResponseEntity<>(medicationsDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MedicationDTO> getOneMedication(@PathVariable long id) {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication medication = medicationService.getMedicationById(id);
         MedicationDTO medicationDTO = new MedicationDTO(medication);
-        return ResponseEntity.ok(medicationDTO);
+        if (medication.getUser().equals(loggedUser.getLoggedUser())) {
+            return new ResponseEntity<>(medicationDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @PostMapping("/")
     public ResponseEntity<MedicationDTO> createMedication(@RequestBody MedicationDTO medicationDTO) {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication medication = new Medication(medicationDTO);
-        medicationService.checkMedication(medication);
+        medication.setUser(loggedUser.getLoggedUser());
+        loggedUser.getLoggedUser().getMedications().add(medication);
         medication = medicationService.createMedication(medication);
         return ResponseEntity.ok(new MedicationDTO(medication));
     }
@@ -67,25 +70,34 @@ public class MedicationRestController {
 
     @PutMapping("/{id}")
     public ResponseEntity<MedicationDTO> replaceMedication(@PathVariable long id, @RequestBody MedicationDTO newMedicationDTO) {
-        medicationService.checkMedication(new Medication(newMedicationDTO));
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication oldMedication = medicationService.getMedicationById(id);
-        medicationService.assingMedicationProperties(oldMedication, newMedicationDTO.name(), newMedicationDTO.stock(), newMedicationDTO.instructions(), newMedicationDTO.dose());
-        Medication newMedication = medicationService.updateMedication(id, oldMedication);
+        if (oldMedication == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        if (!oldMedication.getUser().equals(loggedUser.getLoggedUser())) {return new ResponseEntity<>(HttpStatus.FORBIDDEN);}
+        Medication newMedication = new Medication(newMedicationDTO);
+        newMedication.setId(id);
+        newMedication.setUser(loggedUser.getLoggedUser());
+        newMedication = medicationService.updateMedication(id, newMedication);
         return ResponseEntity.ok(new MedicationDTO(newMedication));
 
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<MedicationDTO> deleteMedication(@PathVariable long id) {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication medication = medicationService.getMedicationById(id);
+        if (medication == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        if (!medication.getUser().equals(loggedUser.getLoggedUser())) {return new ResponseEntity<>(HttpStatus.FORBIDDEN);}
         medicationService.deleteMedication(id);
         return ResponseEntity.ok(new MedicationDTO(medication));
     }
 
     @PostMapping("/{id}/image")
     public ResponseEntity<Object> addImage(@PathVariable long id, @RequestParam("image") MultipartFile image) {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication medication = medicationService.getMedicationById(id);
         if (medication == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        if (!medication.getUser().equals(loggedUser.getLoggedUser())) {return new ResponseEntity<>(HttpStatus.FORBIDDEN);}
         try {
             medication.setImage(this.imageService.save(image));
             medicationService.updateMedication(id, medication);
@@ -98,6 +110,7 @@ public class MedicationRestController {
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> getImage(@PathVariable long id) {
+        loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Medication aux = this.medicationService.getMedicationById(id);
         if (aux == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
         try {

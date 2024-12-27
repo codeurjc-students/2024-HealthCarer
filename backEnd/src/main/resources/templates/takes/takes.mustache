@@ -1,19 +1,22 @@
 {{>header}}
+<div class="container mt-5">
+    <div class="text-center">
+        <h2>Mis tomas</h2>
+    </div>
 
-<h2>Takes</h2>
-<ul class="items">
-    {{#takes}}
-        <li><a href="/treatments/{{id}}">{{date}}</a></li>
-        <li>{{#medications}}
-            <ul>
-                <li>{{name}}</li>
-            </ul>
-        {{/medications}}</li>
-    {{/takes}}
-</ul>
+    <ul class="list-group">
+        {{#takes}}
+            <li class="list-group-item">
+                <a href="/takes/{{id}}" class="text-decoration-none text-primary">{{date}}</a>
+            </li>
+        {{/takes}}
+    </ul>
 
-{{#logged}}
-    <button onclick="location.href='/takes/newtake'">New take</button>
-{{/logged}}
+    {{#logged}}
+        <div class="text-center mt-4">
+            <button class="btn btn-success" onclick="location.href='/takes/newtake'">Nueva toma</button>
+        </div>
+    {{/logged}}
+</div>
 
 {{>footer}}

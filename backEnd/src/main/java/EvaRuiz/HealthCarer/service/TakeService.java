@@ -3,9 +3,11 @@ package EvaRuiz.HealthCarer.service;
 import EvaRuiz.HealthCarer.DTO.TakeDTO;
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.Take;
+import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.repository.TakeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 

@@ -1,22 +1,33 @@
 {{>header}}
 
-<div>
-
-    <h2>{{take.date}}</h2>
-    <ul class="items">
-        {{#take.medications}}
-            <li>{{name}}</li>
-        {{/take.medications}}
-    </ul>
-    <div>
-        {{#logged}}
-            <button onclick="location.href='/takes/removetake/{{take.id}}'">Remove</button>
-            <button onclick="location.href='/takes/edittake/{{take.id}}'">Edit</button>
-        {{/logged}}
-        <br>
-        <button onclick="location.href='/takes/'">Back to takes</button>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white text-center">
+            <h2>Detalles de la toma</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Fecha:</strong>
+                    {{take.date}}
+                </li>
+                <li class="list-group-item">
+                    {{#take.medications}}
+                        <ul class="items">
+                            <li class="text-decoration-none text-primary">{{name}}</li>
+                        </ul>
+                    {{/take.medications}}
+                </li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            {{#logged}}
+                <button class="btn btn-primary" onclick="location.href='/takes/removetake/{{take.id}}'">Borrar</button>
+                <button class="btn btn-primary" onclick="location.href='/takes/edittake/{{take.id}}'">Editar</button>
+            {{/logged}}
+            <button class="btn btn-primary" onclick="location.href='/takes/'">Volver</button>
+        </div>
     </div>
-
 </div>
 
 {{>footer}}

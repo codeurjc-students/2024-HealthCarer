@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,13 +68,14 @@ public class DatabaseInitializer {
 		medication1.setStock(10f);
 		medication1.setDose(1f);
 		medication1.setInstructions("Tomar con agua");
-
+		medication1.setUser(user2);
 
 		Medication medication2 = new Medication();
 		medication2.setName("Ibuprofeno");
 		medication2.setStock(5f);
 		medication2.setDose(1f);
 		medication2.setInstructions("Tomar con comida");
+		medication2.setUser(user1);
 
 
 
@@ -84,18 +86,19 @@ public class DatabaseInitializer {
 		treatment1.setDispensingFrequency(2);
 		treatment1.setStartDate(java.sql.Date.valueOf("2021-01-01"));
 		treatment1.setEndDate(java.sql.Date.valueOf("2021-01-31"));
+		treatment1.getMedications().add(medication1);
 
 
 		//Sample takes
 		Take take1 = new Take();
 		take1.setDate(java.sql.Date.valueOf("2021-01-01"));
+		take1.getMedications().add(medication1);
 
 
-		// Relaciones
-		medication1.setUser(user2);
-		medication2.setUser(user1);
-
-
+		user2.getTreatments().add(treatment1);
+		treatment1.setUser(user2);
+		user2.getTakes().add(take1);
+		take1.setUser(user2);
 
 
 		medicationRepository.save(medication1);
@@ -104,5 +107,7 @@ public class DatabaseInitializer {
 		userRepository.save(user2);
 		treatmentRepository.save(treatment1);
 		takeRepository.save(take1);
+
+
 	}
 }

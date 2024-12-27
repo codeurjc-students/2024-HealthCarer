@@ -34,10 +34,9 @@ public class MedicationRestTest {
         medication1.setInstructions("Tomar con agua");
 
         MedicationRepository medicationRepository = mock(MedicationRepository.class);
-        UserService userService = mock(UserService.class);
         ImageService imageService = mock(ImageService.class);
         when(medicationRepository.save(medication1)).thenReturn(medication1);
-        MedicationService medicationService = new MedicationService(medicationRepository, userService, imageService);
+        MedicationService medicationService = new MedicationService(medicationRepository, imageService);
 
         // When
         Medication createdMedication = medicationService.createMedication(medication1);
