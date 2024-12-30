@@ -1,14 +1,22 @@
 {{>header}}
 
-<h2>Treatments</h2>
-<ul class="items">
-    {{#treatments}}
-        <li><a href="/treatments/{{id}}">{{name}}</a></li>
-    {{/treatments}}
-</ul>
+<div class="container mt-5">
+    <div class="text-center">
+        <h2>Mis tratamientos</h2>
+    </div>
 
-{{#logged}}
-    <button onclick="location.href='/treatments/newtreatment'">New treatment</button>
-{{/logged}}
+    <ul class="list-group">
+        {{#treatments}}
+            <li class="list-group-item">
+                <a class="text-decoration-none text-primary" href="/treatments/{{id}}">{{name}}</a>            </li>
+        {{/treatments}}
+    </ul>
+
+    {{#logged}}
+        <div class="text-center mt-4">
+            <button class="btn btn-success" onclick="location.href='/treatments/newtreatment'">Nuevo tratamiento</button>
+        </div>
+    {{/logged}}
+</div>
 
 {{>footer}}

@@ -68,7 +68,7 @@ public class TakeRestController {
         if (existingTake == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
         if (!existingTake.getUser().equals(loggedUser.getLoggedUser())) {return new ResponseEntity<>(HttpStatus.FORBIDDEN);}
         Take take = new Take(takeDTO);
-        take = takeService.updateTake(id, new TakeDTO(take));
+        take = takeService.updateTake(id, take);
         return ResponseEntity.ok(new TakeDTO(take));
     }
 

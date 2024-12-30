@@ -77,7 +77,6 @@ public class MedicationWebController {
         medication.setInstructions(instructions);
         medication.setDose(dose);
         user.getMedications().add(medication);
-        userService.save(user);
         medication.setUser(user);
         Medication newMedication = medicationService.createMedication(medication);
         newMedication = medicationService.setImageAndSave(newMedication, boxImage);
@@ -123,7 +122,6 @@ public class MedicationWebController {
             user.getMedications().remove(medication);
             medication.setUser(null);
             medicationService.deleteMedication(id);
-            userService.save(user);
             model.addAttribute("medications", user.getMedications());
             return "/medications/medications";
         } else {

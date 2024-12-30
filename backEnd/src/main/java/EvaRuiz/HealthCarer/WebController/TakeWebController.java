@@ -1,11 +1,9 @@
 package EvaRuiz.HealthCarer.WebController;
 
-import EvaRuiz.HealthCarer.DTO.MedicationDTO;
 import EvaRuiz.HealthCarer.DTO.TakeDTO;
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.Take;
 import EvaRuiz.HealthCarer.model.User;
-import EvaRuiz.HealthCarer.repository.MedicationRepository;
 import EvaRuiz.HealthCarer.service.MedicationService;
 import EvaRuiz.HealthCarer.service.TakeService;
 import EvaRuiz.HealthCarer.service.UserService;
@@ -16,10 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/takes")
@@ -93,7 +88,7 @@ public class TakeWebController {
 
     @PostMapping("/edittake/{id}")
     public String editTake(Model model, @PathVariable Long id, @RequestParam String date ,@RequestParam("medications") List<Long> medications) {
-        User user = addUser(model);
+        addUser(model);
         Take take = takeService.getTake(id);
         take.setDate(java.sql.Date.valueOf(date));
         take.getMedications().clear();
@@ -101,8 +96,23 @@ public class TakeWebController {
             Medication medication = medicationService.getMedicationById(idMed);
             take.getMedications().add(medication);
         }
-        take = takeService.updateTake(id, new TakeDTO(take));
+        take = takeService.updateTake(id, take);
         model.addAttribute("take", take);
         return "/takes/take";
+    }
+
+    @GetMapping("/removetake/{id}")
+    public String deleteTake(Model model, @PathVariable Long id) {
+        User user = addUser(model);
+        Take take = takeService.getTake(id);
+        if (user.getTakes().contains(take)) {
+            user.getTakes().remove(take);
+            take.setUser(null);
+            takeService.deleteTake(id);
+            model.addAttribute("takes", user.getTakes());
+            return "/takes/takes";
+        } else {
+            return "/error";
+        }
     }
 }

@@ -8,7 +8,7 @@
                     <h3>Editar tratamiento</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/treatments/newtreatment" method="POST">
+                    <form action="/treatments/edittreatment/{{id}}" method="POST">
 
                         <div class="form-group">
                             <label for="name">Nombre</label>
@@ -35,14 +35,20 @@
                             {{#medications}}
                                 <label>
                                     {{name}}
-                                    <input type="checkbox" name="medication" value="{{id}}">
+                                    <input type="checkbox" name="medication" value="{{id}}" checked>
                                 </label> <br>
                             {{/medications}}
+                            {{#medicationsList}}
+                                <label>
+                                    {{name}}
+                                    <input type="checkbox" name="medication" value="{{id}}">
+                                </label> <br>
+                            {{/medicationsList}}
 
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Crear</button>
+                        <button type="submit" class="btn btn-primary btn-block">Editar</button>
                     </form>
 
                     <div class="card mt-3">

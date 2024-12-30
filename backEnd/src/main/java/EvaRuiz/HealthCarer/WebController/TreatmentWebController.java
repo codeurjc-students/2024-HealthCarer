@@ -31,13 +31,10 @@ public class TreatmentWebController {
 
     @Autowired
     private TreatmentService treatmentService;
-
     @Autowired
     private UserService userService;
     @Autowired
     private MedicationService medicationService;
-    @Autowired
-    private MedicationRepository medicationRepository;
     @Autowired
     private UserRepository userRepository;
 
@@ -94,7 +91,6 @@ public class TreatmentWebController {
         }
         treatment.setMedications(meds);
         user.getTreatments().add(treatment);
-        userRepository.save(user);
         Treatment newTreatment = treatmentService.createTreatment(treatment);
         model.addAttribute("treatment", newTreatment);
         return "/treatments/treatment";
@@ -102,23 +98,27 @@ public class TreatmentWebController {
 
     @GetMapping("/edittreatment/{id}")
     public String editTreatment(Model model, @PathVariable Long id) {
-        addUser(model);
+        User user = addUser(model);
         Treatment treatment = treatmentService.getTreatment(id);
+        List<Medication> medications = user.getMedications();
+        medications.removeAll(treatment.getMedications());
         model.addAttribute("treatment", treatment);
         model.addAttribute("startDate", treatment.getStartDate());
         model.addAttribute("endDate", treatment.getEndDate());
+        model.addAttribute("medications", treatment.getMedications());
+        model.addAttribute("medicationsList", medications);
         return "/treatments/editTreatmentPage";
     }
 
     @PostMapping("/edittreatment/{id}")
-    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, @RequestParam Date startDate, @RequestParam Date endDate, @RequestParam int dispensingFrequency) {
+    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency) {
         addUser(model);
         Treatment treatment = treatmentService.getTreatment(id);
         treatment.setName(name);
-        treatment.setStartDate(startDate);
-        treatment.setEndDate(endDate);
+        treatment.setStartDate(java.sql.Date.valueOf(startDate));
+        treatment.setEndDate(java.sql.Date.valueOf(endDate));
         treatment.setDispensingFrequency(dispensingFrequency);
-        Treatment newTreatment = treatmentService.updateTreatment(id, new TreatmentDTO(treatment));
+        Treatment newTreatment = treatmentService.updateTreatment(id, treatment);
         model.addAttribute("treatment", newTreatment);
         return "/treatments/treatment";
     }
@@ -126,7 +126,15 @@ public class TreatmentWebController {
     @GetMapping("/removetreatment/{id}")
     public String removeTreatment(Model model, @PathVariable Long id) {
         User user = addUser(model);
-        treatmentService.deleteTreatment(id);
-        return "/treatments/treatments";
+        Treatment treatment = treatmentService.checkTreatmentExists(id);
+        if (user.getTreatments().contains(treatment)) {
+            user.getTreatments().remove(treatment);
+            treatment.setUser(null);
+            treatmentService.deleteTreatment(id);
+            model.addAttribute("treatments", user.getTreatments());
+            return "/treatments/treatments";
+        } else {
+            return "/error";
+        }
     }
 }

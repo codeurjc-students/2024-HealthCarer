@@ -77,7 +77,7 @@ public class TreatmentRestController {
         if (existingTreatment == null) { return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); }
         if (!loggedUser.getLoggedUser().getTreatments().contains(existingTreatment)) { return ResponseEntity.status(HttpStatus.FORBIDDEN).build();}
         Treatment treatment = new Treatment(treatmentDTO);
-        treatment = treatmentService.updateTreatment(id, new TreatmentDTO(treatment));
+        treatment = treatmentService.updateTreatment(id, treatment);
         return ResponseEntity.ok(new TreatmentDTO(treatment));
     }
 }

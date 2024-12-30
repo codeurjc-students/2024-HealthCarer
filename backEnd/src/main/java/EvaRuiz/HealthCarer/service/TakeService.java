@@ -47,15 +47,14 @@ public class TakeService {
         for (Medication medication : take.getMedications()) {
             medication.getTakes().remove(take);
         }
-        take.getUser().getTakes().remove(take);
+        take.setUser(null);
         takeRepository.deleteById(id);
     }
 
-    public Take updateTake(Long id, TakeDTO newTake) {
+    public Take updateTake(Long id, Take newTake) {
         Take existingTake = checkTakeExists(id);
-        Take take = new Take(newTake);
-        checkTake(take);
-        existingTake.setDate(newTake.date());
+        checkTake(newTake);
+        existingTake.setDate(newTake.getDate());
         return takeRepository.save(existingTake);
     }
 

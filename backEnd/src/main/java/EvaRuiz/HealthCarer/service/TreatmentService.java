@@ -61,20 +61,20 @@ public class TreatmentService {
 
     public void deleteTreatment(Long id) {
         Treatment treatment = checkTreatmentExists(id);
+        treatment.setUser(null);
         for (Medication medication : treatment.getMedications()) {
             medication.getTreatments().remove(treatment);
         }
-        treatment.getUser().getTreatments().remove(treatment);
         treatmentRepository.delete(treatment);
     }
 
-    public Treatment updateTreatment(Long id, TreatmentDTO newTreatment) {
+    public Treatment updateTreatment(Long id, Treatment newTreatment) {
         Treatment oldTreatment = checkTreatmentExists(id);
-        checkTreatment(new Treatment(newTreatment));
-        oldTreatment.setName(newTreatment.name());
-        oldTreatment.setStartDate(newTreatment.startDate());
-        oldTreatment.setEndDate(newTreatment.endDate());
-        oldTreatment.setDispensingFrequency(newTreatment.dispensingFrequency());
+        checkTreatment(newTreatment);
+        oldTreatment.setName(newTreatment.getName());
+        oldTreatment.setStartDate(newTreatment.getStartDate());
+        oldTreatment.setEndDate(newTreatment.getEndDate());
+        oldTreatment.setDispensingFrequency(newTreatment.getDispensingFrequency());
         return treatmentRepository.save(oldTreatment);
     }
 

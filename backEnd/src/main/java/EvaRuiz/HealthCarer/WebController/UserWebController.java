@@ -28,11 +28,7 @@ public class UserWebController {
 
     @GetMapping("/")
     public String login () {
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
-            return "/users/login";
-        } else {
-            return "redirect:/index";
-        }
+        return "/users/login";
     }
 
     @RequestMapping("/loginerror")
@@ -174,21 +170,24 @@ public class UserWebController {
     }
 
     @PostMapping("/updateProfile")
-    public String updateProfile(@RequestParam("username") String name, @RequestParam String email, @RequestParam String password) {
+    public String updateProfile(@RequestParam String username, @RequestParam String email, @RequestParam String password, Model model, RedirectAttributes redirectAttributes) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         Optional<User> userOptional = userService.findByUserName(currentUsername);
 
+        model.addAttribute("logged", true);
+        model.addAttribute("userName", username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setName(name);
+            user.setName(username);
             user.setEmail(email);
-            user.setEncodedPassword(passwordEncoder.encode(password)); // Codifica la nueva contraseña
-            userService.save(user); // Guarda los cambios en el perfil
-            return "redirect:/profile"; // Redirigir al perfil después de actualizar
+            user.setName(passwordEncoder.encode(password));
+            userService.save(user);
+            redirectAttributes.addFlashAttribute("success", "Perfil actualizado correctamente.");
+            return "redirect:/profile";
         }
 
-        return "error"; // Si no se encuentra el usuario
+        return "error";
     }
 
 
