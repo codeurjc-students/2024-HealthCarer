@@ -160,7 +160,6 @@ public class UserWebController {
         Optional<User> userOptional = userService.findByUserName(username);
 
         model.addAttribute("logged", true);
-        model.addAttribute("userName", username);
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
             return "/users/editProfilePage"; // Página de edición de perfil
@@ -170,21 +169,27 @@ public class UserWebController {
     }
 
     @PostMapping("/updateProfile")
-    public String updateProfile(@RequestParam String username, @RequestParam String email, @RequestParam String password, Model model, RedirectAttributes redirectAttributes) {
+    public String updateProfile(@RequestParam("username") String username,
+                                @RequestParam("email") String email,
+                                @RequestParam("password") String password,
+                                @RequestParam("confirmPassword") String confirmPassword,
+                                Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         Optional<User> userOptional = userService.findByUserName(currentUsername);
 
-        model.addAttribute("logged", true);
-        model.addAttribute("userName", username);
+
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             user.setName(username);
             user.setEmail(email);
-            user.setName(passwordEncoder.encode(password));
-            userService.save(user);
-            redirectAttributes.addFlashAttribute("success", "Perfil actualizado correctamente.");
-            return "redirect:/profile";
+            if (!password.isEmpty() && password.equals(confirmPassword)) {
+                user.setEncodedPassword(passwordEncoder.encode(password));
+            }
+            User user1 = userService.updateUser(user);
+            model.addAttribute("user", user1);
+            model.addAttribute("updatedprofile", true);
+            return "/users/profile";
         }
 
         return "error";

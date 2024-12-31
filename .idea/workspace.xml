@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Fixing and completing frontEnd">
-      <change afterPath="$PROJECT_DIR$/backEnd/src/test/MedicationServiceTest.java" afterDir="false" />
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Service tests implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TakeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TakeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TakeWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/Docker/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TakeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TakeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/editTakePage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/editTakePage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/editProfilePage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/editProfilePage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/test/MedicationRestTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Medication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Medication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/profile.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/profile.mustache" afterDir="false" />
     </list>
     <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,74 +73,77 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.MedicationRestAssuredTests.medicationAddTest.executor": "Run",
-    "JUnit.MedicationRestControllerTests.DeleteMappingOfMedication.executor": "Run",
-    "JUnit.MedicationRestControllerTests.DeleteMappingOfMedication2.executor": "Run",
-    "JUnit.MedicationRestControllerTests.GetMappingOfAllMedications.executor": "Run",
-    "JUnit.MedicationRestControllerTests.GetMappingOfOneMedication.executor": "Run",
-    "JUnit.MedicationRestControllerTests.PostMappingOfMedication.executor": "Run",
-    "JUnit.MedicationRestControllerTests.PostMappingOfMedication2.executor": "Run",
-    "JUnit.MedicationRestControllerTests.PostMappingOfMedicationWithRestAssured.executor": "Run",
-    "JUnit.MedicationRestControllerTests.PostMappingOfProduct.executor": "Run",
-    "JUnit.MedicationRestControllerTests.PutMappingOfMedication.executor": "Run",
-    "JUnit.MedicationRestControllerTests.createEventTest.executor": "Run",
-    "JUnit.MedicationRestControllerTests.createMedicationTest.executor": "Run",
-    "JUnit.MedicationRestControllerTests.executor": "Run",
-    "JUnit.MedicationRestTest.createMedicationTest.executor": "Run",
-    "JUnit.MedicationRestTest.deleteMedicationTest.executor": "Run",
-    "JUnit.MedicationRestTest.executor": "Run",
-    "JUnit.PlanRestControllerTests.DeleteMappingOfPlan.executor": "Run",
-    "JUnit.PlanRestControllerTests.GetMappingOfAllPlans.executor": "Run",
-    "JUnit.PlanRestControllerTests.GetMappingOfOneMedication.executor": "Run",
-    "JUnit.PlanRestControllerTests.GetMappingOfOnePlan.executor": "Run",
-    "JUnit.PlanRestControllerTests.PutMappingOfMedication.executor": "Run",
-    "JUnit.PlanRestControllerTests.executor": "Run",
-    "JUnit.PlanRestControllerTests.testDeletePlan.executor": "Run",
-    "JUnit.PlanRestControllerTests.testGetPlanById.executor": "Run",
-    "JUnit.PlanRestControllerTests.testGetPlans.executor": "Run",
-    "JUnit.PlanRestControllerTests.testPostPlan.executor": "Run",
-    "JUnit.TakeRestControllerTests.GetMappingOfAllTakes.executor": "Run",
-    "JUnit.TakeRestControllerTests.PostMappingOfTake.executor": "Run",
-    "JUnit.TakeRestControllerTests.PutMappingOfTake.executor": "Run",
-    "JUnit.TakeRestControllerTests.executor": "Run",
-    "JUnit.TakeServiceTest.createTakeTest.executor": "Run",
-    "JUnit.TakeServiceTest.updateTakeTest.executor": "Run",
-    "JUnit.TreatmentServiceTest.createTreatmentTest.executor": "Run",
-    "JUnit.TreatmentServiceTest.deleteTreatmentTest.executor": "Run",
-    "JUnit.TreatmentServiceTest.executor": "Run",
-    "JUnit.TreatmentServiceTest.updateTreatmentTest.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.HealthCarerApplication (1).executor": "Run",
-    "Spring Boot.HealthCarerApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "features",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alcor/Desktop/Uni/Tercero/AIS/ais-s.zarco-e.ruiz-2024-ghf",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CodeWithMe",
-    "show.migrate.to.gradle.popup": "false",
-    "ts.external.directory.path": "C:\\Users\\alcor\\Desktop\\Uni\\TFG\\2024-HealthCarer\\frontEnd\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.MedicationRestAssuredTests.medicationAddTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.DeleteMappingOfMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.DeleteMappingOfMedication2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.GetMappingOfAllMedications.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.GetMappingOfOneMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.PostMappingOfMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.PostMappingOfMedication2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.PostMappingOfMedicationWithRestAssured.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.PostMappingOfProduct.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.PutMappingOfMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.createEventTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.createMedicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestControllerTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestTest.createMedicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestTest.deleteMedicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestTest.getMedicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MedicationRestTest.testGetAllMedications.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.DeleteMappingOfPlan.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.GetMappingOfAllPlans.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.GetMappingOfOneMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.GetMappingOfOnePlan.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.PutMappingOfMedication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.testDeletePlan.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.testGetPlanById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.testGetPlans.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlanRestControllerTests.testPostPlan.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeRestControllerTests.GetMappingOfAllTakes.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeRestControllerTests.PostMappingOfTake.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeRestControllerTests.PutMappingOfTake.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeRestControllerTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeServiceTest.createTakeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TakeServiceTest.updateTakeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreatmentServiceTest.createTreatmentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreatmentServiceTest.deleteTreatmentTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreatmentServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreatmentServiceTest.updateTreatmentTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HealthCarerApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.HealthCarerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;features&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alcor/Desktop/Uni/Tercero/AIS/ais-s.zarco-e.ruiz-2024-ghf&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\alcor\\Desktop\\Uni\\TFG\\2024-HealthCarer\\frontEnd\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="EvaRuiz.HealthCarer.medication" />
@@ -175,51 +167,55 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TakeServiceTest">
+  <component name="RunManager" selected="Spring Boot.HealthCarerApplication">
+    <configuration name="MedicationRestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MedicationRestTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MedicationRestTest.getMedicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MedicationRestTest" />
+      <option name="METHOD_NAME" value="getMedicationTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MedicationRestTest.testGetAllMedications" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MedicationRestTest" />
+      <option name="METHOD_NAME" value="testGetAllMedications" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TakeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TakeServiceTest" />
+      <option name="PACKAGE_NAME" value="ServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="ServiceTests.TakeServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeServiceTest.createTakeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="HealthCarer" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TakeServiceTest" />
-      <option name="METHOD_NAME" value="createTakeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TakeServiceTest.updateTakeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TakeServiceTest" />
-      <option name="METHOD_NAME" value="updateTakeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TreatmentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TreatmentServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TreatmentServiceTest.deleteTreatmentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TreatmentServiceTest" />
-      <option name="METHOD_NAME" value="deleteTreatmentTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="EvaRuiz.HealthCarer.HealthCarerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EvaRuiz.HealthCarer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,11 +230,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.HealthCarerApplication" />
+        <item itemvalue="JUnit.MedicationRestTest.testGetAllMedications" />
+        <item itemvalue="JUnit.MedicationRestTest" />
+        <item itemvalue="JUnit.MedicationRestTest.getMedicationTest" />
         <item itemvalue="JUnit.TakeServiceTest" />
-        <item itemvalue="JUnit.TakeServiceTest.updateTakeTest" />
-        <item itemvalue="JUnit.TakeServiceTest.createTakeTest" />
-        <item itemvalue="JUnit.TreatmentServiceTest" />
-        <item itemvalue="JUnit.TreatmentServiceTest.deleteTreatmentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +320,8 @@
       <workItem from="1735197720801" duration="14657000" />
       <workItem from="1735369504360" duration="5449000" />
       <workItem from="1735457493791" duration="5663000" />
-      <workItem from="1735542425084" duration="3254000" />
+      <workItem from="1735542425084" duration="6971000" />
+      <workItem from="1735627666367" duration="3781000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -582,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735288226717</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Service tests implemented">
+      <option name="closed" value="true" />
+      <created>1735545891960</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1735545891960</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +605,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created main Plan structure" />
     <MESSAGE value="Created main Plan Tests" />
     <MESSAGE value="Created main Take Tests" />
     <MESSAGE value="Created User clases" />
@@ -625,7 +629,8 @@
     <MESSAGE value="Missing register components" />
     <MESSAGE value="Starting test" />
     <MESSAGE value="Fixing and completing frontEnd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing and completing frontEnd" />
+    <MESSAGE value="Service tests implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Service tests implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

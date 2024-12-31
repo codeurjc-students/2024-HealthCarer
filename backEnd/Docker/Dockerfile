@@ -7,9 +7,9 @@ services:
     ports:
       - 8443:8443
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/demoapp?serverTimezone=UTC
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/healthcarer?serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_PASSWORD=root
     restart: on-failure
   db:
     image: mysql:8.0.36

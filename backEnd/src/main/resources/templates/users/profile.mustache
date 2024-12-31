@@ -14,10 +14,20 @@
                     </div>
 
                     <div class="text-center">
+                        {{#updatedprofile}}
+                        <div class="alert alert-success" role="alert">
+                            Perfil actualizado correctamente
+                        </div>
+                        <form action="/logout" method="post" class="d-inline-block">
+                            <button type="submit" class="btn btn-danger btn-block">Volver a iniciar sesión</button>
+                        </form>
+                        {{/updatedprofile}}
+                        {{^updatedprofile}}
                         <a href="/editProfile" class="btn btn-primary mb-2 btn-block">Editar Perfil</a>
                         <form action="/logout" method="post" class="d-inline-block">
                             <button type="submit" class="btn btn-danger btn-block">Cerrar sesión</button>
                         </form>
+                        {{/updatedprofile}}
                     </div>
                 </div>
             </div>

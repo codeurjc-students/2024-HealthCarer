@@ -60,7 +60,8 @@ public class Medication {
         this.dose = medicationDTO.dose();
     }
 
-    public Medication(String fakeMedication, int i, String fakeInstructions, float v) {
+    public Medication(Long id, String fakeMedication, int i, String fakeInstructions, float v) {
+        this.id = id;
         this.name = fakeMedication;
         this.stock = (float) i;
         this.instructions = fakeInstructions;
