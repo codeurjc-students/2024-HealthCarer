@@ -29,7 +29,7 @@ public class Medication {
     @Column(nullable = false)
     private Float dose;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "medication_treatment",
             joinColumns = @JoinColumn(name = "medication_id"),
             inverseJoinColumns = @JoinColumn(name = "treatment_id"))
@@ -140,21 +140,11 @@ public class Medication {
         this.takes = takes;
     }
 
-    public void addTake(Take take) {
-        takes.add(take);
-        take.getMedications().add(this);
-    }
-
     public void removeTake(Take take) {
         if (takes != null && takes.contains(take)) {
             takes.remove(take);
             take.getMedications().remove(this);
         }
-    }
-
-    public void addTreatment(Treatment treatment) {
-        treatments.add(treatment);
-        treatment.getMedications().add(this);
     }
 
     public void removeTreatment(Treatment treatment) {

@@ -64,7 +64,7 @@ public class MedicationRestController {
         medication.setUser(loggedUser.getLoggedUser());
         loggedUser.getLoggedUser().getMedications().add(medication);
         medication = medicationService.createMedication(medication);
-        return ResponseEntity.ok(new MedicationDTO(medication));
+        return new ResponseEntity<>(new MedicationDTO(medication), HttpStatus.CREATED);
     }
 
 
@@ -78,7 +78,7 @@ public class MedicationRestController {
         newMedication.setId(id);
         newMedication.setUser(loggedUser.getLoggedUser());
         newMedication = medicationService.updateMedication(id, newMedication);
-        return ResponseEntity.ok(new MedicationDTO(newMedication));
+        return new ResponseEntity<>(new MedicationDTO(newMedication), HttpStatus.OK);
 
     }
 
@@ -89,7 +89,7 @@ public class MedicationRestController {
         if (medication == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
         if (!medication.getUser().equals(loggedUser.getLoggedUser())) {return new ResponseEntity<>(HttpStatus.FORBIDDEN);}
         medicationService.deleteMedication(id);
-        return ResponseEntity.ok(new MedicationDTO(medication));
+        return new ResponseEntity<>(new MedicationDTO(medication), HttpStatus.OK);
     }
 
     @PostMapping("/{id}/image")

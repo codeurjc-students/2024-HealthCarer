@@ -58,7 +58,7 @@ public class TakeRestController {
             take.getMedications().add(medication);
         }
         take = takeService.createTake(take);
-        return ResponseEntity.ok(new TakeDTO(take));
+        return new ResponseEntity<>(new TakeDTO(take), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

@@ -57,7 +57,7 @@ public class TreatmentRestController {
             treatment.getMedications().add(medication);
         }
         treatment = treatmentService.createTreatment(treatment);
-        return ResponseEntity.ok(new TreatmentDTO(treatment));
+        return new ResponseEntity<>(new TreatmentDTO(treatment), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
@@ -67,7 +67,7 @@ public class TreatmentRestController {
         if (treatment == null) { return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); }
         if (!loggedUser.getLoggedUser().getTreatments().contains(treatment)) { return ResponseEntity.status(HttpStatus.FORBIDDEN).build();}
         treatmentService.deleteTreatment(id);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

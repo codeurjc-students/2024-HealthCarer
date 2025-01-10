@@ -28,14 +28,19 @@ public class RestSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // URLs that need authentication to access to it
                         .requestMatchers(HttpMethod.POST, "/api/medications/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/medications/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/medications/**").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/medications/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/treatments/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/treatments/**").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/treatments/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/treatments/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/takes/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/takes/**").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/takes/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/takes/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/users/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/users/**").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/users/**").authenticated()
 
                         // Other URLs can be accessed without authentication

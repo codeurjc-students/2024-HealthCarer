@@ -103,7 +103,7 @@ public class UserWebController {
     @PostMapping("/register")
     public String registerUser(@RequestParam String username, @RequestParam String email,
                                @RequestParam String password, @RequestParam String confirmPassword,
-                               Model model, RedirectAttributes redirectAttributes) {
+                               RedirectAttributes redirectAttributes) {
 
         // Check if the email is already registered
         if (userService.findByEmail(email).isPresent()) {
@@ -134,7 +134,7 @@ public class UserWebController {
     }
 
     @PostMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         // Invalidate the session and clear the authentication
         SecurityContextHolder.clearContext();
 
