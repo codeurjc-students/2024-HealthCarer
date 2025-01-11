@@ -22,7 +22,7 @@ public class UserRestController {
 
 	// Getting a user given its name
 	@GetMapping("/{name}")
-	public ResponseEntity<UserDTO> getUserById(@PathVariable String name) {
+	public ResponseEntity<UserDTO> getUserByName(@PathVariable String name) {
 		loggedUser.setLoggedUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		User user = userService.findByUserName(name).orElse(null);
 
@@ -51,7 +51,7 @@ public class UserRestController {
 		}
 		User newUser = new User(user.name(), user.email(), user.password(), "USER");
 		UserDTO response = new UserDTO(userService.createUser(newUser));
-		return ResponseEntity.status(200).body(response);
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
 	// Edit a user given its name

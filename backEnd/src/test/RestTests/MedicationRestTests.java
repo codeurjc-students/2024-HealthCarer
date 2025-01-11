@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes= HealthCarerApplication.class)
-public class MedicationRestTest {
+public class MedicationRestTests {
 
     @LocalServerPort
     int port;

@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="updateProfile fixed">
-      <change afterPath="$PROJECT_DIR$/backEnd/src/test/RestTests/MedicationRestTest.java" afterDir="false" />
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Testing Rest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/Docker/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/MedicationRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/MedicationRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TakeRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TakeRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/UserWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Medication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Medication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/security/RestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/security/RestSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/test/MedicationRestTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/RestTests/MedicationRestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/RestTests/MedicationRestTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/RestTests/TakeRestTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/RestTests/TakeRestTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/RestTests/TreatmentRestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/RestTests/TreatmentRestTests.java" afterDir="false" />
     </list>
     <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +120,9 @@
     "JUnit.TakeRestControllerTests.PutMappingOfTake.executor": "Run",
     "JUnit.TakeRestControllerTests.executor": "Run",
     "JUnit.TakeRestTests.createTake.executor": "Run",
+    "JUnit.TakeRestTests.executor": "Run",
+    "JUnit.TakeRestTests.getTakes.executor": "Run",
+    "JUnit.TakeRestTests.updateTake.executor": "Run",
     "JUnit.TakeServiceTest.createTakeTest.executor": "Run",
     "JUnit.TakeServiceTest.executor": "Run",
     "JUnit.TakeServiceTest.updateTakeTest.executor": "Run",
@@ -135,6 +134,10 @@
     "JUnit.TreatmentServiceTest.deleteTreatmentTest.executor": "Run",
     "JUnit.TreatmentServiceTest.executor": "Run",
     "JUnit.TreatmentServiceTest.updateTreatmentTest.executor": "Run",
+    "JUnit.UserRestTests.createUser.executor": "Run",
+    "JUnit.UserRestTests.executor": "Run",
+    "JUnit.UserRestTests.getUser.executor": "Run",
+    "JUnit.UserRestTests.updateUser.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -187,8 +190,8 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TakeRestTests.createTake">
-    <configuration name="TakeRestTests.createTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserRestTests">
+    <configuration name="TakeRestTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -198,28 +201,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="RestTests" />
       <option name="MAIN_CLASS_NAME" value="RestTests.TakeRestTests" />
-      <option name="METHOD_NAME" value="createTake" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TreatmentRestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="RestTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="RestTests" />
-      <option name="MAIN_CLASS_NAME" value="RestTests.TreatmentRestTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreatmentRestTest.createTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRestTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -228,14 +215,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="RestTests" />
-      <option name="MAIN_CLASS_NAME" value="RestTests.TreatmentRestTest" />
-      <option name="METHOD_NAME" value="createTreatment" />
+      <option name="MAIN_CLASS_NAME" value="RestTests.UserRestTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRestTests.createUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="RestTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="RestTests" />
+      <option name="MAIN_CLASS_NAME" value="RestTests.UserRestTests" />
+      <option name="METHOD_NAME" value="createUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreatmentRestTest.deleteTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRestTests.getUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -244,14 +246,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="RestTests" />
-      <option name="MAIN_CLASS_NAME" value="RestTests.TreatmentRestTest" />
-      <option name="METHOD_NAME" value="deleteTreatment" />
+      <option name="MAIN_CLASS_NAME" value="RestTests.UserRestTests" />
+      <option name="METHOD_NAME" value="getUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreatmentRestTest.updateTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRestTests.updateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -260,8 +262,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="RestTests" />
-      <option name="MAIN_CLASS_NAME" value="RestTests.TreatmentRestTest" />
-      <option name="METHOD_NAME" value="updateTreatment" />
+      <option name="MAIN_CLASS_NAME" value="RestTests.UserRestTests" />
+      <option name="METHOD_NAME" value="updateUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -277,11 +279,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TakeRestTests.createTake" />
-        <item itemvalue="JUnit.TreatmentRestTest.createTreatment" />
-        <item itemvalue="JUnit.TreatmentRestTest" />
-        <item itemvalue="JUnit.TreatmentRestTest.updateTreatment" />
-        <item itemvalue="JUnit.TreatmentRestTest.deleteTreatment" />
+        <item itemvalue="JUnit.UserRestTests" />
+        <item itemvalue="JUnit.UserRestTests.updateUser" />
+        <item itemvalue="JUnit.UserRestTests.getUser" />
+        <item itemvalue="JUnit.UserRestTests.createUser" />
+        <item itemvalue="JUnit.TakeRestTests" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +373,8 @@
       <workItem from="1735627666367" duration="5675000" />
       <workItem from="1736318891157" duration="8436000" />
       <workItem from="1736407451402" duration="4629000" />
-      <workItem from="1736496986119" duration="4220000" />
+      <workItem from="1736496986119" duration="4581000" />
+      <workItem from="1736578271952" duration="3266000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -645,7 +648,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735631796328</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Testing Rest">
+      <option name="closed" value="true" />
+      <created>1736501561895</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1736501561895</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +674,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created main Take Tests" />
     <MESSAGE value="Created User clases" />
     <MESSAGE value="Fixed JsonViews" />
     <MESSAGE value="Retouched Medication classes" />
@@ -688,7 +698,8 @@
     <MESSAGE value="Fixing and completing frontEnd" />
     <MESSAGE value="Service tests implemented" />
     <MESSAGE value="updateProfile fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="updateProfile fixed" />
+    <MESSAGE value="Testing Rest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing Rest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
