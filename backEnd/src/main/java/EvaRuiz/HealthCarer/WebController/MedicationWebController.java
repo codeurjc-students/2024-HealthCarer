@@ -1,7 +1,5 @@
 package EvaRuiz.HealthCarer.WebController;
 
-import EvaRuiz.HealthCarer.DTO.MedicationDTO;
-import EvaRuiz.HealthCarer.model.Image;
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.User;
 import EvaRuiz.HealthCarer.service.ImageService;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -68,18 +65,12 @@ public class MedicationWebController {
     }
 
     @PostMapping("/newmedication")
-    public String newMedication(Model model, @RequestParam String name, @RequestParam Float stock, @RequestParam String instructions, @RequestParam Float dose, @RequestParam MultipartFile boxImage) throws IOException {
+    public String newMedication(Model model, Medication newMedication, MultipartFile boxImage){
         User user = addUser(model);
-        Medication medication = new Medication();
-
-        medication.setName(name);
-        medication.setStock(stock);
-        medication.setInstructions(instructions);
-        medication.setDose(dose);
-        user.getMedications().add(medication);
-        medication.setUser(user);
-        Medication newMedication = medicationService.createMedication(medication);
+        newMedication.setUser(user);
+        medicationService.createMedication(newMedication);
         newMedication = medicationService.setImageAndSave(newMedication, boxImage);
+        user.getMedications().add(newMedication);
         model.addAttribute("medication", newMedication);
         return "/medications/medication";
     }
@@ -92,24 +83,21 @@ public class MedicationWebController {
             return "/error";
         }
         model.addAttribute("medication", medication);
-        return "/medications/editMedicationPage";
+        return "medications/editMedicationPage";
     }
 
 
 
     @PostMapping("/editmedication/{id}")
-    public String editMedication(Model model, @PathVariable Long id, @RequestParam String name, @RequestParam Float stock, @RequestParam String instructions, @RequestParam Float dose, @RequestParam MultipartFile boxImage) {
+    public String editMedication(Model model, @PathVariable Long id, Medication updatedMedication, MultipartFile boxImage) throws IOException {
         User user = addUser(model);
         Medication medication = medicationService.getMedicationById(id);
         if (!user.getMedications().contains(medication)) {
             return "/error";
         }
-        medication.setName(name);
-        medication.setStock(stock);
-        medication.setInstructions(instructions);
-        medication.setDose(dose);
-        medicationService.setImageAndSave(medication, boxImage);
-        medicationService.updateMedication(id, medication);
+        updatedMedication.setUser(user);
+        updatedMedication.setImage(this.imageService.save(boxImage));
+        medicationService.updateMedication(id, updatedMedication);
         model.addAttribute("medication", medication);
         return "/medications/medication";
     }

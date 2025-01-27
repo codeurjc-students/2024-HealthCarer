@@ -72,21 +72,4 @@ public class Take {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public void addMedication(Medication medication) {
-        if(medications == null) {
-            medications = new ArrayList<>();
-        }
-        if (!medications.contains(medication)) {
-            medications.add(medication);
-            medication.getTakes().add(this);
-        }
-    }
-
-    public void removeMedication(Medication medication) {
-        if (medications != null && medications.contains(medication)) {
-            medications.remove(medication);
-            medication.getTakes().remove(this);
-        }
-    }
 }

@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="card shadow">
         <div class="card-header bg-dark text-white text-center">
-            <h2>{{medication.name}}</h2>
+            <h2 id="medicationName">{{medication.name}}</h2>
         </div>
         <div class="card-body">
             <div class="row">
@@ -29,7 +29,7 @@
         <div class="card-footer text-center">
             {{#logged}}
                 <button class="btn btn-primary" onclick="location.href='/medications/removemedication/{{medication.id}}'">Borrar</button>
-                <button class="btn btn-primary" onclick="location.href='/medications/editmedication/{{medication.id}}'">Editar</button>
+                <button class="btn btn-primary" id="updateMedication" onclick="location.href='/medications/editmedication/{{medication.id}}'">Editar</button>
             {{/logged}}
             <button class="btn btn-primary" onclick="location.href='/medications/'">Volver</button>
         </div>
