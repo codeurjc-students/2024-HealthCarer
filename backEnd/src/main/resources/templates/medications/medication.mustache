@@ -28,7 +28,7 @@
         </div>
         <div class="card-footer text-center">
             {{#logged}}
-                <button class="btn btn-primary" onclick="location.href='/medications/removemedication/{{medication.id}}'">Borrar</button>
+                <button class="btn btn-primary" id="deleteMedication" onclick="location.href='/medications/removemedication/{{medication.id}}'">Borrar</button>
                 <button class="btn btn-primary" id="updateMedication" onclick="location.href='/medications/editmedication/{{medication.id}}'">Editar</button>
             {{/logged}}
             <button class="btn btn-primary" onclick="location.href='/medications/'">Volver</button>

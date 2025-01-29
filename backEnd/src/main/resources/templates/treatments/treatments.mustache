@@ -5,16 +5,16 @@
         <h2>Mis tratamientos</h2>
     </div>
 
-    <ul class="list-group">
+    <ul class="list-group" id="treatmentsList">
         {{#treatments}}
             <li class="list-group-item">
-                <a class="text-decoration-none text-primary" href="/treatments/{{id}}">{{name}}</a>            </li>
+                <a class="text-decoration-none text-primary" id="treatmentName" href="/treatments/{{id}}">{{name}}</a>            </li>
         {{/treatments}}
     </ul>
 
     {{#logged}}
         <div class="text-center mt-4">
-            <button class="btn btn-success" onclick="location.href='/treatments/newtreatment'">Nuevo tratamiento</button>
+            <button class="btn btn-success" id="createTreatment" onclick="location.href='/treatments/newtreatment'">Nuevo tratamiento</button>
         </div>
     {{/logged}}
 </div>

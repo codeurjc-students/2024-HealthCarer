@@ -4,11 +4,8 @@ import EvaRuiz.HealthCarer.HealthCarerApplication;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -47,8 +44,9 @@ public class MedicationWebTests {
 
     @Test
     public void getMedications() {
-        
         assertThat(driver.getCurrentUrl()).isEqualTo("https://localhost:"+this.port+"/medications/");
+        assertThat(driver.findElement(By.id("medicationsList")).getText()).contains("Paracetamol");
+
     }
 
     @Test
@@ -73,6 +71,13 @@ public class MedicationWebTests {
         driver.findElement(By.id("boxImage")).sendKeys("C:\\Users\\alcor\\Desktop\\2024-HealthCarer\\backEnd\\src\\main\\resources\\static\\images\\healthcarer.png");
         driver.findElement(By.id("submit")).click();
         assertThat(driver.findElement(By.id("medicationName")).getText()).isEqualTo("UpdatedMedication");
+    }
+
+    @Test
+    public void deleteMedication() {
+        driver.findElement(By.id("medicationName")).click();
+        driver.findElement(By.id("deleteMedication")).click();
+        assertThat(driver.findElement(By.id("medicationsList")).getText()).doesNotContain("Paracetamol");
     }
 
 }

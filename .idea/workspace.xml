@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Testing Rest completed">
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/MedicationWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Take.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Take.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/header.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/index.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/index.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/editMedicationPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/editMedicationPage.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medications.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medications.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/newMedicationPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/newMedicationPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatment.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatment.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/MedicationWebTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/MedicationWebTests.java" afterDir="false" />
     </list>
     <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +109,7 @@
     "JUnit.MedicationRestTest.updateMedication.executor": "Run",
     "JUnit.MedicationRestTests.updateMedication.executor": "Debug",
     "JUnit.MedicationWebTests.createMedication.executor": "Debug",
+    "JUnit.MedicationWebTests.deleteMedication.executor": "Run",
     "JUnit.MedicationWebTests.executor": "Run",
     "JUnit.MedicationWebTests.test.executor": "Run",
     "JUnit.MedicationWebTests.updateMedication.executor": "Run",
@@ -143,6 +143,10 @@
     "JUnit.TreatmentServiceTest.deleteTreatmentTest.executor": "Run",
     "JUnit.TreatmentServiceTest.executor": "Run",
     "JUnit.TreatmentServiceTest.updateTreatmentTest.executor": "Run",
+    "JUnit.TreatmentWebTests.createTreatment.executor": "Run",
+    "JUnit.TreatmentWebTests.deleteTreatment.executor": "Run",
+    "JUnit.TreatmentWebTests.getTreatments.executor": "Run",
+    "JUnit.TreatmentWebTests.updateTreatment.executor": "Run",
     "JUnit.UserRestTests.createUser.executor": "Run",
     "JUnit.UserRestTests.executor": "Run",
     "JUnit.UserRestTests.getUser.executor": "Run",
@@ -199,24 +203,24 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MedicationWebTests.updateMedication">
-    <configuration name="MedicationRestTests.updateMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TreatmentWebTests.deleteTreatment">
+    <configuration name="MedicationWebTests.deleteMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="RestTests.*" />
+          <option name="PATTERN" value="SeleniumTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="RestTests" />
-      <option name="MAIN_CLASS_NAME" value="RestTests.MedicationRestTests" />
-      <option name="METHOD_NAME" value="updateMedication" />
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
+      <option name="METHOD_NAME" value="deleteMedication" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicationWebTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TreatmentWebTests.createTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -225,29 +229,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MedicationWebTests.createMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
-      <option name="METHOD_NAME" value="createMedication" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="createTreatment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicationWebTests.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TreatmentWebTests.deleteTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -256,14 +245,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="deleteTreatment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicationWebTests.updateMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TreatmentWebTests.getTreatments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -272,8 +261,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
-      <option name="METHOD_NAME" value="updateMedication" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="getTreatments" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreatmentWebTests.updateTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="updateTreatment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -289,11 +294,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MedicationWebTests.updateMedication" />
-        <item itemvalue="JUnit.MedicationRestTests.updateMedication" />
-        <item itemvalue="JUnit.MedicationWebTests" />
-        <item itemvalue="JUnit.MedicationWebTests.createMedication" />
-        <item itemvalue="JUnit.MedicationWebTests.test" />
+        <item itemvalue="JUnit.TreatmentWebTests.deleteTreatment" />
+        <item itemvalue="JUnit.TreatmentWebTests.updateTreatment" />
+        <item itemvalue="JUnit.TreatmentWebTests.createTreatment" />
+        <item itemvalue="JUnit.TreatmentWebTests.getTreatments" />
+        <item itemvalue="JUnit.MedicationWebTests.deleteMedication" />
       </list>
     </recent_temporary>
   </component>
@@ -387,7 +392,8 @@
       <workItem from="1736578271952" duration="8312000" />
       <workItem from="1737529222202" duration="2398000" />
       <workItem from="1737813581121" duration="2795000" />
-      <workItem from="1737961750288" duration="5406000" />
+      <workItem from="1737961750288" duration="5573000" />
+      <workItem from="1738135474553" duration="3491000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -677,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736581649479</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication">
+      <option name="closed" value="true" />
+      <created>1737967375291</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1737967375292</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +709,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed JsonViews" />
     <MESSAGE value="Retouched Medication classes" />
     <MESSAGE value="Completed Medication tests" />
     <MESSAGE value="Fixed MedicationDTO views and tests" />
@@ -720,7 +733,8 @@
     <MESSAGE value="updateProfile fixed" />
     <MESSAGE value="Testing Rest" />
     <MESSAGE value="Testing Rest completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing Rest completed" />
+    <MESSAGE value="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

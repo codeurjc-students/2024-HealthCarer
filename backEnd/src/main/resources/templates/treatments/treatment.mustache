@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="card shadow">
         <div class="card-header bg-dark text-white text-center">
-            <h2>{{treatment.name}}</h2>
+            <h2 id="treatmentName">{{treatment.name}}</h2>
         </div>
         <div class="card-body">
             <ul class="list-group">
@@ -22,8 +22,8 @@
         </div>
         <div class="card-footer text-center">
             {{#logged}}
-                <button class="btn btn-primary" onclick="location.href='/treatments/removetreatment/{{treatment.id}}'">Remove</button>
-                <button class="btn btn-primary" onclick="location.href='/treatments/edittreatment/{{treatment.id}}'">Edit</button>
+                <button class="btn btn-primary" id="deleteTreatment" onclick="location.href='/treatments/removetreatment/{{treatment.id}}'">Remove</button>
+                <button class="btn btn-primary" id="updateTreatment" onclick="location.href='/treatments/edittreatment/{{treatment.id}}'">Edit</button>
             {{/logged}}
             <button class="btn btn-primary" onclick="location.href='/treatments/'">Back to treatments</button>
         </div>
