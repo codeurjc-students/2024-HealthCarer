@@ -4,17 +4,17 @@
         <h2>Mis tomas</h2>
     </div>
 
-    <ul class="list-group">
+    <ul class="list-group" id="takesList">
         {{#takes}}
             <li class="list-group-item">
-                <a href="/takes/{{id}}" class="text-decoration-none text-primary">{{date}}</a>
+                <a href="/takes/{{id}}" id="takeDate" class="text-decoration-none text-primary">{{date}}</a>
             </li>
         {{/takes}}
     </ul>
 
     {{#logged}}
         <div class="text-center mt-4">
-            <button class="btn btn-success" onclick="location.href='/takes/newtake'">Nueva toma</button>
+            <button class="btn btn-success" id="createTake" onclick="location.href='/takes/newtake'">Nueva toma</button>
         </div>
     {{/logged}}
 </div>

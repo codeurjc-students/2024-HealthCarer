@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/index.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/index.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medication.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medications.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/medications/medications.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatment.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatment.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/treatments.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/MedicationWebTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/MedicationWebTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/editTakePage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/editTakePage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/newTakePage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/newTakePage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/take.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/take.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/takes.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/takes/takes.mustache" afterDir="false" />
     </list>
     <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,6 +131,9 @@
     "JUnit.TakeServiceTest.createTakeTest.executor": "Run",
     "JUnit.TakeServiceTest.executor": "Run",
     "JUnit.TakeServiceTest.updateTakeTest.executor": "Run",
+    "JUnit.TakeWebTests.createTake.executor": "Run",
+    "JUnit.TakeWebTests.deleteTake.executor": "Run",
+    "JUnit.TakeWebTests.getTakes.executor": "Run",
     "JUnit.TreatmentRestTest.createTreatment.executor": "Run",
     "JUnit.TreatmentRestTest.deleteTreatment.executor": "Run",
     "JUnit.TreatmentRestTest.executor": "Run",
@@ -203,8 +202,8 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TreatmentWebTests.deleteTreatment">
-    <configuration name="MedicationWebTests.deleteMedication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TakeWebTests.updateTake">
+    <configuration name="TakeWebTests.createTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -213,14 +212,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.MedicationWebTests" />
-      <option name="METHOD_NAME" value="deleteMedication" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
+      <option name="METHOD_NAME" value="createTake" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreatmentWebTests.createTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TakeWebTests.deleteTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -229,8 +228,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
-      <option name="METHOD_NAME" value="createTreatment" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
+      <option name="METHOD_NAME" value="deleteTake" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TakeWebTests.getTakes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
+      <option name="METHOD_NAME" value="getTakes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TakeWebTests.updateTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
+      <option name="METHOD_NAME" value="updateTake" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -252,38 +283,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreatmentWebTests.getTreatments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
-      <option name="METHOD_NAME" value="getTreatments" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TreatmentWebTests.updateTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
-      <option name="METHOD_NAME" value="updateTreatment" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HealthCarerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="HealthCarer" />
@@ -294,11 +293,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TakeWebTests.updateTake" />
+        <item itemvalue="JUnit.TakeWebTests.deleteTake" />
+        <item itemvalue="JUnit.TakeWebTests.createTake" />
+        <item itemvalue="JUnit.TakeWebTests.getTakes" />
         <item itemvalue="JUnit.TreatmentWebTests.deleteTreatment" />
-        <item itemvalue="JUnit.TreatmentWebTests.updateTreatment" />
-        <item itemvalue="JUnit.TreatmentWebTests.createTreatment" />
-        <item itemvalue="JUnit.TreatmentWebTests.getTreatments" />
-        <item itemvalue="JUnit.MedicationWebTests.deleteMedication" />
       </list>
     </recent_temporary>
   </component>
@@ -394,6 +393,7 @@
       <workItem from="1737813581121" duration="2795000" />
       <workItem from="1737961750288" duration="5573000" />
       <workItem from="1738135474553" duration="3491000" />
+      <workItem from="1738143517351" duration="2551000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />

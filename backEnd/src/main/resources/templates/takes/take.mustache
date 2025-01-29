@@ -6,12 +6,12 @@
             <h2>Detalles de la toma</h2>
         </div>
         <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item">
+            <ul class="list-group" id="takeDetails">
+                <li class="list-group-item" id="takeDate">
                     <strong>Fecha:</strong>
                     {{take.date}}
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" id="takeMedications">
                     {{#take.medications}}
                         <ul class="items">
                             <li class="text-decoration-none text-primary">{{name}}</li>
@@ -22,8 +22,8 @@
         </div>
         <div class="card-footer text-center">
             {{#logged}}
-                <button class="btn btn-primary" onclick="location.href='/takes/removetake/{{take.id}}'">Borrar</button>
-                <button class="btn btn-primary" onclick="location.href='/takes/edittake/{{take.id}}'">Editar</button>
+                <button class="btn btn-primary" id="deleteTake" onclick="location.href='/takes/removetake/{{take.id}}'">Borrar</button>
+                <button class="btn btn-primary" id="updateTake" onclick="location.href='/takes/edittake/{{take.id}}'">Editar</button>
             {{/logged}}
             <button class="btn btn-primary" onclick="location.href='/takes/'">Volver</button>
         </div>
