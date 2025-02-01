@@ -1,6 +1,7 @@
 package EvaRuiz.HealthCarer;
 
 
+import jakarta.mail.Provider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

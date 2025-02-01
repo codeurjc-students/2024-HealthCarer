@@ -2,6 +2,7 @@ package ServiceTests;
 
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.repository.MedicationRepository;
+import EvaRuiz.HealthCarer.service.EmailServiceImpl;
 import EvaRuiz.HealthCarer.service.ImageService;
 import EvaRuiz.HealthCarer.service.MedicationService;
 
@@ -17,7 +18,8 @@ public class MedicationServiceTest {
 
     private final MedicationRepository medicationRepository = mock(MedicationRepository.class);
     private final ImageService imageService = mock(ImageService.class);
-    private final MedicationService medicationService = new MedicationService(medicationRepository, imageService);
+    private final EmailServiceImpl emailService = mock(EmailServiceImpl.class);
+    private final MedicationService medicationService = new MedicationService(medicationRepository, imageService, emailService);
 
     @BeforeAll
     public static void setUp() {

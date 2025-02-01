@@ -1,6 +1,5 @@
 package EvaRuiz.HealthCarer.service;
 
-import EvaRuiz.HealthCarer.DTO.TreatmentDTO;
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.Treatment;
 import EvaRuiz.HealthCarer.repository.TreatmentRepository;
@@ -15,7 +14,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class TreatmentService {
-
 
     private final TreatmentRepository treatmentRepository;
 

@@ -25,6 +25,7 @@ public class MedicationService {
 
     private final MedicationRepository medicationRepository;
     private final ImageService imageService;
+    private final EmailServiceImpl emailService;
 
 
     public Medication checkMedicationExists(Long id) {
@@ -78,6 +79,9 @@ public class MedicationService {
         existingMedication.setInstructions(updatedMedication.getInstructions());
         existingMedication.setDose(updatedMedication.getDose());
         existingMedication.setImage(updatedMedication.getImage());
+        if(updatedMedication.getStock() < 5){
+            emailService.sendSimpleMessage("noreply.healthcarer@gmail.com", "Medication stock low", "The stock of the medication " + updatedMedication.getName() + " is low. Please, refill it.");
+        }
         return medicationRepository.save(existingMedication);
     }
 

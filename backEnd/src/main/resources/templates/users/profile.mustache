@@ -5,7 +5,7 @@
             <div class="card shadow-lg rounded-lg">
                 <div class="card-body">
                     <div class="text-center mb-4">
-                        <h3 class="font-weight-bold">{{user.name}}</h3>
+                        <h3 id="userName" class="font-weight-bold">{{user.name}}</h3>
                     </div>
 
                     <div class="mb-3">
@@ -19,13 +19,13 @@
                             Perfil actualizado correctamente
                         </div>
                         <form action="/logout" method="post" class="d-inline-block">
-                            <button type="submit" class="btn btn-danger btn-block">Volver a iniciar sesión</button>
+                            <button type="submit" id="reLogin" class="btn btn-danger btn-block">Volver a iniciar sesión</button>
                         </form>
                         {{/updatedprofile}}
                         {{^updatedprofile}}
-                        <a href="/editProfile" class="btn btn-primary mb-2 btn-block">Editar Perfil</a>
+                        <a href="/editProfile" id="updateProfile" class="btn btn-primary mb-2 btn-block">Editar Perfil</a>
                         <form action="/logout" method="post" class="d-inline-block">
-                            <button type="submit" class="btn btn-danger btn-block">Cerrar sesión</button>
+                            <button type="submit" id="logout" class="btn btn-danger btn-block">Cerrar sesión</button>
                         </form>
                         {{/updatedprofile}}
                     </div>
