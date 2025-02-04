@@ -80,7 +80,7 @@ public class MedicationService {
         existingMedication.setDose(updatedMedication.getDose());
         existingMedication.setImage(updatedMedication.getImage());
         if(updatedMedication.getStock() < 5){
-            emailService.sendSimpleMessage("noreply.healthcarer@gmail.com", "Medication stock low", "The stock of the medication " + updatedMedication.getName() + " is low. Please, refill it.");
+            emailService.sendSimpleMessage(updatedMedication.getUser().getEmail(), "Medication stock low", "The stock of the medication " + updatedMedication.getName() + " is low. Please, refill it.");
         }
         return medicationRepository.save(existingMedication);
     }

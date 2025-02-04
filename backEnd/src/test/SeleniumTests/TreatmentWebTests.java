@@ -56,6 +56,7 @@ public class TreatmentWebTests {
         driver.findElement(By.id("name")).sendKeys("TestTreatment");
         driver.findElement(By.id("startDate")).sendKeys("30-01-2024");
         driver.findElement(By.id("endDate")).sendKeys("03-10-2025");
+        driver.findElement(By.id("startTime")).sendKeys("10:00");
         driver.findElement(By.id("dispensingFrequency")).sendKeys("5");
         driver.findElement(By.id("medications")).findElements(By.id("medication")).getFirst().click();
         driver.findElement(By.id("submit")).click();

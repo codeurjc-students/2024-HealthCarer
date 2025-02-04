@@ -6,7 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class Treatment {
     private Date endDate;
 
     private int dispensingFrequency;
+
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JsonManagedReference
@@ -75,6 +80,10 @@ public class Treatment {
         this.startDate = startDate;
     }
 
+    public void setStartLocalDate(LocalDateTime startDate) {
+        this.startDate = Date.from(startDate.atZone(Calendar.getInstance().getTimeZone().toZoneId()).toInstant());
+    }
+
     public Date getEndDate() {
         return endDate;
     }
@@ -105,5 +114,18 @@ public class Treatment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public LocalDateTime checkIntakeDates() {
+        LocalDateTime initialDate = LocalDateTime.ofInstant(startDate.toInstant(), Calendar.getInstance().getTimeZone().toZoneId());
+        LocalDateTime objectiveDate = initialDate.plusHours(dispensingFrequency);
+        LocalDateTime now = LocalDateTime.now();
+        long difference = ChronoUnit.MINUTES.between(objectiveDate, now);
+        if(difference >= -5 && difference <= 0) {
+            return objectiveDate;
+        } else {
+            return null;
+        }
+
     }
 }

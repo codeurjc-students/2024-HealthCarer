@@ -2,6 +2,7 @@ package ServiceTests;
 
 import EvaRuiz.HealthCarer.model.Treatment;
 import EvaRuiz.HealthCarer.repository.TreatmentRepository;
+import EvaRuiz.HealthCarer.service.EmailServiceImpl;
 import EvaRuiz.HealthCarer.service.TreatmentService;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -14,7 +15,8 @@ import static org.mockito.Mockito.*;
 public class TreatmentServiceTest {
 
         private final TreatmentRepository treatmentRepository = mock(TreatmentRepository.class);
-        private final TreatmentService treatmentService = new TreatmentService(treatmentRepository);
+        private final EmailServiceImpl emailService = mock(EmailServiceImpl.class);
+        private final TreatmentService treatmentService = new TreatmentService(treatmentRepository, emailService);
 
         @BeforeAll
         public static void setUp() {

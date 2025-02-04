@@ -35,8 +35,6 @@ public class TreatmentWebController {
     private UserService userService;
     @Autowired
     private MedicationService medicationService;
-    @Autowired
-    private UserRepository userRepository;
 
     private User addUser(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -75,13 +73,13 @@ public class TreatmentWebController {
     }
 
     @PostMapping("/newtreatment")
-    public String newTreatment(Model model, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications) throws ParseException {
+    public String newTreatment(Model model, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, @RequestParam String startTime) throws ParseException {
         User user = addUser(model);
         Treatment treatment = new Treatment();
         treatment.setName(name);
-        Date start = java.sql.Date.valueOf(startDate);
+        LocalDateTime start = LocalDateTime.parse(startDate + "T" + startTime);
         Date end = java.sql.Date.valueOf(endDate);
-        treatment.setStartDate(start);
+        treatment.setStartLocalDate(start);
         treatment.setEndDate(end);
         treatment.setDispensingFrequency(dispensingFrequency);
         treatment.setUser(user);

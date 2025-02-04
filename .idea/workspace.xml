@@ -4,23 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Implemented take web tests">
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Implemented email service for low stock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/Restcontroller/TreatmentRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Treatment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Treatment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/header.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/editProfilePage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/editProfilePage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/profile.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/users/profile.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/MedicationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/MedicationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/TreatmentWebTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/TreatmentWebTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/TreatmentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/TreatmentServiceTest.java" afterDir="false" />
     </list>
-    <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="">
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
-    <list id="72c4d669-a2f9-48a3-967b-3f464580517f" name="Changes by Sergio" comment="" />
+    <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,14 +60,6 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/pom.xml">
-      <ranges>
-        <range start1="85" end1="91" start2="85" end2="91" changelist="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" />
-        <range start1="138" end1="138" start2="138" end2="144" changelist="800dab85-8625-4b8c-bbc5-f0c23f8bd889" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -178,7 +166,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.HealthCarerApplication (1).executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.HealthCarerApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.HealthCarerApplication.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
@@ -224,22 +212,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HealthCarerApplication">
-    <configuration name="TakeWebTests.deleteTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
-      <option name="METHOD_NAME" value="deleteTake" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TakeWebTests.updateTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
@@ -251,6 +223,22 @@
       <option name="PACKAGE_NAME" value="SeleniumTests" />
       <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
       <option name="METHOD_NAME" value="updateTake" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreatmentWebTests.createTreatment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SeleniumTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SeleniumTests" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="createTreatment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -314,11 +302,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TreatmentWebTests.createTreatment" />
         <item itemvalue="JUnit.UserWebTest.updateProfile" />
         <item itemvalue="JUnit.UserWebTest.getProfile" />
         <item itemvalue="JUnit.UserWebTest.login" />
         <item itemvalue="JUnit.TakeWebTests.updateTake" />
-        <item itemvalue="JUnit.TakeWebTests.deleteTake" />
       </list>
     </recent_temporary>
   </component>
@@ -417,7 +405,10 @@
       <workItem from="1738143517351" duration="3785000" />
       <workItem from="1738310594677" duration="2680000" />
       <workItem from="1738399254569" duration="3012000" />
-      <workItem from="1738403057633" duration="2041000" />
+      <workItem from="1738403057633" duration="2397000" />
+      <workItem from="1738405742741" duration="863000" />
+      <workItem from="1738572187902" duration="4982000" />
+      <workItem from="1738657413031" duration="3014000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -723,7 +714,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738146924768</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Implemented email service for low stock">
+      <option name="closed" value="true" />
+      <created>1738405441712</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1738405441712</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +740,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Completed Medication tests" />
     <MESSAGE value="Fixed MedicationDTO views and tests" />
     <MESSAGE value="Fixed ImageService" />
     <MESSAGE value="Plan services implemented with DTOs" />
@@ -766,7 +764,8 @@
     <MESSAGE value="Testing Rest completed" />
     <MESSAGE value="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication" />
     <MESSAGE value="Implemented take web tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented take web tests" />
+    <MESSAGE value="Implemented email service for low stock" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented email service for low stock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -775,11 +774,10 @@
           <properties class="org.springframework.beans.factory.BeanCreationException" package="org.springframework.beans.factory" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/angus/jakarta.mail/2.0.3/jakarta.mail-2.0.3-sources.jar!/jakarta/mail/Session.java</url>
-          <line>842</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.hibernate.LazyInitializationException" package="org.hibernate" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
