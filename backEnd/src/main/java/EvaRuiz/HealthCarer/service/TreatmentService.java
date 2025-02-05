@@ -8,9 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +16,6 @@ import java.util.Optional;
 public class TreatmentService {
 
     private final TreatmentRepository treatmentRepository;
-    private final EmailServiceImpl emailService;
 
     public Treatment checkTreatmentExists(Long id) {
         Optional<Treatment> treatment = treatmentRepository.findById(id);
@@ -72,10 +68,13 @@ public class TreatmentService {
 
     public Treatment updateTreatment(Long id, Treatment newTreatment) {
         Treatment oldTreatment = checkTreatmentExists(id);
-        checkTreatment(newTreatment);
         oldTreatment.setName(newTreatment.getName());
-        oldTreatment.setStartDate(newTreatment.getStartDate());
-        oldTreatment.setEndDate(newTreatment.getEndDate());
+        if (newTreatment.getStartDate() != null){
+            oldTreatment.setStartDate(newTreatment.getStartDate());
+        }
+        if (newTreatment.getEndDate() != null){
+            oldTreatment.setEndDate(newTreatment.getEndDate());
+        }
         oldTreatment.setDispensingFrequency(newTreatment.getDispensingFrequency());
         return treatmentRepository.save(oldTreatment);
     }

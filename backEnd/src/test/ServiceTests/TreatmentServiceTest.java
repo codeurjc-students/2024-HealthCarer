@@ -15,8 +15,7 @@ import static org.mockito.Mockito.*;
 public class TreatmentServiceTest {
 
         private final TreatmentRepository treatmentRepository = mock(TreatmentRepository.class);
-        private final EmailServiceImpl emailService = mock(EmailServiceImpl.class);
-        private final TreatmentService treatmentService = new TreatmentService(treatmentRepository, emailService);
+        private final TreatmentService treatmentService = new TreatmentService(treatmentRepository);
 
         @BeforeAll
         public static void setUp() {

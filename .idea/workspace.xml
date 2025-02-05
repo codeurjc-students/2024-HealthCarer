@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Implemented email service for low stock">
+    <list default="true" id="800dab85-8625-4b8c-bbc5-f0c23f8bd889" name="Changes" comment="Implemented email for intake time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/HealthCarerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/WebController/TreatmentWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Treatment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/model/Treatment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/MedicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/java/EvaRuiz/HealthCarer/service/TreatmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/editTreatmentPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/main/resources/templates/treatments/newTreatmentPage.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/TreatmentWebTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/SeleniumTests/TreatmentWebTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/TreatmentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backEnd/src/test/ServiceTests/TreatmentServiceTest.java" afterDir="false" />
     </list>
     <list id="f9d7e8b3-49b4-4923-b42b-4c75b10f3f4b" name="Changes by alfon" comment="" />
@@ -211,8 +205,38 @@
       <recent name="EvaRuiz.HealthCarer.medication" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.HealthCarerApplication">
-    <configuration name="TakeWebTests.updateTake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TreatmentRestTests">
+    <configuration name="TreatmentRestTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="RestTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="RestTests" />
+      <option name="MAIN_CLASS_NAME" value="RestTests.TreatmentRestTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreatmentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthCarer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="ServiceTests.TreatmentServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreatmentWebTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -221,9 +245,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TakeWebTests" />
-      <option name="METHOD_NAME" value="updateTake" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,7 +267,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserWebTest.getProfile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TreatmentWebTests.getTreatments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthCarer" />
       <extension name="coverage">
         <pattern>
@@ -253,40 +276,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.UserWebTest" />
-      <option name="METHOD_NAME" value="getProfile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserWebTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.UserWebTest" />
-      <option name="METHOD_NAME" value="login" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserWebTest.updateProfile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthCarer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SeleniumTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SeleniumTests" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTests.UserWebTest" />
-      <option name="METHOD_NAME" value="updateProfile" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTests.TreatmentWebTests" />
+      <option name="METHOD_NAME" value="getTreatments" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -302,11 +293,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TreatmentRestTests" />
+        <item itemvalue="JUnit.TreatmentWebTests.getTreatments" />
+        <item itemvalue="JUnit.TreatmentWebTests" />
+        <item itemvalue="JUnit.TreatmentServiceTest" />
         <item itemvalue="JUnit.TreatmentWebTests.createTreatment" />
-        <item itemvalue="JUnit.UserWebTest.updateProfile" />
-        <item itemvalue="JUnit.UserWebTest.getProfile" />
-        <item itemvalue="JUnit.UserWebTest.login" />
-        <item itemvalue="JUnit.TakeWebTests.updateTake" />
       </list>
     </recent_temporary>
   </component>
@@ -408,7 +399,8 @@
       <workItem from="1738403057633" duration="2397000" />
       <workItem from="1738405742741" duration="863000" />
       <workItem from="1738572187902" duration="4982000" />
-      <workItem from="1738657413031" duration="3014000" />
+      <workItem from="1738657413031" duration="3494000" />
+      <workItem from="1738742906669" duration="1980000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed dependecies">
       <option name="closed" value="true" />
@@ -722,7 +714,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738405441712</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Implemented email for intake time">
+      <option name="closed" value="true" />
+      <created>1738660614291</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1738660614291</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -740,7 +740,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed MedicationDTO views and tests" />
     <MESSAGE value="Fixed ImageService" />
     <MESSAGE value="Plan services implemented with DTOs" />
     <MESSAGE value="PlanRestTests implemented with RestAssured" />
@@ -765,7 +764,8 @@
     <MESSAGE value="Starting Selenium tests&#10;Creating a medication &#10;Editing a medication" />
     <MESSAGE value="Implemented take web tests" />
     <MESSAGE value="Implemented email service for low stock" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented email service for low stock" />
+    <MESSAGE value="Implemented email for intake time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented email for intake time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

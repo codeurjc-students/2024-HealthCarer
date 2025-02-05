@@ -1,11 +1,9 @@
 package EvaRuiz.HealthCarer.WebController;
 
-import EvaRuiz.HealthCarer.DTO.TreatmentDTO;
+
 import EvaRuiz.HealthCarer.model.Medication;
 import EvaRuiz.HealthCarer.model.Treatment;
 import EvaRuiz.HealthCarer.model.User;
-import EvaRuiz.HealthCarer.repository.MedicationRepository;
-import EvaRuiz.HealthCarer.repository.UserRepository;
 import EvaRuiz.HealthCarer.service.MedicationService;
 import EvaRuiz.HealthCarer.service.TreatmentService;
 import EvaRuiz.HealthCarer.service.UserService;
@@ -16,10 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
+
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,13 +106,25 @@ public class TreatmentWebController {
     }
 
     @PostMapping("/edittreatment/{id}")
-    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency) {
+    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, String startDate, String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, String startTime) throws ParseException {
         addUser(model);
-        Treatment treatment = treatmentService.getTreatment(id);
+        Treatment treatment = new Treatment();
+        treatment.setId(id);
+        if (!startDate.isEmpty() && !startTime.isEmpty()) {
+            LocalDateTime start = LocalDateTime.parse(startDate + "T" + startTime);
+            treatment.setStartLocalDate(start);
+        }
+        if (!endDate.isEmpty()) {
+            Date end = java.sql.Date.valueOf(endDate);
+            treatment.setEndDate(end);
+        }
         treatment.setName(name);
-        treatment.setStartDate(java.sql.Date.valueOf(startDate));
-        treatment.setEndDate(java.sql.Date.valueOf(endDate));
         treatment.setDispensingFrequency(dispensingFrequency);
+        List<Medication> meds = new ArrayList<>();
+        for (Long id2 : medications) {
+            meds.add(medicationService.getMedicationById(id2));
+        }
+        treatment.setMedications(meds);
         Treatment newTreatment = treatmentService.updateTreatment(id, treatment);
         model.addAttribute("treatment", newTreatment);
         return "/treatments/treatment";

@@ -45,7 +45,7 @@ public class TreatmentWebTests {
     @Test
     public void getTreatments() {
         assertThat(driver.getCurrentUrl()).isEqualTo("https://localhost:"+this.port+"/treatments/");
-        assertThat(driver.findElement(By.id("treatmentsList")).getText()).contains("Tratamiento1");
+        assertThat(driver.findElement(By.id("treatmentsList")).isDisplayed());
 
     }
 

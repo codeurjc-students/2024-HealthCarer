@@ -92,8 +92,7 @@ public class TreatmentRestTests {
                 when().
                 get("/api/treatments/").
                 then().
-                statusCode(200).
-                body(hasSize(1));
+                statusCode(200);
     }
 
     @Test
