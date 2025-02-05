@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -71,5 +74,9 @@ public class Take {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setLocalDate(LocalDateTime dateTime) {
+        this.date = Date.from(dateTime.atZone(Calendar.getInstance().getTimeZone().toZoneId()).toInstant());
     }
 }

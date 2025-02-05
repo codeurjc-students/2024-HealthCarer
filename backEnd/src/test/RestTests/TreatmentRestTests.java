@@ -31,18 +31,19 @@ public class TreatmentRestTests {
         given().
                 auth().basic("admin", "adminpass").
                 contentType("application/json").
-                body("{\n" +
-                        "    \"name\": \"Tratamiento1\",\n" +
-                        "    \"startDate\": \"2024-10-22T07:13:54.853+00:00\",\n" +
-                        "    \"endDate\": \"2024-10-29T08:13:54.853+00:00\",\n" +
-                        "    \"dispensingFrequency\": 3000,\n" +
-                        "    \"medications\":[\n" +
-                        "    {\n" +
-                        "        \"id\": 1\n" +
-                        "    }\n" +
-                        "]\n" +
-                        "    \n" +
-                        "}").
+                body("""
+                        {
+                            "name": "Tratamiento1",
+                            "startDate": "2024-10-22T07:13:54.853+00:00",
+                            "endDate": "2024-10-29T08:13:54.853+00:00",
+                            "dispensingFrequency": 3000,
+                            "medications":[
+                            {
+                                "id": 1
+                            }
+                        ]
+                           \s
+                        }""").
                 when().
                 post("/api/treatments/").
                 then().
@@ -57,12 +58,13 @@ public class TreatmentRestTests {
         given().
                 auth().basic("admin", "adminpass").
                 contentType("application/json").
-                body("{\n" +
-                        "    \"name\": \"Plan 7\",\n" +
-                        "    \"startDate\": \"2024-10-22T07:13:54.853+00:00\",\n" +
-                        "    \"endDate\": \"2024-10-22T07:13:54.853+00:00\",\n" +
-                        "    \"dispensingFrequency\": 9000\n" +
-                        "}").
+                body("""
+                        {
+                            "name": "Plan 7",
+                            "startDate": "2024-10-22T07:13:54.853+00:00",
+                            "endDate": "2024-10-22T07:13:54.853+00:00",
+                            "dispensingFrequency": 9000
+                        }""").
                 when().
                 put("/api/treatments/1").
                 then().

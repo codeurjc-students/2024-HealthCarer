@@ -70,7 +70,7 @@ public class TreatmentWebController {
     }
 
     @PostMapping("/newtreatment")
-    public String newTreatment(Model model, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, @RequestParam String startTime) throws ParseException {
+    public String newTreatment(Model model, @RequestParam String name, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, @RequestParam String startTime){
         User user = addUser(model);
         Treatment treatment = new Treatment();
         treatment.setName(name);
@@ -106,7 +106,7 @@ public class TreatmentWebController {
     }
 
     @PostMapping("/edittreatment/{id}")
-    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, String startDate, String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, String startTime) throws ParseException {
+    public String editTreatment(Model model, @PathVariable Long id, @RequestParam String name, String startDate, String endDate, @RequestParam int dispensingFrequency, @RequestParam(name = "medication") List<Long> medications, String startTime){
         addUser(model);
         Treatment treatment = new Treatment();
         treatment.setId(id);

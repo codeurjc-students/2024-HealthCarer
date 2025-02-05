@@ -2,7 +2,7 @@ package ServiceTests;
 
 import EvaRuiz.HealthCarer.model.Treatment;
 import EvaRuiz.HealthCarer.repository.TreatmentRepository;
-import EvaRuiz.HealthCarer.service.EmailServiceImpl;
+
 import EvaRuiz.HealthCarer.service.TreatmentService;
 
 import org.junit.jupiter.api.BeforeAll;

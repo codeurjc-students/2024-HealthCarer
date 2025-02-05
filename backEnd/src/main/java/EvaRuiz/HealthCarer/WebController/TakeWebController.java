@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Controller
@@ -61,10 +62,11 @@ public class TakeWebController {
     }
 
     @PostMapping("/newtake")
-    public String newTake(Model model, @RequestParam String date ,@RequestParam("medications") List<Long> medications) {
+    public String newTake(Model model, @RequestParam String date, String dateTime ,@RequestParam("medications") List<Long> medications) {
         User user = addUser(model);
         Take take = new Take();
-        take.setDate(java.sql.Date.valueOf(date));
+        LocalDateTime localDateTime = LocalDateTime.parse(date + "T" + dateTime);
+        take.setLocalDate(localDateTime);
         take.setUser(user);
         for (Long id : medications) {
             Medication medication = medicationService.getMedicationById(id);
@@ -87,10 +89,13 @@ public class TakeWebController {
     }
 
     @PostMapping("/edittake/{id}")
-    public String editTake(Model model, @PathVariable Long id, @RequestParam String date ,@RequestParam("medications") List<Long> medications) {
+    public String editTake(Model model, @PathVariable Long id, String date , String dateTime , @RequestParam("medications") List<Long> medications) {
         addUser(model);
         Take take = takeService.getTake(id);
-        take.setDate(java.sql.Date.valueOf(date));
+        if (!date.isEmpty() && !dateTime.isEmpty()) {
+            LocalDateTime newDate = LocalDateTime.parse(date + "T" + dateTime);
+            take.setLocalDate(newDate);
+        }
         take.getMedications().clear();
         for (Long idMed : medications) {
             Medication medication = medicationService.getMedicationById(idMed);
